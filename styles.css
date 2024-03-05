@@ -1,0 +1,218 @@
+body {
+    background-color: #cdfffc;
+    margin: 0px;
+    display: flex;
+    flex-direction: column; 
+}
+#header{
+    display: grid;
+    grid-template-columns: 2.5fr repeat(4, 1.5fr) 3fr 1.5fr;
+    justify-items: center;
+    align-items: center;
+    background-color: #4935f7;
+    padding: 15px 0px;
+    font-size: 1.1rem;
+    padding-left: 3.5%;
+}
+#header > * {
+    background-color: #4935f7;
+    color: #eef1f0;
+    text-decoration: none;
+    text-align: center;
+    text-wrap: nowrap;
+    font-size: 1.2rem
+}
+#header > a:first-child{
+    font-size: 1.6rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-wrap: wrap;
+    justify-self: start;
+    padding: 0px;
+}
+#header > a:nth-child(6){
+    grid-column: 7;
+    justify-self: end;
+    margin-right: 70px;
+}
+#main{
+    height: 100%;
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    grid-template-rows: 0.2fr 0.3fr 1.6fr;
+}
+
+
+#intro_text{
+    grid-column: 1;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding: 0% 5% 3% 5%;
+}
+
+#main > p, #main > ul, #intro_text {
+    margin: 0px;
+    font-size: 1.3rem;
+    list-style-type: none;
+}
+
+#intro_text > p{
+    margin: 0px;
+}
+
+#intro_text > p:first-child{
+    align-self: start;
+}
+
+#intro_text > p:nth-child(2){
+    align-self: end;
+    justify-self: center;
+    font-size: 1.9rem;
+    font-weight: 600;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+#main > p:first-child{
+    padding: 10% 5% 8% 5%;
+}
+
+#main > ul{
+    grid-row-start: 2;
+    grid-row-end: span 2;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-right: 70px;
+    color: 	#eef1f0;
+}
+#main > ul{
+    gap: 15%
+}
+#footer{
+    margin-top: auto;
+    background-color: #4935f7;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -100px;
+}
+#footer > * {
+    background-color: #4935f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+    padding: 0px;
+    margin: 0px
+}
+#footer > * > * {
+    margin: 0px;
+}
+#footer > div:nth-child(1), #footer > div:nth-child(3) {
+    font-size: 0.8rem;
+}
+
+#sub-section > h2 {
+    margin: 0% 0% 0% 5%;
+    font-size: 1.9rem;
+}
+
+#sub-banner{
+    grid-row-start: 3;
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    height: 70vh;
+    display: grid;
+    grid-template-rows: 1.2fr 9fr;
+    justify-content: center;
+}
+#section{
+    grid-row-start: 4;
+    grid-column: span 2;
+}
+
+.banner{
+    display: grid;
+    background-color: #E0FFFF;
+    height: 70vh;
+    grid-template-rows: 1.2fr 9fr;
+    justify-content: center;
+}
+.banner > h2, #sub-banner > h2{
+    text-align: center;
+    margin: 0px;
+    align-self: center;
+    font-size: 1.6rem;
+}
+.banner:nth-child(2){
+    background-image: url('./images/jj-ying-8bghKxNU1j0-unsplash.jpg');
+    background-position-x: 57%;
+    background-position-y: 0%;
+    background-size: 90%
+
+}
+.banner:nth-child(2) > * > * , #sub-banner > * > *{
+   background-color: #FAF9F6;
+}
+
+
+.research_trio{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 90%;
+    gap: 5%;
+    padding: 0px 5% 0 5%;
+}
+.research_duo{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 90%;
+    gap: 7.4%;
+    padding: 0px 8.5% 0 7.15%;
+}
+.research_duo > .research{
+   background-color: #FAF9F6;
+}
+.research{
+    display: grid;
+    padding: 5% 11% 5% 11%;
+    grid-template-rows: 2fr 6fr 1fr 1fr;
+    background-color: #FFE8E8;
+}
+.research > p:first-child{
+    font-size: 1.5rem;
+}
+.research > p:nth-child(3){
+    font-size: 1.2rem;
+}
+.research > * {
+    margin: 0px;
+    text-align: center;
+}
+
+#sub-banner > .research_trio > .research:nth-child(3){
+    display: none;
+}
+
+#sub-banner > h2{
+    padding-right: 28%;
+}
+
+ .top_right{
+    background-image: url(images/hand.jpg);
+    background-position-x: 57%;
+    background-position-y: 0%;
+    background-size: 280%
+}
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
+  
+  .sticky + .content {
+    padding-top: 102px;
+  }
+
