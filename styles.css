@@ -1,5 +1,5 @@
 body {
-    background-color: #cdfffc;
+    background-color: #FFFFF0;
     margin: 0px;
     display: flex;
     flex-direction: column; 
@@ -133,7 +133,7 @@ body {
 
 .banner{
     display: grid;
-    background-color: #E0FFFF;
+    background-color: #00BFFF;
     height: 70vh;
     grid-template-rows: 1.2fr 9fr;
     justify-content: center;
@@ -152,7 +152,7 @@ body {
 
 }
 .banner:nth-child(2) > * > * , #sub-banner > * > *{
-   background-color: #FAF9F6;
+   background-color: #FFE8E8;
 }
 
 
@@ -177,7 +177,7 @@ body {
     display: grid;
     padding: 5% 11% 5% 11%;
     grid-template-rows: 2fr 6fr 1fr 1fr;
-    background-color: #FFE8E8;
+    background-color: #FFFFF0;;
 }
 .research > p:first-child{
     font-size: 1.5rem;
@@ -196,6 +196,10 @@ body {
 
 #sub-banner > h2{
     padding-right: 28%;
+}
+
+.banner:nth-child(2) > h2{
+   color: white;
 }
 
  .top_right{
