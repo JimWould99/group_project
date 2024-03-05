@@ -1,0 +1,76 @@
+body {
+    background-color: #cdfffc;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the footer is at the bottom */
+    align-items: center; /* Center items horizontally */
+}
+
+#header {
+    background-color: #4935f7;
+    padding: 15px 0;
+    text-align: center;
+    width: 100%;
+}
+
+#header > * {
+    color: #ffffff; /* Making all link texts white */
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+#header > a:first-child {
+    font-size: 1.2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#header > a:nth-child(6) {
+    justify-self: end;
+}
+
+#main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-content: center; /* Center items vertically */
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    padding: 20px;
+    width: 200px;
+    height: 200px; /* Making tiles square */
+}
+
+.tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#footer {
+    background-color: #4935f7;
+    color: #ffffff;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: auto; /* Pushes the footer to the bottom */
+    width: 100%;
+}
+
+#profiles-header {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
