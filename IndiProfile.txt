@@ -12,7 +12,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh; /* Ensures the footer is at the bottom */
-            align-items: center; /* Center items horizontally */
+            align-items: center; /* Centers items horizontally */
         }
 
         #header {
@@ -41,13 +41,13 @@
             text-align: center;
             font-size: 1.5rem;
             margin-bottom: 20px;
-            margin-top: 20px; /* Adjusted margin for positioning */
+            margin-top: 20px; /* Adjusts margin for positioning */
         }
 
         #main {
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* Align items at flex-start */
+            align-items: flex-start; /* Aligns items at flex-start */
             gap: 20px;
             padding: 20px;
         }
@@ -66,7 +66,7 @@
             color: #333;
             padding: 20px;
             width: 200px;
-            height: 200px; /* Making tiles square */
+            height: 200px; /* Makes tiles square */
         }
 
         .tile img {
