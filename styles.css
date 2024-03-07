@@ -56,6 +56,11 @@ body {
     list-style-type: none;
 }
 
+#main > ul > li{
+    background-color: #4935f7;
+}
+
+
 #intro_text > p{
     margin: 0px;
 }
