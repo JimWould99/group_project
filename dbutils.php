@@ -7,6 +7,7 @@ $pepper = "z=mJZj0j4Bk;#(&m6Br3YvG;)y@[X1wqwPpt:{AW-W=/k-Y644.yM*B2hhU7(N(SXK+@5
 $login = "login";
 //
 $raw_text = "raw_text";
+$files = "Files";//Files table storing File URI
 
 
 function addText($raw_text) { //method to insert a string into db
@@ -81,30 +82,74 @@ function verifyPassword($username, $password) {
     return False;
 }
 
-/* this uses POST to send the file to server, stored in $_FILES[]
+//Files table: FileID (auto-PK), Username, FileType, URI
+//returns TRUE when succesful, NULL when not due to file already existingin DB
+function storeUploadedFileURI($username, $fileType, $URI) {
+    global $files;
+    $instance = DataBase::getInstance();
+    $db = $instance->getConnection();
+    //check if file is already present for user
+    if (checkURIExists($URI)) {return NULL;}
 
-<form action="upload.php" method="post" enctype="multipart/form-data">
-  Select image to upload:
-  <input type="file" name="fileToSave" id="fileToSave">
-  <input type="submit" value="Upload Image" name="submit">
-</form>
+    $stmt = $db->prepare("INSERT INTO $files (Username, FileType, URI) VALUES ( ?, ?, ? )");
+    $stmt->bind_param("sss",$username, $fileType, $URI);
+    $stmt->execute();
+    return TRUE;
+}
 
+function checkURIExists($URI) {
+    global $files;
+    $instance = DataBase::getInstance();
+    $db = $instance->getConnection();
 
-<?php
-echo "Filename: " . $_FILES['file']['name']."<br>";
-echo "Type : " . $_FILES['file']['type'] ."<br>";
-echo "Size : " . $_FILES['file']['size'] ."<br>";
-echo "Temp name: " . $_FILES['file']['tmp_name'] ."<br>";
-echo "Error : " . $_FILES['file']['error'] . "<br>";
-?>
+    $stmt = $db->prepare("SELECT URI FROM $files WHERE URI = ?");
+    $stmt->bind_param("s", $URI);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($result->num_rows == 0) {return NULL;}
+    return TRUE;
+}
 
+function deleteUploaderFileURI($URI) {
+    global $files;
+    $instance = DataBase::getInstance();
+    $db = $instance->getConnection();
 
+    $stmt = $db->prepare("DELETE FROM $files where URI = $URI");
+    $stmt->bind_param("s", $URI);
+    $stmt->execute();
+}
+
+//returns an array containing all URIs for given user, NULL if none exist
+function getUserFileURIs($username) {
+    global $files;
+    $instance = DataBase::getInstance();
+    $db = $instance->getConnection();
+
+    $stmt = $db->prepare("SELECT URI FROM $files WHERE UserName = ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    //check for no URIs
+    if ($result->num_rows == 0) {return NULL;}
+
+    $toReturn = array();
+    while($row = $result->fetch_assoc()) {
+        array_push($toReturn, $row['URI']);//append URIs into array
+    }
+    return $toReturn;
+}
+
+/*
+//check for non zero result then print out results row by row:
+if ($result→num_rows > 0) {
+    while($row = $result→fetch_assoc()) {
+        printf("Id: %s, Title: %s, Author: %s, Date: %d <br />", 
+        $row["tutorial_id"], 
+        $row["tutorial_title"], 
+        $row["tutorial_author"],
+        $row["submission_date"]);               
+    }
+}
 */
-
-$finalfilepath = $repopath . "/" . $username . basename($_FILES['fileToSave']['name']);
-
-move_uploaded_file($_FILES['fileToSave']['tmp_name'], $finalfilepath); //moves the file from temp storage to disk
-
-
-
 ?>
