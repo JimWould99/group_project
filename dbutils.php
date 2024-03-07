@@ -9,7 +9,6 @@ $login = "login";
 $raw_text = "raw_text";
 
 
-
 function addText($raw_text) { //method to insert a string into db
     global $raw_text;
     $instance = DataBase::getInstance();
@@ -81,5 +80,31 @@ function verifyPassword($username, $password) {
     }
     return False;
 }
+
+/* this uses POST to send the file to server, stored in $_FILES[]
+
+<form action="upload.php" method="post" enctype="multipart/form-data">
+  Select image to upload:
+  <input type="file" name="fileToSave" id="fileToSave">
+  <input type="submit" value="Upload Image" name="submit">
+</form>
+
+
+<?php
+echo "Filename: " . $_FILES['file']['name']."<br>";
+echo "Type : " . $_FILES['file']['type'] ."<br>";
+echo "Size : " . $_FILES['file']['size'] ."<br>";
+echo "Temp name: " . $_FILES['file']['tmp_name'] ."<br>";
+echo "Error : " . $_FILES['file']['error'] . "<br>";
+?>
+
+
+*/
+
+$finalfilepath = $repopath . "/" . $username . basename($_FILES['fileToSave']['name']);
+
+move_uploaded_file($_FILES['fileToSave']['tmp_name'], $finalfilepath); //moves the file from temp storage to disk
+
+
 
 ?>
