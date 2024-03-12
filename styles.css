@@ -1,9 +1,12 @@
-body {
-    background-color: #FFFFF0;
-    margin: 0px;
-    display: flex;
-    flex-direction: column; 
-}
+/*
+CSS for all pages
+
+*/
+
+/*
+   header css (all pages)
+*/
+
 #header{
     display: grid;
     grid-template-columns: 2.5fr repeat(4, 1.5fr) 3fr 1.5fr;
@@ -14,6 +17,7 @@ body {
     font-size: 1.1rem;
     padding-left: 3.5%;
 }
+
 #header > * {
     background-color: #4935f7;
     color: #eef1f0;
@@ -22,6 +26,7 @@ body {
     text-wrap: nowrap;
     font-size: 1.2rem
 }
+
 #header > a:first-child{
     font-size: 1.6rem;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -34,7 +39,129 @@ body {
     justify-self: end;
     margin-right: 70px;
 }
-#main{
+
+
+/*
+all pages- main bodies
+
+*/
+
+#landing_page, #browse_profiles, #profile_body {
+    background-color: #FFFFF0;
+    margin: 0px;
+    display: flex;
+    flex-direction: column; 
+    font-family: Arial, sans-serif;  /*font family?  */
+}
+
+#browse_profiles, #profile_body{
+    align-items: center;
+    height: 100vh;
+}
+
+/*
+Profile page
+*/
+
+#main_profile {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns items at flex-start */
+    gap: 20px;
+    padding: 20px;
+}
+
+#text-box {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+}
+
+#key {
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+    margin-top: 20px;
+}
+
+#key p {
+    margin: 5px 0;
+}
+
+/* Browse profile page */
+
+
+#profile-header {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+/* Browse profile page- body */
+
+#main_browse_profiles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    justify-content: center;
+}
+
+.tile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    padding: 20px;
+    width: 200px;
+    height: 200px; /* Makes tiles square */
+}
+
+.tile img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#footer_browse, #footer_profile {
+    background-color: #4935f7;
+    color: #ffffff;
+    padding: 15px 0;
+    text-align: center;
+    margin-top: auto; /* Pushes the footer to the bottom */
+    width: 100%;
+} 
+
+/* landing page */
+
+/* sticky header */
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+  }
+  
+  .sticky + .content {
+    padding-top: 102px;
+  }
+
+
+/*
+body of landing page
+*/
+#main_landing{
     height: 100%;
     display: grid;
     grid-template-columns: 7fr 3fr;
@@ -49,7 +176,7 @@ body {
     padding: 0% 5% 3% 5%;
 }
 
-#main > p, #main > ul, #intro_text {
+#main_landing > p, #main_landing > ul, #intro_text {
     margin: 0px;
     font-size: 1.3rem;
     list-style-type: none;
@@ -71,11 +198,11 @@ body {
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
-#main > p:first-child{
+#main_landing > p:first-child{
     padding: 10% 5% 8% 5%;
 }
 
-#main > ul{
+#main_landing > ul{
     grid-row-start: 2;
     grid-row-end: span 2;
     grid-column-start: 2;
@@ -86,31 +213,19 @@ body {
     padding-right: 70px;
     color: 	#eef1f0;
 }
-#main > ul{
+
+#main_landing > ul > li{
+    background-color: #4935f7;
+}
+
+#main_landing > ul{
     gap: 15%
 }
-#footer{
-    margin-top: auto;
-    background-color: #4935f7;
-    display: flex;
-    flex-direction: column;
-    margin-bottom: -100px;
-}
-#footer > * {
-    background-color: #4935f7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 3%;
-    padding: 0px;
-    margin: 0px
-}
-#footer > * > * {
-    margin: 0px;
-}
-#footer > div:nth-child(1), #footer > div:nth-child(3) {
-    font-size: 0.8rem;
-}
+
+
+/*
+display of research within the landing page
+*/
 
 #sub-section > h2 {
     margin: 0% 0% 0% 5%;
@@ -210,13 +325,29 @@ body {
 }
 
 
-.sticky {
-    position: fixed;
-    top: 0;
-    width: 100%
-  }
-  
-  .sticky + .content {
-    padding-top: 102px;
-  }
 
+
+/* footer of landing page */
+
+#footer_landing{
+    margin-top: auto;
+    background-color: #4935f7;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: -100px;
+}
+#footer_landing > * {
+    background-color: #4935f7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3%;
+    padding: 0px;
+    margin: 0px
+}
+#footer_landing > * > * {
+    margin: 0px;
+}
+#footer_landing > div:nth-child(1), #footer > div:nth-child(3) {
+    font-size: 0.8rem;
+}
