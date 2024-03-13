@@ -352,9 +352,145 @@ display of research within the landing page
     padding: 0px;
     margin: 0px
 }
+
+#footer_landing > p, #footer_landing > .sub_footer{
+    color: #FFFFF0;
+}
+
 #footer_landing > * > * {
     margin: 0px;
 }
 #footer_landing > div:nth-child(1), #footer > div:nth-child(3) {
     font-size: 0.8rem;
 }
+
+/*
+Register page
+*/
+
+#register{
+    background-image: url("../images/computer.jpg");
+    background-size: 110%;
+    background-position-y: 90%;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#login_box > *{
+    margin: 0px;
+    padding: 0px;
+}
+
+#login_box > h1{
+    color: #FFFFF0;
+    margin-bottom: 30px;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+#login_box{
+    background-color: rgb(73, 53, 247, 0.8);
+    border-radius: 20px;
+    padding: 30px 80px;
+    max-width: 600px;
+    width: 80%;
+    /*color: #FFFFF0; */
+    margin-bottom: 50px;
+}
+
+#login_form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form_section{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form_section > label{
+    font-size: 1.25rem;
+    color: #FFFFF0;
+}
+
+.form_section > input{
+    border: none;
+    outline: none;
+    padding: 3px 25px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 240, 0.8);
+    font-weight: 550;
+}
+
+.form_section > input:focus{
+    box-shadow: 0px 0px 0px 4px #00BFFF;
+}
+
+.form_section > span{
+    visibility: hidden; 
+}
+
+#invalid > span{
+    visibility: visible;
+    color: orange
+}
+
+#invalid > input:focus{
+    box-shadow: 0px 0px 0px 4px orange;
+}
+
+#valid > input:focus{
+    box-shadow: 0px 0px 0px 4px green;
+}
+
+#login_button{
+    background-color: rgb(0, 191, 255, 0.8);
+    cursor: pointer;
+    width: 60%;
+    margin: auto;
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 600;
+    padding: 10px 0px;
+    border-radius: 20px;
+    border: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#login_button:hover {
+    transform: scale(1.025);
+    background-color: rgba(0, 255, 238, 0.8);
+}
+
+#lower_section{
+    justify-content: space-around;
+    display: flex;
+    align-items: center;
+}
+
+#lower_section > a{
+    text-decoration: none;
+    color: white;
+    font-size: 1.37rem;
+    font-weight: 600;
+    background-color: #1d1160;
+    border-radius: 20px;
+    padding: 8px 55px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+#login_form > hr {
+    background-color: #FFFFF0;
+    height: 3px;
+    margin: 5px 0px;
+}
+
+
