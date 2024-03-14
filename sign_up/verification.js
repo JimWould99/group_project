@@ -31,13 +31,6 @@ form.addEventListener('submit', (e) => {
           username_section.setAttribute("id", "invalid")
        }
 
-       if (password.value == "" || password.value == null){
-           password_list.push("Fill in password")
-           password_section.setAttribute("id", "invalid")
-       } else if (password.value.length <= 7) {
-           password_list.push('minmum 8 characters')
-           password_section.setAttribute("id", "invalid")
-       }
 
        if (confirmation.value !== password.value) {
         confirmation_list.push(" Passwords must match")
@@ -50,15 +43,68 @@ form.addEventListener('submit', (e) => {
        if (confirmation.value == "" || confirmation.value == null){
         confirmation_list.push("Fill in confirmation")
         confirm_section.setAttribute("id", "invalid")
-    } else if (confirmation.value.length <= 7) {
+    } else {
+        const numbers = /[0-9]/g
+
+        if (confirmation.value.length <= 7) {
         confirmation_list.push("minimum 8 characters")
         confirm_section.setAttribute("id", "invalid")
+       } 
+
+       if (!confirmation.value.match(numbers)){
+        confirmation_list.push("minimum one number")
+        confirm_section.setAttribute("id", "invalid")
        }
+
+    }
+
+    if (password.value == "" || password.value == null){
+        password_list.push("Fill in password")
+        password_section.setAttribute("id", "invalid")
+    } else {
+        
+       const numbers = /[0-9]/g
+
+       if (password.value.length <= 7) {
+        password_list.push('minmum 8 characters')
+        password_section.setAttribute("id", "invalid")
+       }
+
+       if (!password.value.match(numbers)){
+        password_list.push("minimum one number")
+        password_section.setAttribute("id", "invalid")
+       }
+    }
+
+       /*
+       numbers = [0,1,2,3,4,5,6,7,8,9]
+       let has_number = false
+       for (let i = 0; i <= numbers.length-1; i++){
+          if(password.value.includes(numbers[i])){
+              has_number = true;
+          } 
+       }
+       if(!has_number){
+        password_list.push("Minimum one number")
+        password_section.setAttribute("id", "invalid")
+       }*/
 
        username_span.textContent = username_list
        password_span.textContent = password_list
        confirm_span.textContent = confirmation_list
 
+       if (username_list.length == 0){
+          username_section.setAttribute('id', 'valid')
+          username_span.textContent = "ababa"
+       } 
+       if (password_list.length == 0){
+           password_section.setAttribute('id', 'valid')
+           password_span.textContent = "ababa"
+       }
+
+       if(confirmation_list.length == 0){
+          confirm_section.setAttribute('id', 'valid')
+       }
        /*
        password_section.setAttribute("id", "invalid")
        confirm_section.setAttribute("id", "invalid") */

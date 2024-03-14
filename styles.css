@@ -445,7 +445,7 @@ Register page
     box-shadow: 0px 0px 0px 4px orange;
 }
 
-#valid > input:focus, #valid > .form_sub_section > input:focus{
+#valid > input, #valid > .form_sub_section > input{
     box-shadow: 0px 0px 0px 4px green;
 }
 
