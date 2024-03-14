@@ -410,15 +410,15 @@ Register page
 .form_section{
     display: flex;
     flex-direction: column;
-    gap: 3px;
+    gap: 4px;
 }
 
-.form_section > label{
+.form_section > label,.form_sub_section > label{
     font-size: 1.25rem;
     color: #FFFFF0;
 }
 
-.form_section > input{
+.form_section > input, .form_sub_section > input{
     border: none;
     outline: none;
     padding: 5px 25px;
@@ -428,24 +428,24 @@ Register page
     font-weight: 550;
 }
 
-.form_section > input:focus{
+.form_section > input:focus, .form_sub_section > input:focus{
     box-shadow: 0px 0px 0px 4px #00BFFF;
 }
 
-.form_section > span{
+.form_section > span, .form_sub_section > span{
     visibility: hidden; 
 }
 
-#invalid > span{
+#invalid > span, #invalid > .form_sub_section > span{
     visibility: visible;
     color: orange
 }
 
-#invalid > input:focus{
+#invalid > input, #invalid > .form_sub_section > input{
     box-shadow: 0px 0px 0px 4px orange;
 }
 
-#valid > input:focus{
+#valid > input:focus, #valid > .form_sub_section > input:focus{
     box-shadow: 0px 0px 0px 4px green;
 }
 
@@ -500,4 +500,29 @@ Register page
     margin: 5px 0px;
 }
 
+/*
+Sign up form
+*/
+
+
+
+.second_form_section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.form_sub_section{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    gap: 4px
+}
+
+.form_sub_section:nth-child(2) > input{
+    padding-right: 17px;
+}
+
+.form_sub_section:nth-child(2){
+    justify-self: end;
+}
 
