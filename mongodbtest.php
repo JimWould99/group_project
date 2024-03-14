@@ -1,13 +1,17 @@
 <?php
 
+session_start();
 require_once('db.php');
+require_once('mongodbutils.php');
+require_once('user.php');
 
-$instance = MongoDatabase::getInstance();
-$db = $instance->getConnection();
+$db = getDB();
 
-$document = $db->login->findOne(['Username' => 'Alice']);
-var_dump($document);
-
+    //attempt to register new user
+    $username = "testuser2";
+    $password = "testuser2";
+    $email = "testuser2@email.com";
+    $error = '';
 
 
 ?>
