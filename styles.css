@@ -54,7 +54,7 @@ all pages- main bodies
 */
 
 #landing_page, #browse_profiles, #profile_body {
-    background-color: #FFFFF0;
+    background-color: rgb(209, 230, 251);
     margin: 0px;
     display: flex;
     flex-direction: column; 
