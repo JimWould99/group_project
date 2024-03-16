@@ -507,22 +507,93 @@ Sign up form
 
 
 .second_form_section{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+
+
 
 .form_sub_section{
     display: flex;
     flex-direction: column;
-    width: 95%;
-    gap: 4px
+    gap: 4px;
+    width: 47%;
 }
 
-.form_sub_section:nth-child(2) > input{
-    padding-right: 17px;
+#select_body > p{
+    font-size: 1.25rem;
+    color: #FFFFF0;
+    margin: 0px;
 }
 
-.form_sub_section:nth-child(2){
-    justify-self: end;
+#select{
+    margin-bottom: 10px;
 }
+
+#select_body{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+#select_body > * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    gap: 5px
+}
+
+input[type="radio"]{
+    appearance: none;
+    width: 27px;
+    height: 27px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: #1d1160;
+    display: grid;
+    place-content: center;
+  
+}
+
+input[type="radio"]::before{
+    content: "";
+    border-radius: 50%;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    background-color: rgba(0, 255, 238);
+    height: 27px;
+    width: 27px;
+    border: 2px solid white;
+}
+
+input[type="radio"]:hover{
+    transform: scale(1.2);
+    background-color: rgba(152, 240, 234, 0.8);
+    cursor: pointer;
+}
+
+input[type="radio"]:checked::before{
+    transform: scale(1)
+}
+
+
+/*
+.checked{
+    height: 25px;
+    width: 25px;
+    background-color: purple;
+    border-radius: 50%;
+    position: absolute;
+    top:0;
+    left:0
+}*/
+
+#select_body > label {
+    color: #FFFFF0;
+    font-size: 1.25rem;
+}
+
+
 

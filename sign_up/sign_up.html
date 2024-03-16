@@ -10,10 +10,17 @@
     <div id="login_box">
         <h1>BrookesConnect</h1>
         <form action="#" id="login_form">
-            <div class="form_section">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username">
-                <span id="span_username">Invalid username</span>
+            <div class="second_form_section">
+                <div class="form_sub_section" id="first_sub">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" id="username">
+                    <span id="span_username">Invalid username</span>
+                </div>
+                <div class="form_sub_section" id="second_sub">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                    <span id="span_email">Invalid email</span>
+                </div>
             </div>
             <div class="second_form_section">
                 <div class="form_sub_section" id="first_sub">
@@ -25,6 +32,17 @@
                     <label for="confirm">Confirm password</label>
                     <input type="password" name="confirm" id="confirm">
                     <span id="span_confirmation">Invalid confirmation</span>
+                </div>
+            </div>
+            <div id="select">
+                <div id="select_body">
+                    <label for="asm">Academic staff
+                    <input type="radio" name="account_type" id="asm" value="asm">
+                    <span class="checked"></span>
+                    </label>
+                    <label for="ir">Industry Representative
+                    <input type="radio" name="account_type" id="ir" value="ir">
+                    <span class="checked"></span>
                 </div>
             </div>
             <button type="submit" name="login_button" id="login_button">Register</button>
