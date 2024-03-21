@@ -379,26 +379,34 @@ Register page
     align-items: center;
 }
 
-#login_box > *{
+#login_box > *, #sign_up_box > *{
     margin: 0px;
     padding: 0px;
 }
 
-#login_box > h1{
+#login_box > h1, #sign_up_box > h1{
     color: #FFFFF0;
     margin-bottom: 30px;
     text-align: center;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-#login_box{
+#login_box, #sign_up_box{
     background-color: rgb(73, 53, 247, 0.8);
     border-radius: 20px;
     padding: 30px 80px;
-    max-width: 600px;
-    width: 80%;
     /*color: #FFFFF0; */
     margin-bottom: 50px;
+}
+
+#login_box{
+    max-width: 600px;
+    width: 80%;
+}
+
+#sign_up_box{
+    max-width: 950px;
+    width: 85%
 }
 
 #login_form{
@@ -450,9 +458,9 @@ Register page
 }
 
 #login_button{
-    background-color: rgb(0, 191, 255, 0.8);
+    background-color: #1d1160;
     cursor: pointer;
-    width: 60%;
+    width: 350px;
     margin: auto;
     font-size: 1.5rem;
     color: white;
@@ -462,6 +470,7 @@ Register page
     border: none;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 
 #login_button:hover, #lower_section > a:hover{
     transform: scale(1.025);
@@ -480,7 +489,7 @@ Register page
     color: white;
     font-size: 1.37rem;
     font-weight: 600;
-    background-color: #1d1160;
+    background-color: rgb(0, 191, 255, 0.8);
     border-radius: 20px;
    
     font-family: Arial, Helvetica, sans-serif;
@@ -534,7 +543,8 @@ Sign up form
 #select_body{
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 50px
 }
 
 #select_body > * {
