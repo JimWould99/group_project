@@ -55,7 +55,8 @@ all pages- main bodies
 
 #landing_page,
 #browse_profiles,
-#profile_body {
+#profile_body,
+#search_page {
   background-color: rgb(209, 230, 251);
   margin: 0px;
   display: flex;
@@ -600,18 +601,66 @@ input[type="radio"]:checked::before {
   transform: scale(1);
 }
 
-/*
-.checked{
-    height: 25px;
-    width: 25px;
-    background-color: purple;
-    border-radius: 50%;
-    position: absolute;
-    top:0;
-    left:0
-}*/
-
 #select_body > label {
   color: #fffff0;
   font-size: 1.25rem;
+}
+
+/*
+Search page
+*/
+
+#search_bar_section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin: 30px 0px 50px 0px;
+}
+
+#search_bar {
+  height: 45px;
+  width: 70%;
+  text-align: center;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+}
+
+#search_bar_section > input:focus {
+  box-shadow: 0px 0px 0px 4px #00bfff;
+}
+
+#search_results {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 50px;
+  padding: 0% 3.5% 0% 3.5%;
+  margin-bottom: 30px;
+}
+
+#research_card {
+  display: grid;
+  padding: 20px 40px;
+  grid-template-rows: 2fr 6fr 1fr 1fr;
+  background-color: #fffff0;
+  height: 325px;
+  text-align: center;
+}
+
+#research_card > * {
+  margin: 0px;
+}
+
+#research_card > p:first-child {
+  font-size: 1.5rem;
+}
+
+#research_card > p:nth-child(3) {
+  font-size: 1.2rem;
+}
+
+#search_page {
+  min-height: 100vh;
 }
