@@ -16,6 +16,7 @@ CSS for all pages
   font-size: 1.1rem;
   padding-left: 3.5%;
   width: 100%;
+  box-sizing: border-box;
 }
 
 #info {
@@ -616,7 +617,7 @@ Search page
   align-items: center;
   justify-content: center;
   gap: 40px;
-  margin: 30px 0px 50px 0px;
+  padding: 60px 0px 60px 0px;
 }
 
 #search_bar {
@@ -638,14 +639,22 @@ Search page
   gap: 50px;
   padding: 0% 3.5% 0% 3.5%;
   margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+#top_section {
+  background-image: url("../images/library.jpg");
+  background-size: 200%;
+  background-position-y: 49%;
+  background-position-x: 20%;
 }
 
 #research_card {
   display: grid;
-  padding: 20px 40px;
-  grid-template-rows: 2fr 6fr 1fr 1fr;
+  padding: 20px 35px;
+  grid-template-rows: 1fr 4.5fr 2fr 0.5fr;
   background-color: #fffff0;
-  height: 325px;
+  height: 450px;
   text-align: center;
 }
 
@@ -655,12 +664,59 @@ Search page
 
 #research_card > p:first-child {
   font-size: 1.5rem;
+  margin-bottom: 5px;
 }
 
 #research_card > p:nth-child(3) {
+  font-size: 0.9rem;
+}
+
+#research_card > p:nth-child(4) {
   font-size: 1.2rem;
+}
+
+#research_card > #image {
+  background-image: url("../images/engo.jpg");
+  background-size: 140%;
+  background-position-x: 60%;
+}
+
+#research_card > * {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #search_page {
   min-height: 100vh;
+}
+
+#select_search {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 200px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: rgb(255, 217, 152, 0.9);
+}
+
+#select_search > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  gap: 5px;
+  font-size: 1.3rem;
+}
+
+input[type="radio"].second {
+  appearance: none;
+  width: 32px;
+  height: 32px;
+  border: 2px solid white;
+  border-radius: 50%;
+  background-color: #1d1160;
+  display: grid;
+  place-content: center;
 }

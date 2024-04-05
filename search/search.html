@@ -18,125 +18,152 @@
       <a href="#">Account</a>
     </div>
 
-    <div id="search_bar_section">
-      <h2>Search for research and authors</h2>
-      <input
-        type="text"
-        id="search_bar"
-        placeholder="Find research/ researchers"
-        onkeyup="checkResults()"
-      />
-    </div>
+      <div id="top_section">
+        <div id="select_search">
+            <label for="author_select">Author
+            <input onclick="checkResults()" type="radio" name="account_type" class="second" id="author_select" value="author_select">
+            <span class="checked"></span>
+            </label>
+            <label for="title_select">Title
+            <input onclick="checkResults()" type="radio" name="account_type" class="second" id="title_select" value="title_select">
+            <span class="checked"></span>
+        </div>
+          
+            <div id="search_bar_section">
+        <input
+          type="text"
+          id="search_bar"
+          placeholder="Find research/ researchers"
+          onkeyup="checkResults()"
+        />
+            </div>
+
+      </div>
 
     <div id="search_results">
+
       <div id="research_card">
-        <p id="title">Example title</p>
+        <p id="title">Example title one</p>
+        <div id="image"></div>
         <p id="short_bio">
           Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. est veli Neque
-          convallis a cras semper auctor neque. Tempus imperdiet nulla malesuada
-          pellentesque elit eget. est veli
+          imperdiet nulla malesuada pellentesque elit eget. Tempus
+          imperdiet nulla malesuada pellentesque elit eget.
         </p>
         <p id="author">David Lightfoot</p>
-        <a href="#">Link to work</a>
       </div>
 
       <div id="research_card">
-        <p id="title">Example title</p>
+        <p id="title">Example title two</p>
+        <div id="image"></div>
         <p id="short_bio">
           Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. est veli Neque
-          convallis a cras semper auctor neque. Tempus imperdiet nulla malesuada
-          pellentesque elit eget. est veli
+          imperdiet nulla malesuada pellentesque elit eget. Tempus
+          imperdiet nulla malesuada pellentesque elit eget.
         </p>
         <p id="author">Nav Dean</p>
-        <a href="#">Link to work</a>
       </div>
 
+
       <div id="research_card">
-        <p id="title">Example title</p>
+        <p id="title">Example title two</p>
+        <div id="image"></div>
         <p id="short_bio">
           Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. est veli Neque
-          convallis a cras semper auctor neque. Tempus imperdiet nulla malesuada
-          pellentesque elit eget. est veli
+          imperdiet nulla malesuada pellentesque elit eget. Tempus
+          imperdiet nulla malesuada pellentesque elit eget.
         </p>
-        <p id="author">Muhammad Younas</p>
-        <a href="#">Link to work</a>
+        <p id="author">Samia Kamal</p>
       </div>
 
-      <div id="research_card">
-        <p id="title">Example title</p>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. est veli Neque
-          convallis a cras semper auctor neque. Tempus imperdiet nulla malesuada
-          pellentesque elit eget. est veli
-        </p>
-        <p id="author">Arantza Aldea</p>
-        <a href="#">Link to work</a>
-      </div>
 
       <div id="research_card">
-        <p id="title">Example title</p>
+        <p id="title">Example title three</p>
+        <div id="image"></div>
         <p id="short_bio">
           Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. est veli Neque
-          convallis a cras semper auctor neque. Tempus imperdiet nulla malesuada
-          pellentesque elit eget. est veli
-        </p>
-        <p id="author">Samia Kemal</p>
-        <a href="#">Link to work</a>
-      </div>
-
-      <div id="research_card">
-        <p id="title">Example title</p>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. est veli Neque
-          convallis a cras semper auctor neque. Tempus imperdiet nulla malesuada
-          pellentesque elit eget. est veli
+          imperdiet nulla malesuada pellentesque elit eget. Tempus
+          imperdiet nulla malesuada pellentesque elit eget.
         </p>
         <p id="author">Joe Bloggs</p>
-        <a href="#">Link to work</a>
       </div>
 
-      <div id="research_card">
-        <p id="title">Example title</p>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. est veli Neque
-          convallis a cras semper auctor neque. Tempus imperdiet nulla malesuada
-          pellentesque elit eget. est veli
-        </p>
-        <p id="author">David Lightfoot</p>
-        <a href="#">Link to work</a>
-      </div>
 
       <div id="research_card">
-        <p id="title">Example title</p>
+        <p id="title">Example title four</p>
+        <div id="image"></div>
         <p id="short_bio">
           Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. est veli Neque
-          convallis a cras semper auctor neque. Tempus imperdiet nulla malesuada
-          pellentesque elit eget. est veli
+          imperdiet nulla malesuada pellentesque elit eget. Tempus
+          imperdiet nulla malesuada pellentesque elit eget.
         </p>
-        <p id="author">David Lightfoot</p>
-        <a href="#">Link to work</a>
+        <p id="author">Clare Martin</p>
       </div>
 
+
       <div id="research_card">
-        <p id="title">Example title</p>
+        <p id="title">Example title five</p>
+        <div id="image"></div>
         <p id="short_bio">
           Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. est veli Neque
-          convallis a cras semper auctor neque. Tempus imperdiet nulla malesuada
-          pellentesque elit eget. est veli
+          imperdiet nulla malesuada pellentesque elit eget. Tempus
+          imperdiet nulla malesuada pellentesque elit eget.
+        </p>
+        <p id="author">Muhammad Younas</p>
+      </div>
+
+
+      <div id="research_card">
+        <p id="title">Example title one</p>
+        <div id="image"></div>
+        <p id="short_bio">
+          Short Bio: Neque convallis a cras semper auctor neque. Tempus
+          imperdiet nulla malesuada pellentesque elit eget. Tempus
+          imperdiet nulla malesuada pellentesque elit eget.
         </p>
         <p id="author">David Lightfoot</p>
-        <a href="#">Link to work</a>
       </div>
+
+
+      <div id="research_card">
+        <p id="title">Example title one</p>
+        <div id="image"></div>
+        <p id="short_bio">
+          Short Bio: Neque convallis a cras semper auctor neque. Tempus
+          imperdiet nulla malesuada pellentesque elit eget. Tempus
+          imperdiet nulla malesuada pellentesque elit eget.
+        </p>
+        <p id="author">David Lightfoot</p>
+      </div>
+
+
+      <div id="research_card">
+        <p id="title">Example title one</p>
+        <div id="image"></div>
+        <p id="short_bio">
+          Short Bio: Neque convallis a cras semper auctor neque. Tempus
+          imperdiet nulla malesuada pellentesque elit eget. Tempus
+          imperdiet nulla malesuada pellentesque elit eget.
+        </p>
+        <p id="author">David Lightfoot</p>
+      </div>
+
+
+      <div id="research_card">
+        <p id="title">Example title one</p>
+        <div id="image"></div>
+        <p id="short_bio">
+          Short Bio: Neque convallis a cras semper auctor neque. Tempus
+          imperdiet nulla malesuada pellentesque elit eget. Tempus
+          imperdiet nulla malesuada pellentesque elit eget.
+        </p>
+        <p id="author">David Lightfoot</p>
+      </div>
+
+
+
     </div>
+    
 
     <div id="footer_landing">
       <div class="sub_footer">
