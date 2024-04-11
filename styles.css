@@ -190,12 +190,17 @@ body of landing page
   background-image: url("images/cloud.jpg");
   background-size: 100%;
   background-position-y: 60%;
+  box-shadow: 0px 0px 5px 0px black;
 }
 
 .trio > h1 {
   display: flex;
   justify-content: center;
   padding-top: 10px;
+}
+
+.trio {
+  box-shadow: 0px 0px 10px 0px black;
 }
 
 .trio > h6 {
@@ -224,6 +229,7 @@ body of landing page
   display: flex;
   flex-direction: column;
   margin-bottom: -100px;
+  box-shadow: 0px 0px 10px 0px black;
 }
 #footer_landing > * {
   background-color: #4935f7;
@@ -528,6 +534,7 @@ Search page
   background-size: 200%;
   background-position-y: 49%;
   background-position-x: 20%;
+  box-shadow: 0px 0px 7px 0px black;
 }
 
 #research_card {
@@ -537,6 +544,8 @@ Search page
   background-color: #fffff0;
   height: 450px;
   text-align: center;
+  box-shadow: 0px 0px 5px 0px black;
+  cursor: pointer;
 }
 
 #research_card > * {
