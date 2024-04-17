@@ -51,108 +51,15 @@ CSS for all pages
 
 /*
 all pages- main bodies
-
 */
 
 #landing_page,
-#browse_profiles,
-#profile_body,
 #search_page {
   background-color: rgb(209, 230, 251);
   margin: 0px;
   display: flex;
   flex-direction: column;
   font-family: Arial, sans-serif; /*font family?  */
-}
-
-#browse_profiles,
-#profile_body {
-  align-items: center;
-  height: 100vh;
-}
-
-/*
-Profile page
-*/
-
-#main_profile {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start; /* Aligns items at flex-start */
-  gap: 20px;
-  padding: 20px;
-}
-
-#text-box {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 20px;
-  width: 100%;
-}
-
-#key {
-  text-align: left;
-  width: 100%;
-  max-width: 400px;
-  margin-top: 20px;
-}
-
-#key p {
-  margin: 5px 0;
-}
-
-/* Browse profile page */
-
-#profile-header {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
-
-/* Browse profile page- body */
-
-#main_browse_profiles {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
-  justify-content: center;
-}
-
-.tile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  color: #333;
-  padding: 20px;
-  width: 200px;
-  height: 200px; /* Makes tiles square */
-}
-
-.tile img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-#footer_browse,
-#footer_profile {
-  background-color: #4935f7;
-  color: #ffffff;
-  padding: 15px 0;
-  text-align: center;
-  margin-top: auto; /* Pushes the footer to the bottom */
-  width: 100%;
 }
 
 /* landing page */
@@ -288,7 +195,6 @@ Register page
   background-color: rgb(73, 53, 247, 0.8);
   border-radius: 20px;
   padding: 30px 80px;
-  /*color: #FFFFF0; */
   margin-bottom: 50px;
 }
 
