@@ -10,9 +10,9 @@ require_once('utils/utils.php');
 if (isset($_SESSION['username'])) {
     //redirect to user's homepage if they are already signed in
     //TODO: remove echo
-    echo "redirect to correct page post login";
+    //echo "redirect to correct page post login";
     //TODO
-    //redirect('homepage');
+    redirectLandingPage();
     exit;  
 }
 
@@ -43,12 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username']  = $username;
             $_SESSION['email'] = $email;
             $_SESSION['accountType'] = $accountType;
+            $userDocument = getUserData($username);
             //regenerate session id to reduce fixation attacks
             session_regenerate_id(true);
             //redirect to desired page after login
             //TODO meant to be home page i believe
-            echo "redirect to correct page post registration";
-            //redirect('homepage');
+            //echo "redirect to correct page post registration";
+            redirectLandingPage();
             exit;
         } else {
             //TODO: better error handling

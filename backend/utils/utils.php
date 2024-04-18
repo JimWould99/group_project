@@ -6,8 +6,12 @@ function redirect($url)
 {
     //TODO: add base header for the website to append to
     //e.g.
-    header('Location: http://localhost/homepage' . $url);
+    header('Location: http://localhost/' . $url);
     exit();
+}
+
+function redirectLandingPage() {
+    redirect('landingpage.html');
 }
 
 ?>
