@@ -9,9 +9,9 @@ require_once('utils/utils.php');
 //TODO: maybe change this as should have to log out before accessing this page again?...
 if (isset($_SESSION['username'])) {
     //redirect to user's homepage if they are already signed in
-    echo "redirect to correct page post login";
+    //echo "redirect to correct page post login";
     //TODO
-    //redirect('homepage');
+    redirectLandingPage();
     exit;  
 }
 
@@ -56,8 +56,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_regenerate_id(true);
             //redirect to desired page after login
             //TODO meant to be home page i believe
-            echo "redirect to correct page post registration";
-            //redirect('homepage');
+            //echo "redirect to correct page post registration";
+            redirectLandingPage();
             exit;
         } else {
             //TODO: better error handling
