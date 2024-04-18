@@ -1,7 +1,7 @@
 <?php
 
-echo xdebug_info();
+require_once('../utils/utils.php');
 
-
+redirect('landingpage.html');
 
 ?>
