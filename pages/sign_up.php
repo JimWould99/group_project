@@ -53,11 +53,11 @@
             <button type="submit" name="login_button" id="login_button">Register</button>
             <hr>
             <div id="lower_section">
-                <a href="">Log in</a>
-                <a href="">Browse mode</a>
+                <a href="login.php">Log in</a>
+                <a href="../landingpage.php">Browse mode</a>
             </div>
         </form>
     </div>
-    <script src="verification.js"></script>
+    <script src="../scripts/verification.js"></script>
 </body>
 </html>
