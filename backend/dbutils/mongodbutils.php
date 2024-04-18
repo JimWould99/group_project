@@ -149,7 +149,9 @@ function createResearchPage($username) {
         'Blurb' => '',
         'Body' => '',
         'Images' => [],
-        'Tags' => []
+        'Tags' => [],
+        'CreatedTimestamp' => time(), // adds time since unix epoch as a creation timestamp
+        'LastEditedTimestamp' => time()
     ]);
     return $document['_id'];
 }
@@ -172,6 +174,19 @@ function getResearchPage($_id) {
     $document = $db->ResearchPage->findOne(['_id' => $_id]);
     return $document;
 }
+
+//return given number of most recently created research pages
+function findRecentResearchPages($num) {
+    $db = getDB();
+    $cursor = $db->find(
+        [],
+        [
+            'limit' => $num,
+            'sort' => ['LastEditedTimestamp' => -1],
+        ]
+    );
+}
+
 
 //returns true if given password matches stored password for given user, false otherwise
 function verifyPassword($username, $password) {
