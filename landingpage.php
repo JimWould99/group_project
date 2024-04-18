@@ -1,3 +1,20 @@
+<?php
+require_once('templates/landingpagetemplate.php');
+require_once('dbutils/mongodbutils.php');
+//ensure we are in session
+session_start();
+//get 9 most recent edited research pages
+$cursor = findRecentResearchPages(9);
+$_SESSION['researchPages'] = [];
+
+foreach ($cursor as $document) {
+  array_push($_SESSION['researchPages'], $document);
+}
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,36 +51,9 @@
       <div class="trio" id="first">
         <h1>Cyber Security</h1>
         <div id="search_results">
-          <div id="research_card" onclick="location.href='#'">
-            <p id="title">Example title one</p>
-            <div id="image"></div>
-            <p id="short_bio">
-              Short Bio: Neque convallis a cras semper auctor neque. Tempus
-              imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-              nulla malesuada pellentesque elit eget.
-            </p>
-            <p id="author">David Lightfoot</p>
-          </div>
-          <div id="research_card" onclick="location.href='#'">
-            <p id="title">Example title two</p>
-            <div id="image"></div>
-            <p id="short_bio">
-              Short Bio: Neque convallis a cras semper auctor neque. Tempus
-              imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-              nulla malesuada pellentesque elit eget.
-            </p>
-            <p id="author">Nav Dean</p>
-          </div>
-          <div id="research_card" onclick="location.href='#'">
-            <p id="title">Example title two</p>
-            <div id="image"></div>
-            <p id="short_bio">
-              Short Bio: Neque convallis a cras semper auctor neque. Tempus
-              imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-              nulla malesuada pellentesque elit eget.
-            </p>
-            <p id="author">Samia Kamal</p>
-          </div>
+          <?php $_SESSION['researchPages'][0]; ?>
+          <?php $_SESSION['researchPages'][1]; ?>
+          <?php $_SESSION['researchPages'][2]; ?>
         </div>
         <h6>thing</h6>
       </div>
@@ -71,36 +61,9 @@
       <div class="trio" id="second">
         <h1>Artificial Intelligence</h1>
         <div id="search_results">
-          <div id="research_card">
-            <p id="title">Example title one</p>
-            <div id="image"></div>
-            <p id="short_bio">
-              Short Bio: Neque convallis a cras semper auctor neque. Tempus
-              imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-              nulla malesuada pellentesque elit eget.
-            </p>
-            <p id="author">David Lightfoot</p>
-          </div>
-          <div id="research_card">
-            <p id="title">Example title two</p>
-            <div id="image"></div>
-            <p id="short_bio">
-              Short Bio: Neque convallis a cras semper auctor neque. Tempus
-              imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-              nulla malesuada pellentesque elit eget.
-            </p>
-            <p id="author">Nav Dean</p>
-          </div>
-          <div id="research_card">
-            <p id="title">Example title two</p>
-            <div id="image"></div>
-            <p id="short_bio">
-              Short Bio: Neque convallis a cras semper auctor neque. Tempus
-              imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-              nulla malesuada pellentesque elit eget.
-            </p>
-            <p id="author">Samia Kamal</p>
-          </div>
+          <?php $_SESSION['researchPages'][3]; ?>
+          <?php $_SESSION['researchPages'][4]; ?>
+          <?php $_SESSION['researchPages'][5]; ?>
         </div>
         <h6>thing</h6>
       </div>
@@ -108,36 +71,9 @@
       <div class="trio" id="third">
         <h1>Big Data</h1>
         <div id="search_results">
-          <div id="research_card">
-            <p id="title">Example title one</p>
-            <div id="image"></div>
-            <p id="short_bio">
-              Short Bio: Neque convallis a cras semper auctor neque. Tempus
-              imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-              nulla malesuada pellentesque elit eget.
-            </p>
-            <p id="author">David Lightfoot</p>
-          </div>
-          <div id="research_card">
-            <p id="title">Example title two</p>
-            <div id="image"></div>
-            <p id="short_bio">
-              Short Bio: Neque convallis a cras semper auctor neque. Tempus
-              imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-              nulla malesuada pellentesque elit eget.
-            </p>
-            <p id="author">Nav Dean</p>
-          </div>
-          <div id="research_card">
-            <p id="title">Example title two</p>
-            <div id="image"></div>
-            <p id="short_bio">
-              Short Bio: Neque convallis a cras semper auctor neque. Tempus
-              imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-              nulla malesuada pellentesque elit eget.
-            </p>
-            <p id="author">Samia Kamal</p>
-          </div>
+          <?php $_SESSION['researchPages'][6]; ?>
+          <?php $_SESSION['researchPages'][7]; ?>
+          <?php $_SESSION['researchPages'][8]; ?>
         </div>
         <h6>thing</h6>
       </div>

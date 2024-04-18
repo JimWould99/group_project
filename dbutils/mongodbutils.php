@@ -143,13 +143,14 @@ function getProfilePage($_id) {
 //return the generated if for the research page
 function createResearchPage($username) {
     $db = getDB();
-    $document = $db->ProfilePage->insertOne([
+    $document = $db->ResearchPage->insertOne([
         'Username' => $username,
         'Title' => '',
         'Blurb' => '',
         'Body' => '',
         'Images' => [],
         'Tags' => [],
+        'Verified' => false,
         'CreatedTimestamp' => time(), // adds time since unix epoch as a creation timestamp
         'LastEditedTimestamp' => time()
     ]);
@@ -167,6 +168,10 @@ function updateResearchPage($_id, $toUpdate) {
             ['$set' => [$field => $value]]
         );
     }
+    $db->ResearchPage->updateOne(
+        ['_id' => $_id],
+        ['$set' => ['LastEditedTimestamp' => time()]]
+    );
 }
 //return research page document for given research page id
 function getResearchPage($_id) {
@@ -175,16 +180,17 @@ function getResearchPage($_id) {
     return $document;
 }
 
-//return given number of most recently created research pages
+//return given number of most recently created research pages as a mongodb cursor object
 function findRecentResearchPages($num) {
     $db = getDB();
-    $cursor = $db->find(
+    $cursor = $db->researcHPage->find(
         [],
         [
             'limit' => $num,
             'sort' => ['LastEditedTimestamp' => -1],
         ]
     );
+    return $cursor;
 }
 
 
@@ -193,7 +199,7 @@ function verifyPassword($username, $password) {
     global $pepper;
     $passwordPeppered = hash_hmac("sha256", $password, $pepper);
     $storedPassword = getPasswordFromDB($username);
-    //passwqord verify is php function to test for match
+    //password verify is php function to test for match
     if (password_verify($passwordPeppered, $storedPassword)) {
         return True;
     }

@@ -44,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['email'] = $email;
             $_SESSION['accountType'] = $accountType;
             $userDocument = getUserData($username);
+            $_SESSION['userData'] = $userDocument;
             //regenerate session id to reduce fixation attacks
             session_regenerate_id(true);
             //redirect to desired page after login
