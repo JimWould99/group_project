@@ -7,7 +7,9 @@ echo '<div id="header">
   <a href="browseresearch.php">Browse Research</a>
   <a href="browseprofiles.php">Browse Profiles</a>
 </div>
-<a href="#">Account</a>
-</div>';
+
+<a href=';
+echo $_SESSION["ROOT"]. "login.php";
+echo '>Account</a></div>'
 
 ?>

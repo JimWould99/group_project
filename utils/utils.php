@@ -1,6 +1,6 @@
 <?php
 
-$cwd = 'http://localhost/real_group_project/';
+$cwd = '';
 //redirect to given url and stop current php
 //to go to homepage use redirect('');
 function redirect($url)

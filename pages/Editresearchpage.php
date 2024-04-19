@@ -1,3 +1,11 @@
+<?php
+require_once('../dbutils/mongodbutils.php');
+require_once('../utils/utils.php');
+session_start();
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -13,32 +21,28 @@
   </head>
   <body>
   <?php include '../scripts/phpScripts/header.php';?>
-
+    <form action="../scripts/phpScripts/submitresearch.php" method="POST">
     <div id="main">
       <div id="intro_text">
-        <p id="title" contenteditable="true">
-          Welcome to <strong>Your Research Project Title</strong>.
-        </p>
+        <input name="Title" id="title" placeholder="Default Research Title" id="title"type="text"> <!-- THIS IS THE TITLE OF THE TEXT-->
         <div id="editor-container">
           <div id="editor" class="pell"></div>
+          <textarea hidden name="Body" id="markup"></textarea><!-- THIS IS THE BODY OF THE TEXT-->
         </div>
-        <button onclick="updateText()">Update Text</button>
+        <button type="submit">Submit Research</button>
       </div>
       <div class="research_trio">
         <div class="research">
           <img id="image1" src="research_image1.jpg" alt="Research Image 1" />
-          <input type="text" id="image1-url" placeholder="Image 1 URL" />
-        </div>
-        <div class="research">
-          <img id="image2" src="research_image2.jpg" alt="Research Image 2" />
-          <input type="text" id="image2-url" placeholder="Image 2 URL" />
-        </div>
-        <div class="research">
-          <img id="image3" src="research_image3.jpg" alt="Research Image 3" />
-          <input type="text" id="image3-url" placeholder="Image 3 URL" />
+          <input type="text" id="image1-url" placeholder="THIS IS CURRENTLY A PLAEHOLDER THERE IS NOTHING HERE" />
+          <textarea name="Blurb" rows="3" cols="40" placeholder="Please enter a blurb for your research, no more than 150 words as anything past that won't be displayed"></textarea> <!-- THIS IS THE blurb-->
         </div>
       </div>
     </div>
+    </form>
+    
+
+ <!-- LEAVE TAGS AND IMAGES FOR LATER-->
 
     <div id="footer_landing">
       <div class="sub_footer">
@@ -57,40 +61,6 @@
     </div>
 
     <script src="https://unpkg.com/pell"></script>
-    <script>
-      const editor = pell.init({
-        element: document.getElementById("editor"),
-        onChange: (html) => {
-          var title = document.getElementById("title");
-          var image1 = document.getElementById("image1");
-          var image2 = document.getElementById("image2");
-          var image3 = document.getElementById("image3");
-          var image1URL = document.getElementById("image1-url").value;
-          var image2URL = document.getElementById("image2-url").value;
-          var image3URL = document.getElementById("image3-url").value;
-
-          title.innerHTML = title.innerText;
-          image1.src = image1URL;
-          image2.src = image2URL;
-          image3.src = image3URL;
-        },
-      });
-
-      function updateText() {
-        var title = document.getElementById("title");
-        var pellText = editor.content.innerHTML;
-        var image1 = document.getElementById("image1");
-        var image2 = document.getElementById("image2");
-        var image3 = document.getElementById("image3");
-        var image1URL = document.getElementById("image1-url").value;
-        var image2URL = document.getElementById("image2-url").value;
-        var image3URL = document.getElementById("image3-url").value;
-
-        title.innerHTML = title.innerText;
-        image1.src = image1URL;
-        image2.src = image2URL;
-        image3.src = image3URL;
-      }
-    </script>
+    <script  src="../scripts/pell.js"></script>
   </body>
 </html>

@@ -1,7 +1,7 @@
 <?php
-require_once('templates/landingpagetemplate.php');
-require_once('dbutils/mongodbutils.php');
-require_once('utils/utils.php');
+require_once('../templates/landingpagetemplate.php');
+require_once('../dbutils/mongodbutils.php');
+require_once('../utils/utils.php');
 //ensure we are in session
 session_start();
 //get 9 most recent edited research pages
@@ -25,16 +25,7 @@ foreach ($cursor as $document) {
     <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body id="landing_page">
-    <div id="header">
-      <a href="#">BrookesConnect</a>
-      <div id="info">
-        <a href="#">About</a>
-        <a href="browseresearch.php">Browse Research</a>
-        <a href="browseprofiles.html">Browse Profiles</a>
-        <a href="create research.html">Create research page</a>
-      </div>
-      <a href=<?php echo $_SESSION['ROOT'] . "pages/login.php"; ?>>Account</a>
-    </div>
+  <?php include '../scripts/phpScripts/header.php';?>
     <div id="main_landing">
       <div id="background">
         <div id="intro_text">

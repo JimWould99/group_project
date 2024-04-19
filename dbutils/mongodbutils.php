@@ -166,7 +166,18 @@ function createResearchPage($username) {
         'CreatedTimestamp' => time(), // adds time since unix epoch as a creation timestamp
         'LastEditedTimestamp' => time()
     ]);
-    return $document['_id'];
+    return $document;
+}
+
+function getAllReasearchPages() {
+    $db = getDB();
+    $cursor = $db->ResearchPage->find(
+        [],
+        [
+            'sort' => ['Username' => 1],
+        ]
+    );
+    return $cursor;
 }
 //replace given fields with given values for this research page
 //e.g. to save edits to Title and Blurb - 
