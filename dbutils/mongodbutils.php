@@ -82,6 +82,12 @@ function getAllUserData() {
     return $cursor;
 }
 
+function getPassword($username) {
+    $db = getDB();
+    $document = $db->UserData->findOne(['Username' => $username]);
+    return $document['Password'];
+}
+
 function updatePassword($username, $password) {
     $db = getDB();
     $passwordHashed = genPasswordHash($password); //make the secure password
@@ -99,13 +105,6 @@ function updateEmail($username, $email) {
         ['Username' => $username],
         ['$set' => ['Email' => $email]]
     );
-}
-
-function getPassword($username) {
-    $db = getDB();
-
-    $document = $db->UserData->findOne(['Username' => $username]);
-    return $document['Password'];
 }
 
 //create fresh profile page for new user during registration
@@ -232,7 +231,7 @@ function findRecentResearchPages($num) {
 function verifyPassword($username, $password) {
     global $pepper;
     $passwordPeppered = hash_hmac("sha256", $password, $pepper);
-    $storedPassword = getPasswordFromDB($username);
+    $storedPassword = getPassword($username);
     //password verify is php function to test for match
     if (password_verify($passwordPeppered, $storedPassword)) {
         return True;

@@ -13,7 +13,6 @@ foreach ($cursor as $document) {
   array_push($_SESSION['researchPages'], $document);
   
 }
-//print_r($_SESSION['researchPages']);
 
 
 ?>
@@ -35,7 +34,17 @@ foreach ($cursor as $document) {
         <a href="browseprofiles.html">Browse Profiles</a>
         <a href="create research.html">Create research page</a>
       </div>
-      <a href=<?php if(!isset($_SESSION['username'])) {genLink('pages/sign_up.php');} else {genLink('pages/profilepage.php');} ?>>Account</a>
+      <?php if(!isset($_SESSION['username'])) {
+      ?>  
+        <a href=<?php genLink('pages/sign_up.php')?>>Account</a>
+      <?php } else { ?>
+        <a href=<?php genLink('pages/profilepage.php')?>>Your Profile</a>
+      <?php } ?>
+      <?php if(isset($_SESSION['username'])) {
+      ?>
+        <a href=<?php genLink('pages/logout.php')?>>Log Out</a>
+      <?php } ?>
+     
     </div>
     <div id="main_landing">
       <div id="background">

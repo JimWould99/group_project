@@ -10,6 +10,10 @@ eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
 minim veniam, quis nostrud exercitation ullamco laboris nisi ut
 aliquip ex ea commodo consequat.';
 $_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
+$_SESSION['bio'] = '';
+$_SESSION['profilePicture'] = '';
+$_SESSION['contactInfo'] = '';
+$_SESSION['name'] = '';
 
 if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
     $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
@@ -38,11 +42,11 @@ if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
     <div id="main">
       <div class="tile">
         <!-- Placeholder for researcher's image -->
-        <img src=<?php if (isset($_SESSION['profilePicture'])) {echo $_SESSION['profilePicture'];} else {echo $_SESSION['placeHolderProfilePicture'];}?> alt="Researcher Image" />
+        <img src=<?php if ($_SESSION['profilePicture'] == '') {echo $_SESSION['placeHolderProfilePicture'];} else {echo $_SESSION['profilePicture'];}?> alt="Researcher Image" />
       </div>
       <div id="text-box">
         <p>
-          <?php if (isset($_SESSION['bio'])) {echo $_SESSION['bio'];} else {echo $_SESSION['placeholderText'];} ?>
+          <?php if ($_SESSION['bio'] == '') {echo $_SESSION['placeholderText'];} else {echo $_SESSION['bio'];} ?>
         </p>
       </div>
     </div>

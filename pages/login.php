@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username']  = $username;
             $_SESSION['email'] = $email;
             $_SESSION['accountType'] = $userDocument['AccountType'];
-            $_SESSION['profilePage'] = $userDocument['ProfilePage'];
+            $_SESSION['profilePage'] = getProfilePage($userDocument['ProfilePage']);
             //regenerate session id to reduce fixation attacks
             session_regenerate_id(true);
             //redirect to desired page after login
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         } else {
             //TODO: better error handling
-            //print_r($error);
+            print_r($error);
         }
     }
 }

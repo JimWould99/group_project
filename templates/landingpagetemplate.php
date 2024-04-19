@@ -2,7 +2,7 @@
 
 //produce html for a research card with data from given research page document (rpd)
 function researchCard($rpd) {
-    echo "<a href=" . getROOT() . "pages/ResearchPage.php?" . "id=" . $rpd['_id'] . "\n";
+    echo "<a href=" . getROOT() . "pages/ResearchPage.php?" . "id=" . $rpd['_id'] . ">\n";
     echo "<div id='research_card' onclick=" . "<?php redirectResearchPage(\$rpd['_id']) ?>" . ">" . "\n";
     echo "<p id='title'>" . $rpd['Title'] . "</p>" . "\n";
     echo "<div id='image'></div>" . "\n";
