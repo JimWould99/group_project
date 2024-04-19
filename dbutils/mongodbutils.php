@@ -70,6 +70,18 @@ function getUserData($username) {
     return $document;
 }
 
+//'just for testing
+function getAllUserData() {
+    $db = getDB();
+    $cursor = $db->UserData->find(
+        [],
+        [
+            'sort' => ['Username' => 1],
+        ]
+    );
+    return $cursor;
+}
+
 function updatePassword($username, $password) {
     $db = getDB();
     $passwordHashed = genPasswordHash($password); //make the secure password
@@ -183,7 +195,7 @@ function getResearchPage($_id) {
 //return given number of most recently created research pages as a mongodb cursor object
 function findRecentResearchPages($num) {
     $db = getDB();
-    $cursor = $db->researcHPage->find(
+    $cursor = $db->researchPage->find(
         [],
         [
             'limit' => $num,

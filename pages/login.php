@@ -2,8 +2,8 @@
 //ensure we are in session
 session_start();
 //import needed dbutils
-require_once('dbutils/mongodbutils.php');
-require_once('utils/utils.php');
+require_once('../dbutils/mongodbutils.php');
+require_once('../utils/utils.php');
 
 //check if user is already logged in
 //TODO: maybe change this as should have to log out before accessing this page again?...
@@ -75,7 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles/styles.css">
 </head>
 <body id="register">
     <div id="login_box">
@@ -99,6 +99,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </form>
     </div>
-    <script src="login.js"></script>
+    <script src="../scripts/login.js"></script>
 </body>
 </html>

@@ -2,6 +2,6 @@
 
 require_once('../utils/utils.php');
 
-redirect('landingpage.html');
+redirect('landingpage.php');
 
 ?>
