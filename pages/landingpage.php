@@ -1,6 +1,6 @@
 <?php
-require_once('templates/landingpagetemplate.php');
-require_once('dbutils/mongodbutils.php');
+require_once('../templates/landingpagetemplate.php');
+require_once('../dbutils/mongodbutils.php');
 //ensure we are in session
 session_start();
 //get 9 most recent edited research pages
@@ -21,19 +21,12 @@ foreach ($cursor as $document) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BrookesConnect Landing Page</title>
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body id="landing_page">
-    <div id="header">
-      <a href="#">BrookesConnect</a>
-      <div id="info">
-        <a href="#">About</a>
-        <a href="browseresearch.php">Browse Research</a>
-        <a href="browseprofiles.html">Browse Profiles</a>
-        <a href="create research.html">Create research page</a>
-      </div>
-      <a href="#">Account</a>
-    </div>
+
+  <?php include '../scripts/phpScripts/header.php';?>
+
     <div id="main_landing">
       <div id="background">
         <div id="intro_text">
@@ -93,6 +86,6 @@ foreach ($cursor as $document) {
         <a href="#">Manage cookies</a>
       </div>
     </div>
-    <script src="/scripts/landing.js"></script>
+    <script src="../scripts/landing.js"></script>
   </body>
 </html>

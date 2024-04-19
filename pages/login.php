@@ -94,8 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button type="submit" name="login_button" id="login_button">Login</button>
             <hr>
             <div id="lower_section">
-                <a href="">Register</a>
-                <a href="">Browse mode</a>
+                <a href="sign_up.php">Register</a>
+                <a href="landingpage.php">Browse mode</a>
             </div>
         </form>
     </div>

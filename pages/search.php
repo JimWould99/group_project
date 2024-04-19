@@ -7,16 +7,11 @@
     <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body id="search_page">
-    <div id="header">
-      <a href="#">BrookesConnect</a>
-      <div id="info">
-        <a href="#">About</a>
-        <a href="browseresearch.php">Search Research</a>
-        <a href="browseprofiles.html">Create Research </a>
-        <a href="create research.html">Browse Profiles</a>
-      </div>
-      <a href="#">Account</a>
-    </div>
+
+  <?php
+  include '../scripts/phpScripts/header.php';
+    ?>
+
       <div id="top_section">
         <div id="select_search">
             <label for="author_select">Author
