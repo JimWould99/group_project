@@ -203,6 +203,11 @@ function getResearchPage($_id) {
     return $document;
 }
 
+function deleteResearchPage($_id) { #deletes a page
+    $db = getDB();
+    $document = $db->ResearchPage->deleteOne(['_id' => $_id]);
+}
+
 //return given number of most recently created research pages as a mongodb cursor object
 function findRecentResearchPages($num) {
     $db = getDB();

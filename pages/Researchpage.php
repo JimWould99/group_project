@@ -26,6 +26,11 @@ $research = getResearchPage($_id);
         echo "<p>".$research["Title"]."</p>";
         echo "<p>".$research["Body"]."</p>";
         ?>
+        <form action="../scripts/phpScripts/deleteresearch.php" method="post">
+          <input hidden name="id_director" value="<?= $_id?>" />
+        <button>Delete Research</button>
+        </form>
+        
       </div>
       <div class="research_trio">
         <div class="research">
@@ -39,6 +44,8 @@ $research = getResearchPage($_id);
         </div>
       </div>
     </div>
+
+    
 
 
     <div id="footer_landing">
