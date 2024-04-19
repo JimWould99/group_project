@@ -193,10 +193,31 @@ function getResearchPage($_id) {
     return $document;
 }
 
+function getAllResearchPages() {
+    $db = getDB();
+    $cursor = $db->ResearchPage->find(
+        [],
+        [
+            'sort' => ['Title' => 1],
+        ]);
+    return $cursor;
+}
+
+
+//return all research pages assigned to given user
+function getAllUsersResearchPages($username) {
+    $db = getDB();
+    $cursor = $db->ResearchPage->find(
+        ['Username' => $username],
+        []
+    );
+    return $cursor;
+}
+
 //return given number of most recently created research pages as a mongodb cursor object
 function findRecentResearchPages($num) {
     $db = getDB();
-    $cursor = $db->researchPage->find(
+    $cursor = $db->ResearchPage->find(
         [],
         [
             'limit' => $num,

@@ -6,12 +6,14 @@ require_once('../utils/utils.php');
 session_start();
 //get 9 most recent edited research pages
 $cursor = findRecentResearchPages(9);
+//print_r($cursor);
 $_SESSION['researchPages'] = [];
 
 foreach ($cursor as $document) {
   array_push($_SESSION['researchPages'], $document);
+  
 }
-
+//print_r($_SESSION['researchPages']);
 
 
 ?>
@@ -33,7 +35,7 @@ foreach ($cursor as $document) {
         <a href="browseprofiles.html">Browse Profiles</a>
         <a href="create research.html">Create research page</a>
       </div>
-      <a href=<?php genLink('pages/sign_up.php'); ?>>Account</a>
+      <a href=<?php if(!isset($_SESSION['username'])) {genLink('pages/sign_up.php');} else {genLink('pages/profilepage.php');} ?>>Account</a>
     </div>
     <div id="main_landing">
       <div id="background">
@@ -52,9 +54,9 @@ foreach ($cursor as $document) {
       <div class="trio" id="first">
         <h1>Cyber Security</h1>
         <div id="search_results">
-          <?php $_SESSION['researchPages'][0]; ?>
-          <?php $_SESSION['researchPages'][1]; ?>
-          <?php $_SESSION['researchPages'][2]; ?>
+          <?php researchCard($_SESSION['researchPages'][0]); ?>
+          <?php researchCard($_SESSION['researchPages'][1]); ?>
+          <?php researchCard($_SESSION['researchPages'][2]); ?>
         </div>
         <h6>thing</h6>
       </div>
@@ -62,9 +64,9 @@ foreach ($cursor as $document) {
       <div class="trio" id="second">
         <h1>Artificial Intelligence</h1>
         <div id="search_results">
-          <?php $_SESSION['researchPages'][3]; ?>
-          <?php $_SESSION['researchPages'][4]; ?>
-          <?php $_SESSION['researchPages'][5]; ?>
+          <?php researchCard($_SESSION['researchPages'][3]); ?>
+          <?php researchCard($_SESSION['researchPages'][4]); ?>
+          <?php researchCard($_SESSION['researchPages'][5]); ?>
         </div>
         <h6>thing</h6>
       </div>
@@ -72,9 +74,9 @@ foreach ($cursor as $document) {
       <div class="trio" id="third">
         <h1>Big Data</h1>
         <div id="search_results">
-          <?php $_SESSION['researchPages'][6]; ?>
-          <?php $_SESSION['researchPages'][7]; ?>
-          <?php $_SESSION['researchPages'][8]; ?>
+          <?php researchCard($_SESSION['researchPages'][6]); ?>
+          <?php researchCard($_SESSION['researchPages'][7]); ?>
+          <?php researchCard($_SESSION['researchPages'][8]); ?>
         </div>
         <h6>thing</h6>
       </div>

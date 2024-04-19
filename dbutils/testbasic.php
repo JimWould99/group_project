@@ -2,6 +2,7 @@
 require_once('mongodbutils.php');
 require_once('../utils/utils.php');
 
-print_r(createProfilePage('testuser100'))
-
-?>
+$cursor = getAllResearchPages();
+foreach ($cursor as $document) {
+    var_dump($document);
+}
