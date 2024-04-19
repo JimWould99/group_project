@@ -1,3 +1,27 @@
+<?php
+require_once('../templates/landingpagetemplate.php');
+require_once('../dbutils/mongodbutils.php');
+require_once('../utils/utils.php');
+//ensure we are in session
+session_start();
+
+$_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat.';
+$_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
+
+if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
+    $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
+    $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
+    $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
+    $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
+  }
+
+
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -14,14 +38,11 @@
     <div id="main">
       <div class="tile">
         <!-- Placeholder for researcher's image -->
-        <img src="https://via.placeholder.com/150" alt="Researcher Image" />
+        <img src=<?php if (isset($_SESSION['profilePicture'])) {echo $_SESSION['profilePicture'];} else {echo $_SESSION['placeHolderProfilePicture'];}?> alt="Researcher Image" />
       </div>
       <div id="text-box">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          <?php if (isset($_SESSION['bio'])) {echo $_SESSION['bio'];} else {echo $_SESSION['placeholderText'];} ?>
         </p>
       </div>
     </div>

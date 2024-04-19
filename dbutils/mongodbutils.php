@@ -116,7 +116,7 @@ function createProfilePage($username) {
     $document = $db->ProfilePage->insertOne([
         'Username' => $userData['Username'],
         'Name' => $userData['Name'],
-        'AccountType' => $userData['AccountType'],
+        'AccountType' => $userData['AccountType'],//accountype will be either 'asm' for academic staff member, or ;ir; ofr industry representative
         'ProfilePicture' => '',
         'ContactInfo' => '',
         'Bio' => '',

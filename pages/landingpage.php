@@ -1,7 +1,7 @@
 <?php
-require_once('templates/landingpagetemplate.php');
-require_once('dbutils/mongodbutils.php');
-require_once('utils/utils.php');
+require_once('../templates/landingpagetemplate.php');
+require_once('../dbutils/mongodbutils.php');
+require_once('../utils/utils.php');
 //ensure we are in session
 session_start();
 //get 9 most recent edited research pages
@@ -33,7 +33,7 @@ foreach ($cursor as $document) {
         <a href="browseprofiles.html">Browse Profiles</a>
         <a href="create research.html">Create research page</a>
       </div>
-      <a href=<?php echo $_SESSION['ROOT'] . "pages/login.php"; ?>>Account</a>
+      <a href=<?php genLink('pages/sign_up.php'); ?>>Account</a>
     </div>
     <div id="main_landing">
       <div id="background">

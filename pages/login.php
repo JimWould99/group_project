@@ -52,6 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username']  = $username;
             $_SESSION['email'] = $email;
             $_SESSION['accountType'] = $userDocument['AccountType'];
+            $_SESSION['profilePage'] = $userDocument['ProfilePage'];
             //regenerate session id to reduce fixation attacks
             session_regenerate_id(true);
             //redirect to desired page after login
@@ -80,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body id="register">
     <div id="login_box">
         <h1>BrookesConnect</h1>
-        <form action="" id="login_form">
+        <form method="post" id="login_form">
             <div class="form_section" id="username_section">
                 <label for="username">Username / Email</label>
                 <input type="text" name="username" id="username">
