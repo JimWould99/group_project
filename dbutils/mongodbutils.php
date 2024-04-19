@@ -123,12 +123,13 @@ function createProfilePage($username) {
         'Files' => [],
         'ResearchPages' => []
     ]);
+    $profilePageID = $document->getInsertedId();
     //add profile page to the user
     $updatedUserData = $db->UserData->updateOne(
         ['Username' => $username],
-        ['$set' => ['ProfilePage' => $document['_id']]]
+        ['$set' => ['ProfilePage' => $profilePageID]]
     );
-    return $document['_id'];
+    return $profilePageID;
 }
 
 //replace given fields with given values for this profile page
@@ -166,7 +167,7 @@ function createResearchPage($username) {
         'CreatedTimestamp' => time(), // adds time since unix epoch as a creation timestamp
         'LastEditedTimestamp' => time()
     ]);
-    return $document['_id'];
+    return $document->getInsertedId();
 }
 //replace given fields with given values for this research page
 //e.g. to save edits to Title and Blurb - 

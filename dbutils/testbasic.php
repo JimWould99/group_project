@@ -1,7 +1,7 @@
 <?php
-
+require_once('mongodbutils.php');
 require_once('../utils/utils.php');
 
-redirect('landingpage.php');
+print_r(createProfilePage('testuser100'))
 
 ?>
