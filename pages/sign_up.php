@@ -54,7 +54,7 @@
             <hr>
             <div id="lower_section">
                 <a href="login.php">Log in</a>
-                <a href="../landingpage.php">Browse mode</a>
+                <a href="landingpage.php">Browse mode</a>
             </div>
         </form>
     </div>

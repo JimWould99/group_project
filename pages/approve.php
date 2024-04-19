@@ -8,16 +8,9 @@
   </head>
   <body id="approve_page">
     <div id="height">
-      <div id="header">
-        <a href="#">BrookesConnect</a>
-        <div id="info">
-          <a href="#">About</a>
-          <a href="browseresearch.php">Search Research</a>
-          <a href="browseprofiles.html">Create Research </a>
-          <a href="create research.html">Browse Profiles</a>
-        </div>
-        <a href="#">Account</a>
-      </div>
+
+        <?php include '../scripts/phpScripts/header.php';?>
+
       <div class="approve_bar">
         <div id="research_card" onclick="location.href='#'">
           <p id="title">Example title one</p>

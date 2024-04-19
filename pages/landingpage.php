@@ -22,7 +22,7 @@ foreach ($cursor as $document) {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BrookesConnect Landing Page</title>
-    <link rel="stylesheet" href="styles/styles.css" />
+    <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body id="landing_page">
     <div id="header">
@@ -94,6 +94,6 @@ foreach ($cursor as $document) {
         <a href="#">Manage cookies</a>
       </div>
     </div>
-    <script src="/scripts/landing.js"></script>
+    <script src="../scripts/landing.js"></script>
   </body>
 </html>

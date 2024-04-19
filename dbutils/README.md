@@ -1,1 +1,0 @@
-# real_group_project
