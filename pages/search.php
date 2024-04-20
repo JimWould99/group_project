@@ -1,3 +1,13 @@
+<?php 
+require_once('../dbutils/mongodbutils.php');
+require_once('../utils/utils.php');
+session_start();
+use MongoDB\BSON\ObjectId;
+
+
+include '../scripts/phpScripts/researchcard.php';
+
+//make a script that generates or calls that function once for each research page?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,9 +18,7 @@
   </head>
   <body id="search_page">
 
-  <?php
-  include '../scripts/phpScripts/header.php';
-    ?>
+  <?php include '../scripts/phpScripts/header.php';?>
 
       <div id="top_section">
         <div id="select_search">
@@ -33,115 +41,9 @@
             </div>
       </div>
     <div id="search_results">
-      <div id="research_card" onclick="location.href='#'">
-        <p id="title">Example title one</p>
-        <div id="image"></div>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. Tempus
-          imperdiet nulla malesuada pellentesque elit eget.
-        </p>
-        <p id="author">David Lightfoot</p>
-      </div>
-      <div id="research_card">
-        <p id="title">Example title two</p>
-        <div id="image"></div>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. Tempus
-          imperdiet nulla malesuada pellentesque elit eget.
-        </p>
-        <p id="author">Nav Dean</p>
-      </div>
-
-      <div id="research_card">
-        <p id="title">Example title two</p>
-        <div id="image"></div>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. Tempus
-          imperdiet nulla malesuada pellentesque elit eget.
-        </p>
-        <p id="author">Samia Kamal</p>
-      </div>
-
-      <div id="research_card">
-        <p id="title">Example title three</p>
-        <div id="image"></div>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. Tempus
-          imperdiet nulla malesuada pellentesque elit eget.
-        </p>
-        <p id="author">Joe Bloggs</p>
-      </div>
-
-      <div id="research_card">
-        <p id="title">Example title four</p>
-        <div id="image"></div>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. Tempus
-          imperdiet nulla malesuada pellentesque elit eget.
-        </p>
-        <p id="author">Clare Martin</p>
-      </div>
-
-      <div id="research_card">
-        <p id="title">Example title five</p>
-        <div id="image"></div>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. Tempus
-          imperdiet nulla malesuada pellentesque elit eget.
-        </p>
-        <p id="author">Muhammad Younas</p>
-      </div>
-
-      <div id="research_card">
-        <p id="title">Example title one</p>
-        <div id="image"></div>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. Tempus
-          imperdiet nulla malesuada pellentesque elit eget.
-        </p>
-        <p id="author">David Lightfoot</p>
-      </div>
-
-      <div id="research_card">
-        <p id="title">Example title one</p>
-        <div id="image"></div>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. Tempus
-          imperdiet nulla malesuada pellentesque elit eget.
-        </p>
-        <p id="author">David Lightfoot</p>
-      </div>
-
-      <div id="research_card">
-        <p id="title">Example title one</p>
-        <div id="image"></div>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. Tempus
-          imperdiet nulla malesuada pellentesque elit eget.
-        </p>
-        <p id="author">David Lightfoot</p>
-      </div>
-
-      <div id="research_card">
-        <p id="title">Example title one</p>
-        <div id="image"></div>
-        <p id="short_bio">
-          Short Bio: Neque convallis a cras semper auctor neque. Tempus
-          imperdiet nulla malesuada pellentesque elit eget. Tempus
-          imperdiet nulla malesuada pellentesque elit eget.
-        </p>
-        <p id="author">David Lightfoot</p>
-      </div>
-
+      
+    <?php generateResearchCard() #runs the script that generates cards
+    ?>
 
     </div>
     
