@@ -30,6 +30,13 @@ $research = getResearchPage($_id);
           <input hidden name="id_director" value="<?= $_id?>" />
         <button>Delete Research</button>
         </form>
+        <?php
+        echo'<form action="editresearchpage.php?_id='.$_id.'" method="post">';
+        ?>
+
+          <input hidden name="id_director" value="<?= $_id?>" />
+        <button>Edit Research page</button>
+        </form>
         
       </div>
       <div class="research_trio">

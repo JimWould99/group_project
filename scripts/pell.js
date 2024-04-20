@@ -1,11 +1,12 @@
 const pell = window.pell;
-const editor = document.getElementById("editor");
+
 const markup = document.getElementById("markup");
 
-pell.init({
-  element: editor,
+const editor = pell.init({
+  element: document.getElementById("editor"),
   onChange: (html) => {
     markup.innerHTML = "";
     markup.innerText += html;
   }
-})
+});
+editor.content.innerHTML = markup.value;

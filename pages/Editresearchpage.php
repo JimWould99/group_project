@@ -3,6 +3,14 @@ require_once('../dbutils/mongodbutils.php');
 require_once('../utils/utils.php');
 session_start();
 
+$newPage = TRUE;
+
+use MongoDB\BSON\ObjectId;
+if(isset($_GET["_id"])){#checks if it has received an ID, if so it's editing an exisitng page if not making a new one
+  $_id = new ObjectId($_GET["_id"]); 
+  $research = getResearchPage($_id);
+  $newPage = FALSE;
+}
 
 ?>
 
@@ -24,10 +32,23 @@ session_start();
     <form action="../scripts/phpScripts/submitresearch.php" method="POST">
     <div id="main">
       <div id="intro_text">
-        <input name="Title" id="title" placeholder="Default Research Title" id="title"type="text"> <!-- THIS IS THE TITLE OF THE TEXT-->
+        <?php
+        if ($newPage == FALSE){
+          echo'<input name="Title" id="title" placeholder="Default Research Title" id="title" value="'.$research["Title"].'" type="text">';
+        } else {
+          echo'<input name="Title" id="title" placeholder="Default Research Title" id="title" value="" type="text">';
+        }
+         ?><!-- THIS IS THE TITLE OF THE TEXT-->
         <div id="editor-container">
           <div id="editor" class="pell"></div>
-          <textarea hidden name="Body" id="markup"></textarea><!-- THIS IS THE BODY OF THE TEXT-->
+          <?php
+            if ($newPage == FALSE){
+              echo'<textarea hidden name="Body" id="markup">'.$research["Body"].'</textarea>';
+            } else {
+              echo'<textarea hidden name="Body" id="markup"></textarea>';
+            }
+            ?><!-- THIS IS THE body-->
+
         </div>
         <button type="submit">Submit Research</button>
       </div>
@@ -35,7 +56,13 @@ session_start();
         <div class="research">
           <img id="image1" src="research_image1.jpg" alt="Research Image 1" />
           <input type="text" id="image1-url" placeholder="THIS IS CURRENTLY A PLAEHOLDER THERE IS NOTHING HERE" />
-          <textarea name="Blurb" rows="3" cols="40" placeholder="Please enter a blurb for your research, no more than 150 words as anything past that won't be displayed"></textarea> <!-- THIS IS THE blurb-->
+          <?php
+          if ($newPage == FALSE){
+            echo'<textarea name="Blurb" rows="3" cols="40" placeholder="Please enter a blurb for your research, no more than 150 words as anything past that will not be displayed">'.$research["Blurb"].'</textarea>';
+          } else {
+            echo'<textarea name="Blurb" rows="3" cols="40" placeholder="Please enter a blurb for your research, no more than 150 words as anything past that will not be displayed"></textarea>';
+          }
+           ?><!-- THIS IS THE blurb-->
         </div>
       </div>
     </div>
@@ -61,6 +88,6 @@ session_start();
     </div>
 
     <script src="https://unpkg.com/pell"></script>
-    <script  src="../scripts/pell.js"></script>
+    <script src="../scripts/pell.js"></script>
   </body>
 </html>

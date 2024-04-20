@@ -9,7 +9,7 @@ echo '<div id="header">
 </div>
 
 <a href=';
-echo $_SESSION["ROOT"]. "login.php";
+echo "login.php";
 echo '>Account</a></div>'
 
 ?>
