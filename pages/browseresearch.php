@@ -17,3 +17,4 @@ foreach (getAllReasearchPages() as $document) { # prints all of the research pag
 }
 ?>
 <link rel="stylesheet" href="../styles/browseprofiles.css" />
+<?php include '../scripts/phpScripts/footer.php';?>

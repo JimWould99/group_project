@@ -2,10 +2,10 @@
 require_once('../dbutils/mongodbutils.php');
 require_once('../utils/utils.php');
 session_start();
-
+use MongoDB\BSON\ObjectId;
 $newPage = TRUE;
 
-use MongoDB\BSON\ObjectId;
+
 if(isset($_GET["_id"])){#checks if it has received an ID, if so it's editing an exisitng page if not making a new one
   $_id = new ObjectId($_GET["_id"]); 
   $research = getResearchPage($_id);
@@ -29,7 +29,7 @@ if(isset($_GET["_id"])){#checks if it has received an ID, if so it's editing an 
   </head>
   <body>
   <?php include '../scripts/phpScripts/header.php';?>
-    <form action="../scripts/phpScripts/submitresearch.php" method="POST">
+    <?php echo'<form action="../scripts/phpScripts/submitresearch.php?_id='.$_GET["_id"].'" method="POST">'?>
     <div id="main">
       <div id="intro_text">
         <?php
@@ -68,24 +68,8 @@ if(isset($_GET["_id"])){#checks if it has received an ID, if so it's editing an 
     </div>
     </form>
     
-
  <!-- LEAVE TAGS AND IMAGES FOR LATER-->
-
-    <div id="footer_landing">
-      <div class="sub_footer">
-        <p>example_contact1</p>
-        <p>example_contact2</p>
-        <p>example_contact3</p>
-        <p>example_contact3</p>
-      </div>
-      <p>Oxford Brookes University</p>
-      <div class="sub_footer">
-        <a href="#">Policies</a>
-        <a href="#">Security</a>
-        <a href="#">Website Acessibility</a>
-        <a href="#">Manage cookies</a>
-      </div>
-    </div>
+    <?php include '../scripts/phpScripts/footer.php';?>
 
     <script src="https://unpkg.com/pell"></script>
     <script src="../scripts/pell.js"></script>

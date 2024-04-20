@@ -1,11 +1,20 @@
 <?php
 require_once('../../dbutils/mongodbutils.php');
 require_once('../../utils/utils.php');
+use MongoDB\BSON\ObjectId;
 session_start();
-$username = "TESTINGresearch";# currently a default username as did not want to mess with login
-$pageid = createResearchPage($username)->getInsertedId();
-updateResearchPage($pageid, $_POST);
+$username = "TESTINGresearch"; # currently a default username as did not want to mess with login
 
-#indicate in some way that it was successful.
+
+if (isset($_GET["_id"])){ // check if editing a page or making a new one
+    $pageid = $_GET["_id"];//gets the id and 
+    $_id = new ObjectId($pageid);
+} else{
+    $_id = createResearchPage($username)->getInsertedId(); //makes a new page and gets its id
+}
+updateResearchPage($_id, $_POST);
+
+
+#TO DO indicate in some way that it was successful.
 header("Location: ../../pages/browseresearch.php");
 ?>

@@ -3,10 +3,13 @@ require_once('../dbutils/mongodbutils.php');
 require_once('../utils/utils.php');
 session_start();
 use MongoDB\BSON\ObjectId;
-
-$_id = new ObjectId($_GET["_id"]); 
-$research = getResearchPage($_id);
-
+if(isset($_GET["_id"])){ // if the id is real carry on as normal
+  $_id = new ObjectId($_GET["_id"]); #Bug currently exists where if there is an id from GET but it's invalid page crashes
+  $research = getResearchPage($_id); # does not cover cases where a valid id is entered but does not exist in the db FIX ME
+} else {
+  header("Location: landingpage.php"); //redirects user back to homepage
+  die(); //stops the page as it should only exist for each research page
+}
 ?>
 
 <!doctype html>
@@ -43,32 +46,9 @@ $research = getResearchPage($_id);
         <div class="research">
           <img src="research_image1.jpg" alt="Research Image 1" />
         </div>
-        <div class="research">
-          <img src="research_image2.jpg" alt="Research Image 2" />
-        </div>
-        <div class="research">
-          <img src="research_image3.jpg" alt="Research Image 3" />
-        </div>
       </div>
     </div>
 
-    
-
-
-    <div id="footer_landing">
-      <div class="sub_footer">
-        <p>example_contact1</p>
-        <p>example_contact2</p>
-        <p>example_contact3</p>
-        <p>example_contact3</p>
-      </div>
-      <p>Oxford Brookes University</p>
-      <div class="sub_footer">
-        <a href="#">Policies</a>
-        <a href="#">Security</a>
-        <a href="#">Website Acessibility</a>
-        <a href="#">Manage cookies</a>
-      </div>
-    </div>
+    <?php include '../scripts/phpScripts/footer.php';?>
   </body>
 </html>
