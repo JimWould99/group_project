@@ -4,20 +4,14 @@
 	session_start();
 	use MongoDB\BSON\ObjectId;
 
-	if(isset($_GET["_id"])){ # If the page has been accessed with an ID then it is a valid page and you can continue
-		try {
-			$_id = new ObjectId($_GET["_id"]); #Bug currently exists where if there is an id from GET but it's invalid page crashes, i have "fixed it by using this try/catch solution
-		} catch(Exception $e){
-			redirectHome();
-		}
-
-		if (researchPageExists($_id) == TRUE){ #checks that the 
-			$research = getResearchPage($_id);
-		} else{
-			redirectHome();
-		}
-
-	} else {
+	$_id = getId();
+	if ($_id == FALSE){
+		redirectHome();
+	}
+	
+	if (researchPageExists($_id) == TRUE){ #checks that the research page exists
+		$research = getResearchPage($_id);
+	} else{
 		redirectHome();
 	}
 ?>
