@@ -29,7 +29,13 @@ if(isset($_GET["_id"])){#checks if it has received an ID, if so it's editing an 
   </head>
   <body>
   <?php include '../scripts/phpScripts/header.php';?>
-    <?php echo'<form action="../scripts/phpScripts/submitresearch.php?_id='.$_GET["_id"].'" method="POST">'?>
+    <?php
+      if ($newPage == FALSE){
+        echo'<form action="../scripts/phpScripts/submitresearch.php?_id='.$_GET["_id"].'" method="POST">';
+      } else {
+        echo'<form action="../scripts/phpScripts/submitresearch.php" method="POST">';
+      } 
+     ?>
     <div id="main">
       <div id="intro_text">
         <?php

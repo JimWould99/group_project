@@ -4,7 +4,7 @@ require_once('../../utils/utils.php');
 use MongoDB\BSON\ObjectId;
 session_start();
 $username = "TESTINGresearch";# currently a default username as did not want to mess with login
-$pageid = $_POST["id_director"];
+$pageid = $_POST["_id"];
 
 
 $_id = new ObjectId($pageid);

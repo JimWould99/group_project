@@ -203,7 +203,18 @@ function getResearchPage($_id) {
     return $document;
 }
 
-function deleteResearchPage($_id) { #deletes a page
+//returns true if given user exists in db, false if they do not
+function researchPageExists($_id){
+    $db = getDB();
+    $document = $db->ResearchPage->findOne(['_id' => $_id]);
+    if (is_null($document)) {
+        return false;
+    }
+    return true;
+}
+
+// deletes a research ppage
+function deleteResearchPage($_id) {
     $db = getDB();
     $document = $db->ResearchPage->deleteOne(['_id' => $_id]);
 }
