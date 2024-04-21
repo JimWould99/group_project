@@ -1,6 +1,9 @@
 <?php
-
+    include('../templates/landingpagetemplate.php');
+    include('../templates/approvecardtemplate.php');
+    use MongoDB\Model\BSONArray;
     use MongoDB\BSON\ObjectId;
+
     $cwd = '';
     //redirect to given url and stop current php
     //to go to homepage use redirect('');
@@ -9,7 +12,6 @@
         header("Location: landingpage.php"); # redirects user back to homepage
         exit(); # stops the page as it should only exist for each research page
     }
-
 
     function redirect($url)
     {
@@ -20,6 +22,7 @@
     }
 
     function pathRoot() {
+        $cwd = 'localhost/ResearchConnect';
         echo $cwd;
     }
 
@@ -40,6 +43,7 @@
             return FALSE;
         }
     }
+
 
     $_SESSION['ROOT'] = $cwd;
 

@@ -1,10 +1,8 @@
 <?php
-	require_once('../templates/landingpagetemplate.php');
 	require_once('../templates/headertemplate.php');
 	require_once('../templates/footertemplate.php');
 	require_once('../dbutils/mongodbutils.php');
 	require_once('../utils/utils.php');
-	include '../scripts/phpScripts/researchcard.php';
 	//ensure we are in session
 	session_start();
 	use MongoDB\BSON\ObjectId;

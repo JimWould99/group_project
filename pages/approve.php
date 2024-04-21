@@ -1,5 +1,4 @@
 <?php
-	require_once('../templates/landingpagetemplate.php');
 	require_once('../templates/headertemplate.php');
 	require_once('../templates/footertemplate.php');
 	require_once('../dbutils/mongodbutils.php');
@@ -19,7 +18,7 @@
 	<body id="approve_page">
 		<div id="height">
 		<?php genHeader();?>
-		
+			<!--
 			<div class="approve_bar">
 				<div id="research_card" onclick="location.href='#'">
 					<p id="title">Example title one</p>
@@ -43,6 +42,8 @@
 					</form>
 				</dialog>
 			</div>
+			-->
+			<?php generateApproveCard(); #runs the script that generates cards?>
 			
 		</div>
 		<?php genFooter();?>

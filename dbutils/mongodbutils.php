@@ -196,6 +196,44 @@ function updateResearchPage($_id, $toUpdate) {
         ['$set' => ['LastEditedTimestamp' => time()]]
     );
 }
+
+function generateResearchCard(){// populates the search page with research cards
+    foreach (getAllReasearchPages() as $document) {
+        researchCard($document);
+    }
+}
+
+function generateApproveCard(){// populates the search page with research cards
+    foreach (getAllReasearchPages() as $document) {
+        if ($document["Verified"] == false){ //CHANGE BACK TO == TRUE FOR CORRECT FUNCTIONALITY
+            echo '<div class="approve_bar">';
+            researchCard($document);
+            approveCard($document["_id"]);
+        }
+        
+    }
+}
+
+function verifyResearchPage($_id){// verifies the research page after being approved by an TTO
+    $db = getDB();
+    $db->ResearchPage->updateOne(
+        ['_id'=>$_id],
+        ['$set'=>['Verified'=>'true']]
+    );
+}
+
+
+function rejectResearchPage($_id){// sets the research page to invalid, occurs after each edit
+    $db = getDB();
+    $db->ResearchPage->updateOne(
+        ['_id'=>$_id],
+        ['$set'=>['Verified'=>'false']]
+    );
+}
+
+
+
+
 //return research page document for given research page id
 function getResearchPage($_id) {
     $db = getDB();
