@@ -16,13 +16,13 @@
 				break;
 			}
 
-			echo
-			'<div id="research_card" onclick="location=\'researchpage.php?_id='.$id.'\'">
-				<p id="title">'.$title.'</p>
-				<img id="image" src="'.$image.'">
-				<p id="short_bio">'.$blurb.'</p>
-				<p id="author">'.$username.'</p>
-			</div>';
+			
+			echo '<div id="research_card" onclick="location=\'researchpage.php?_id='.$id.'\'">'
+			echo	'<p id="title">'.$title.'</p>'
+			echo	'<img id="image" src="'.$image.'">'
+			echo	'<p id="short_bio">'.$blurb.'</p>'
+			echo	'<p id="author">'.$username.'</p>'
+			echo '</div>';
 		}// CURRENTLY THE AUTHORS NAME IS THEIR USERNAME
 		// WHEN LOGIN IS FINALISED LOOK FOR THE FULL NAME, SEARCHING BASED ON USERNAME AND DO THAT VARIABLE INSTEAD
 
