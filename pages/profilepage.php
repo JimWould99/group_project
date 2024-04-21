@@ -1,3 +1,15 @@
+<?php
+require_once('../templates/landingpagetemplate.php');
+require_once('../templates/headertemplate.php');
+require_once('../templates/footertemplate.php');
+require_once('../dbutils/mongodbutils.php');
+require_once('../utils/utils.php');
+//ensure we are in session
+session_start();
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -8,7 +20,7 @@
   </head>
   <body>
 
-  <?php include '../scripts/phpScripts/header.php';?>
+  <?php genHeader();?>
     <div id="profile-header">Profile Information</div>
 
     <div id="main">
@@ -35,6 +47,6 @@
       </p>
     </div>
 
-    <?php include '../scripts/phpScripts/footer.php';?>
+    <?php genFooter();?>
   </body>
 </html>

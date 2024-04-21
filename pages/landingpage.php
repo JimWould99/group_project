@@ -1,5 +1,7 @@
 <?php
 require_once('../templates/landingpagetemplate.php');
+require_once('../templates/headertemplate.php');
+require_once('../templates/footertemplate.php');
 require_once('../dbutils/mongodbutils.php');
 require_once('../utils/utils.php');
 //ensure we are in session
@@ -25,7 +27,7 @@ foreach ($cursor as $document) {
     <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body id="landing_page">
-  <?php include '../scripts/phpScripts/header.php';?>
+  <?php genHeader();?>
     <div id="main_landing">
       <div id="background">
         <div id="intro_text">
@@ -70,7 +72,7 @@ foreach ($cursor as $document) {
         <h6>thing</h6>
       </div>
     </div>
-    <?php include '../scripts/phpScripts/footer.php';?>
+    <?php genFooter();?>
     <script src="../scripts/landing.js"></script>
   </body>
 </html>

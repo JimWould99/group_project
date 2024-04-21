@@ -1,6 +1,10 @@
 <?php
+	require_once('../templates/landingpagetemplate.php');
+	require_once('../templates/headertemplate.php');
+	require_once('../templates/footertemplate.php');
 	require_once('../dbutils/mongodbutils.php');
 	require_once('../utils/utils.php');
+	//ensure we are in session
 	session_start();
 	use MongoDB\BSON\ObjectId;
 	$newPage = TRUE;
@@ -31,7 +35,7 @@
 		/>
 	</head>
 	<body>
-		<?php include '../scripts/phpScripts/header.php';?>
+	<?php genHeader();?>
 		<?php
 			if ($newPage == FALSE){
 				echo '<form action="../scripts/phpScripts/submitresearch.php?_id='.$_GET["_id"].'" method="POST">';
@@ -75,7 +79,7 @@
 				</div>
 			</div>
 		</form>
-		<?php include '../scripts/phpScripts/footer.php';?>
+		<?php genFooter();?>
 
 		<script src="https://unpkg.com/pell"></script>
 		<script src="../scripts/pell.js"></script>

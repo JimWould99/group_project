@@ -1,6 +1,10 @@
 <?php
+	require_once('../templates/landingpagetemplate.php');
+	require_once('../templates/headertemplate.php');
+	require_once('../templates/footertemplate.php');
 	require_once('../dbutils/mongodbutils.php');
 	require_once('../utils/utils.php');
+	//ensure we are in session
 	session_start();
 	use MongoDB\BSON\ObjectId;
 
@@ -26,7 +30,7 @@
 	</head>
 	<body>
 
-	<?php include '../scripts/phpScripts/header.php';?>
+	<?php genHeader();?>
 		<div id="main">
 			<div id="intro_text">
 				<?php
@@ -49,6 +53,6 @@
 			</div>
 		</div>
 
-		<?php include '../scripts/phpScripts/footer.php';?>
+		<?php genFooter();?>
 	</body>
 </html>
