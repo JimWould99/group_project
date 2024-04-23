@@ -255,6 +255,7 @@ function researchPageExists($_id){
 function deleteResearchPage($_id) {
     $db = getDB();
     $document = $db->ResearchPage->deleteOne(['_id' => $_id]);
+}
 function getAllResearchPages() {
     $db = getDB();
     $cursor = $db->ResearchPage->find(

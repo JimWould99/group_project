@@ -1,6 +1,9 @@
 <?php
 
 	function genHeader(){
+		//$accountLink = 'login.php';
+
+		//if (isset($_SESSION['username'])) {$accountLink = 'logout.php'}
 		echo 
 		'<div id="header">
 			<a href="landingpage.php">BrookesConnect</a>

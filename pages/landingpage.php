@@ -1,7 +1,7 @@
 <?php
 require_once('../templates/headertemplate.php');
 require_once('../templates/footertemplate.php');
-require_once('../templates/landingpagetemplate.php');
+//require_once('../templates/landingpagetemplate.php');
 require_once('../dbutils/mongodbutils.php');
 require_once('../utils/utils.php');
 //ensure we are in session
@@ -48,6 +48,7 @@ foreach ($cursor as $document) {
         <div id="search_results">
           <?php researchCard($_SESSION['researchPages'][0]); ?>
           <?php researchCard($_SESSION['researchPages'][1]); ?>
+          <?php researchCard($_SESSION['researchPages'][2]); ?>
           <?php researchCard($_SESSION['researchPages'][2]); ?>
         </div>
         <h6>thing</h6>
