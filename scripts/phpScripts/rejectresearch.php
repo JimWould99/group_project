@@ -8,6 +8,6 @@
 
 	echo $_GET["feedback"];// add this to the file
 	rejectResearchPage($_id); // not strictly necessary but felt i should do this to be safe
-	//header("Location: ../../pages/approve.php"); # TO DO indicate in some way that it was successful.
+	// header("Location: ../../pages/approve.php"); # TO DO indicate in some way that it was successful.
 	
 ?>

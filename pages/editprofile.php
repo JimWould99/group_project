@@ -1,62 +1,62 @@
 <?php
 
-require_once('../templates/headertemplate.php');
-require_once('../templates/footertemplate.php');
-require_once('../dbutils/mongodbutils.php');
-require_once('../utils/utils.php');
-//ensure we are in session
-session_start();
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_SESSION['profilePage'])) {
-      //upload new profile picture
-      if(isset($_FILES['uploadFile'])) {
-        storeProfilePicture($_FILES['uploadFile'], $_SESSION['profilePage']);
-      }//upload given tile image
-      if(isset($_FILES['uploadTile1'])) {
-        echo 'tile 1';
-        storeTileImage($_FILES['uploadTile1'], $_SESSION['profilePage'], 1);
+  require_once('../templates/headertemplate.php');
+  require_once('../templates/footertemplate.php');
+  require_once('../dbutils/mongodbutils.php');
+  require_once('../utils/utils.php');
+  //ensure we are in session
+  session_start();
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if (isset($_SESSION['profilePage'])) {
+        //upload new profile picture
+        if(isset($_FILES['uploadFile'])) {
+          storeProfilePicture($_FILES['uploadFile'], $_SESSION['profilePage']);
+        }//upload given tile image
+        if(isset($_FILES['uploadTile1'])) {
+          echo 'tile 1';
+          storeTileImage($_FILES['uploadTile1'], $_SESSION['profilePage'], 1);
+        }
+        if(isset($_FILES['uploadTile2'])) {
+          storeTileImage($_FILES['uploadTile2'], $_SESSION['profilePage'], 2);
+        }
+        if(isset($_FILES['uploadTile3'])) {
+          storeTileImage($_FILES['uploadTile3'], $_SESSION['profilePage'], 3);
+        }
+        if(isset($_FILES['uploadTile4'])) {
+          storeTileImage($_FILES['uploadTile4'], $_SESSION['profilePage'], 4);
+        }
+        //reload profile page from db into session
+        $_SESSION['profilePage'] = getProfilePage(($_SESSION['profilePage']['_id']));
       }
-      if(isset($_FILES['uploadTile2'])) {
-        storeTileImage($_FILES['uploadTile2'], $_SESSION['profilePage'], 2);
-      }
-      if(isset($_FILES['uploadTile3'])) {
-        storeTileImage($_FILES['uploadTile3'], $_SESSION['profilePage'], 3);
-      }
-      if(isset($_FILES['uploadTile4'])) {
-        storeTileImage($_FILES['uploadTile4'], $_SESSION['profilePage'], 4);
-      }
-      //reload profile page from db into session
-      $_SESSION['profilePage'] = getProfilePage(($_SESSION['profilePage']['_id']));
-    }
-  
-}
+    
+  }
 
-$_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-aliquip ex ea commodo consequat.';
-$_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
-$_SESSION['bio'] = $_SESSION['placeholderText'];
-$_SESSION['profilePicture'] = $_SESSION['placeHolderProfilePicture'];
-$_SESSION['contactInfo'] = '';
-$_SESSION['name'] = '';
-
-for ($x = 1; $x <= 4; $x++) {
-  $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];
-}
-
-if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
-  $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
-  $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
-  $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
-  $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
+  $_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat.';
+  $_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
+  $_SESSION['bio'] = $_SESSION['placeholderText'];
+  $_SESSION['profilePicture'] = $_SESSION['placeHolderProfilePicture'];
+  $_SESSION['contactInfo'] = '';
+  $_SESSION['name'] = '';
 
   for ($x = 1; $x <= 4; $x++) {
-    if (isset($_SESSION['profilePage']['Files']["tile{$x}"])) {
-      $_SESSION["tile{$x}"] = $_SESSION['profilePage']['Files']["tile{$x}"];
+    $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];
+  }
+
+  if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
+    $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
+    $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
+    $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
+    $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
+
+    for ($x = 1; $x <= 4; $x++) {
+      if (isset($_SESSION['profilePage']['Files']["tile{$x}"])) {
+        $_SESSION["tile{$x}"] = $_SESSION['profilePage']['Files']["tile{$x}"];
+      }
     }
   }
-}
 
 
 ?>
@@ -90,7 +90,8 @@ if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
           </form>
         </div> 
       </div>
-      <div id="text-box"></div>
+      <div id="editor"></div>
+      <textarea hidden name="Bio" id="markup"></textarea>
     </div>
 
     <div class="tiles-row">
@@ -149,7 +150,8 @@ if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
 
     <!-- Include pell editor script -->
     <script src="https://unpkg.com/pell"></script>
-    <script>
+    <script src="../scripts/pell.js"></script>
+    <!-- <script>
       // Initialize pell editor for Profile Information
       const profileInformationEditor = pell.init({
         element: document.getElementById("text-box"),
@@ -178,6 +180,6 @@ if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
         ],
       });
       profileInformationEditor.content.innerHTML = $_SESSION['bio'];
-    </script>
+    </script> -->
   </body>
 </html>

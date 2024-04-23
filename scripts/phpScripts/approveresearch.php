@@ -6,7 +6,7 @@
 	session_start();
 	$_id = getId();
 
-	// verifyResearchPage($_id);
-	// header("Location: ../../pages/approve.php"); # TO DO indicate in some way that it was successful.
+	verifyResearchPage($_id);
+	header("Location: ../../pages/approve.php"); # TO DO indicate in some way that it was successful.
 	
 ?>

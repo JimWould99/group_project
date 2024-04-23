@@ -131,7 +131,7 @@
         margin-bottom: 20px; /* Adds margin bottom for spacing */
       }
 
-      #text-box {
+      #editor {
         background-color: #fff;
         border: 1px solid #ddd;
         border-radius: 8px;
@@ -167,5 +167,10 @@
         background-color: transparent;
         margin: 0 5px;
         cursor: pointer;
+      }
+
+      /* overrides styles for pell button action this is to prevent the code ediot </> from being squished */
+      .pell-button {
+        width:35px !important;
       }
     

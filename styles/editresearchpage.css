@@ -145,4 +145,8 @@
         margin-top: 0;
         background-color: white;
       }
-    
+
+      /* overrides styles for pell button action this is to prevent the code ediot </> from being squished */
+      .pell-button {
+        width:35px !important;
+      }

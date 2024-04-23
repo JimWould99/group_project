@@ -1,6 +1,8 @@
 <?php
-    include('../templates/landingpagetemplate.php');
-    include('../templates/approvecardtemplate.php');
+	$path = $_SERVER['DOCUMENT_ROOT']."/ResearchConnect/";	
+
+    include($path.'/templates/landingpagetemplate.php');
+    include($path.'/templates/approvecardtemplate.php');
     use MongoDB\Model\BSONArray;
     use MongoDB\BSON\ObjectId;
 

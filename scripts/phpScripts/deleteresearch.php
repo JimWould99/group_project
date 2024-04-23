@@ -5,8 +5,8 @@
 	$username = "TESTINGresearch"; # currently a default username as did not want to mess with login
 
 	$_id = new ObjectId($_POST["_id"]);
-	$research = deleteResearchPage($_id);
 
+	deleteResearchPage($_id);
 	header("Location: ../../pages/browseresearch.php"); # TO DO indicate in some way that it was successful.
 
 ?>
