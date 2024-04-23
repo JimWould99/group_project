@@ -1,71 +1,71 @@
 <?php
-//ensure we are in session
-session_start();
-//import needed dbutils
-require_once('../dbutils/mongodbutils.php');
-require_once('../utils/utils.php');
+    //ensure we are in session
+    session_start();
+    //import needed dbutils
+    require_once('../dbutils/mongodbutils.php');
+    require_once('../utils/utils.php');
 
-//check if user is already logged in
-//TODO: maybe change this as should have to log out before accessing this page again?...
-if (isset($_SESSION['username'])) {
-    //redirect to user's homepage if they are already signed in
-    //echo "redirect to correct page post login";
-    //TODO
-    redirectLandingPage();
-    exit;  
-}
+    //check if user is already logged in
+    //TODO: maybe change this as should have to log out before accessing this page again?...
+    if (isset($_SESSION['username'])) {
+        //redirect to user's homepage if they are already signed in
+        //echo "redirect to correct page post login";
+        //TODO
+        redirectLandingPage();
+        exit;  
+    }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //TODO: remove debugging echo
-    //print_r($_POST);
-    if (isset($_POST['login_button'])) {
-        //login attempt has been made, check db for matches
-        $username_or_email = $_POST['username'];
-        $password = $_POST['password'];
-        $error = [];
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //TODO: remove debugging echo
+        //print_r($_POST);
+        if (isset($_POST['login_button'])) {
+            //login attempt has been made, check db for matches
+            $username_or_email = $_POST['username'];
+            $password = $_POST['password'];
+            $error = [];
 
-        //check whether given 'username' var is the username or email for the user
-        if (str_contains($username_or_email, '@')) {
-            $email = $username_or_email;
-            $username = getUsername($email);
-        } else {
-            $username = $username_or_email;
-            $email = getEmail($username);
-        }
+            //check whether given 'username' var is the username or email for the user
+            if (str_contains($username_or_email, '@')) {
+                $email = $username_or_email;
+                $username = getUsername($email);
+            } else {
+                $username = $username_or_email;
+                $email = getEmail($username);
+            }
 
-        if (!userExists($username)) {
-            $error["username"] = "username not found";
-        }
-        if (!emailExists($email)) {
-            $error["email"] = "email not found";
-        }
-        if (!verifyPassword($username, $password)) {
-            $error["password"] = "password does not match";
-        }
+            if (!userExists($username)) {
+                $error["username"] = "username not found";
+            }
+            if (!emailExists($email)) {
+                $error["email"] = "email not found";
+            }
+            if (!verifyPassword($username, $password)) {
+                $error["password"] = "password does not match";
+            }
 
-        //check no errors found
-        if (empty($error)) {
-            //login attempt is valid:
-            $userDocument = getUserData($username);
-            //assign session variables for post login
-            $_SESSION['userData'] = $userDocument;
-            $_SESSION['username']  = $username;
-            $_SESSION['email'] = $email;
-            $_SESSION['accountType'] = $userDocument['AccountType'];
-            $_SESSION['profilePage'] = getProfilePage($userDocument['ProfilePage']);
-            //regenerate session id to reduce fixation attacks
-            session_regenerate_id(true);
-            //redirect to desired page after login
-            //TODO meant to be home page i believe
-            //echo "redirect to correct page post registration";
-            redirectLandingPage();
-            exit;
-        } else {
-            //TODO: better error handling
-            //print_r($error);
+            //check no errors found
+            if (empty($error)) {
+                //login attempt is valid:
+                $userDocument = getUserData($username);
+                //assign session variables for post login
+                $_SESSION['userData'] = $userDocument;
+                $_SESSION['username']  = $username;
+                $_SESSION['email'] = $email;
+                $_SESSION['accountType'] = $userDocument['AccountType'];
+                $_SESSION['profilePage'] = getProfilePage($userDocument['ProfilePage']);
+                //regenerate session id to reduce fixation attacks
+                session_regenerate_id(true);
+                //redirect to desired page after login
+                //TODO meant to be home page i believe
+                //echo "redirect to correct page post registration";
+                redirectLandingPage();
+                exit;
+            } else {
+                //TODO: better error handling
+                //print_r($error);
+            }
         }
     }
-}
 
 
 ?>

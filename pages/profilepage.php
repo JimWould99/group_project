@@ -1,34 +1,34 @@
 <?php
-require_once('../templates/headertemplate.php');
-require_once('../templates/footertemplate.php');
-require_once('../dbutils/mongodbutils.php');
-require_once('../utils/utils.php');
-//ensure we are in session
-session_start();
+  require_once('../templates/headertemplate.php');
+  require_once('../templates/footertemplate.php');
+  require_once('../dbutils/mongodbutils.php');
+  require_once('../utils/utils.php');
+  //ensure we are in session
+  session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['edit_profile'])) {
-        redirect('editprofile.php');
-    }
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if (isset($_POST['edit_profile'])) {
+          redirect('editprofile.php');
+      }
 
-}
-
-$_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-aliquip ex ea commodo consequat.';
-$_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
-$_SESSION['bio'] = '';
-$_SESSION['profilePicture'] = '';
-$_SESSION['contactInfo'] = '';
-$_SESSION['name'] = '';
-
-if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
-    $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
-    $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
-    $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
-    $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
   }
+
+  $_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+  minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+  aliquip ex ea commodo consequat.';
+  $_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
+  $_SESSION['bio'] = '';
+  $_SESSION['profilePicture'] = '';
+  $_SESSION['contactInfo'] = '';
+  $_SESSION['name'] = '';
+
+  if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
+      $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
+      $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
+      $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
+      $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
+    }
 
 
 ?>

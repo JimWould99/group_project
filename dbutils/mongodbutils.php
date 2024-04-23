@@ -153,9 +153,30 @@ function getProfilePage($_id) {
     $document = $db->ProfilePage->findOne(['_id' => $_id]);
     return $document;
 }
+
+function getAllProfilePages() {
+    $db = getDB();
+    $cursor = $db->ProfilePage->find(
+        [],
+        [
+            'sort' => ['Username' => 1],
+        ]
+    );
+    return $cursor;
+}
+
+function getProfileId($username) {
+    $db = getDB();
+    $document = $db->ProfilePage->findOne(['Usernawme' => $username]);
+    return $document;
+}
+
+
+
 //->ResearchPage: Title, Blurb, Body, Images, Tags, Username, _id, 
 //create fresh mostly empty research page
 //return the generated if for the research page
+
 function createResearchPage($username) {
     $db = getDB();
     $document = $db->ResearchPage->insertOne([
@@ -173,16 +194,15 @@ function createResearchPage($username) {
     return $document;
 }
 
-function getAllReasearchPages() {
-    $db = getDB();
-    $cursor = $db->ResearchPage->find(
-        [],
-        [
-            'sort' => ['Username' => 1],
-        ]
-    );
-    return $cursor;
+function generateProfiles(){
+    foreach (getAllProfilePages() as $document) {
+        profileCard($document);
+    }
+    
 }
+
+
+
 //replace given fields with given values for this research page
 //e.g. to save edits to Title and Blurb - 
 //updateProfilePage(_id, ['Title' => 'title info, 'Blurb' => 'blurb text'])
@@ -202,7 +222,7 @@ function updateResearchPage($_id, $toUpdate) {
 }
 
 function generateResearchCard(){// populates the search page with research cards
-    foreach (getAllReasearchPages() as $document) {
+    foreach (getAllResearchPages() as $document) {
         if ($document["Verified"] == true){ //CHANGE BACK TO == TRUE FOR CORRECT FUNCTIONALITY
             researchCard($document);
 		}
@@ -210,7 +230,7 @@ function generateResearchCard(){// populates the search page with research cards
 }
 
 function generateApproveCard(){// populates the search page with research cards
-    foreach (getAllReasearchPages() as $document) {
+    foreach (getAllResearchPages() as $document) {
         if ($document["Verified"] == false){
             echo '<div class="approve_bar">';
             researchCard($document);
@@ -228,7 +248,7 @@ function setResearchPageVerification($_id, $status){// verifies the research pag
     );
 }
 
-function setRejectMessage($_id, $rejectMessage){
+function setRejectMessage($_id, $rejectMessage){// sets the reject message
     $db = getDB();
     $db->ResearchPage->updateOne(
         ['_id'=>$_id],
@@ -272,16 +292,6 @@ function getAllResearchPages() {
     return $cursor;
 }
 
-
-//return all research pages assigned to given user
-function getAllUsersResearchPages($username) {
-    $db = getDB();
-    $cursor = $db->ResearchPage->find(
-        ['Username' => $username],
-        []
-    );
-    return $cursor;
-}
 
 //return given number of most recently created research pages as a mongodb cursor object
 function findRecentResearchPages($num) {

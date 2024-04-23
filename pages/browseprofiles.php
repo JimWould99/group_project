@@ -1,11 +1,12 @@
 <?php
 
-require_once('../templates/headertemplate.php');
-require_once('../templates/footertemplate.php');
-require_once('../dbutils/mongodbutils.php');
-require_once('../utils/utils.php');
-//ensure we are in session
-session_start();
+  require_once('../templates/headertemplate.php');
+  require_once('../templates/footertemplate.php');
+  require_once('../templates/profiletemplate.php');
+  require_once('../dbutils/mongodbutils.php');
+  require_once('../utils/utils.php');
+  //ensure we are in session
+  session_start();
 
 
 ?>
@@ -25,12 +26,7 @@ session_start();
     <div id="profiles-header">Profiles</div>
 
     <div id="main">
-      <a class="tile" href="researcher1.html">Researcher 1</a>
-      <a class="tile" href="researcher2.html">Researcher 2</a>
-      <a class="tile" href="researcher3.html">Researcher 3</a>
-      <a class="tile" href="researcher4.html">Researcher 4</a>
-      <a class="tile" href="researcher5.html">Researcher 5</a>
-      <a class="tile" href="researcher6.html">Researcher 6</a>
+		<?php generateProfiles();	?>
     </div>
 
     <?php genFooter();?>

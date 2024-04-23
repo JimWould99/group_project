@@ -1,66 +1,66 @@
 <?php
-//ensure we are in session
-session_start();
-//import needed dbutils
-require_once('../dbutils/mongodbutils.php');
-require_once('../utils/utils.php');
+    //ensure we are in session
+    session_start();
+    //import needed dbutils
+    require_once('../dbutils/mongodbutils.php');
+    require_once('../utils/utils.php');
 
-//check if user is already logged in
-//TODO: maybe change this as should have to log out before accessing this page again?...
-if (isset($_SESSION['username'])) {
-    //redirect to user's homepage if they are already signed in
-    //TODO: remove echo
-    //echo "redirect to correct page post login";
-    //TODO
-    redirectLandingPage();
-    exit;  
-}
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //TODO: remove debugging echo
-    print_r($_POST);
-    if (isset($_POST['login_button'])) {
-        //registration attempt has been made, check db for matches
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $email = $_POST['email'];
-        $accountType = $_POST['account_type'];
-        $error = [];
-
-        if (userExists($username)) {
-            $error['username'] = "username is already in use";
-        }
-        if (emailExists($email)) {
-            $error['email'] = "email is already in use";
-        }
-        
-        //if no errors, continue
-        if (empty($error)) {
-            //place new user in the db
-            //TODO: check no other things need to be done
-            createNewUser($username, $email, $accountType, $password);
-            //createprofile page and assign to this user
-            $_SESSION['profilePage'] = getProfilePage(createProfilePage($username));
-            //assign session variables for post login
-            $_SESSION['username']  = $username;
-            $_SESSION['email'] = $email;
-            $_SESSION['accountType'] = $accountType;
-            $userDocument = getUserData($username);
-            $_SESSION['userData'] = $userDocument;
-            //regenerate session id to reduce fixation attacks
-            session_regenerate_id(true);
-            //redirect to desired page after login
-            //TODO meant to be home page i believe
-            //echo "redirect to correct page post registration";
-            redirectLandingPage();
-            exit;
-        } else {
-            //TODO: better error handling
-            //print_r($error);
-        }
-
+    //check if user is already logged in
+    //TODO: maybe change this as should have to log out before accessing this page again?...
+    if (isset($_SESSION['username'])) {
+        //redirect to user's homepage if they are already signed in
+        //TODO: remove echo
+        //echo "redirect to correct page post login";
+        //TODO
+        redirectLandingPage();
+        exit;  
     }
-}
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        //TODO: remove debugging echo
+        print_r($_POST);
+        if (isset($_POST['login_button'])) {
+            //registration attempt has been made, check db for matches
+            $username = $_POST['username'];
+            $password = $_POST['password'];
+            $email = $_POST['email'];
+            $accountType = $_POST['account_type'];
+            $error = [];
+
+            if (userExists($username)) {
+                $error['username'] = "username is already in use";
+            }
+            if (emailExists($email)) {
+                $error['email'] = "email is already in use";
+            }
+            
+            //if no errors, continue
+            if (empty($error)) {
+                //place new user in the db
+                //TODO: check no other things need to be done
+                createNewUser($username, $email, $accountType, $password);
+                //createprofile page and assign to this user
+                $_SESSION['profilePage'] = getProfilePage(createProfilePage($username));
+                //assign session variables for post login
+                $_SESSION['username']  = $username;
+                $_SESSION['email'] = $email;
+                $_SESSION['accountType'] = $accountType;
+                $userDocument = getUserData($username);
+                $_SESSION['userData'] = $userDocument;
+                //regenerate session id to reduce fixation attacks
+                session_regenerate_id(true);
+                //redirect to desired page after login
+                //TODO meant to be home page i believe
+                //echo "redirect to correct page post registration";
+                redirectLandingPage();
+                exit;
+            } else {
+                //TODO: better error handling
+                //print_r($error);
+            }
+
+        }
+    }
 
 ?>
 

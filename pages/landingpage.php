@@ -1,19 +1,19 @@
 <?php
-require_once('../templates/headertemplate.php');
-require_once('../templates/footertemplate.php');
-//require_once('../templates/landingpagetemplate.php');
-require_once('../dbutils/mongodbutils.php');
-require_once('../utils/utils.php');
-//ensure we are in session
-session_start();
-//get 9 most recent edited research pages
-$cursor = findRecentResearchPages(12);
-//print_r($cursor);
-$_SESSION['researchPages'] = [];
+  require_once('../templates/headertemplate.php');
+  require_once('../templates/footertemplate.php');
+  //require_once('../templates/landingpagetemplate.php');
+  require_once('../dbutils/mongodbutils.php');
+  require_once('../utils/utils.php');
+  //ensure we are in session
+  session_start();
+  //get 9 most recent edited research pages
+  $cursor = findRecentResearchPages(12);
+  //print_r($cursor);
+  $_SESSION['researchPages'] = [];
 
-foreach ($cursor as $document) {
-  array_push($_SESSION['researchPages'], $document);
-  
+  foreach ($cursor as $document) {
+    array_push($_SESSION['researchPages'], $document);
+    
 }
 
 
@@ -28,7 +28,7 @@ foreach ($cursor as $document) {
     <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body id="landing_page">
-  <?php genHeader();?>
+  <?php genHeader("sneed");?>
     <div id="main_landing">
       <div id="background">
         <div id="intro_text">
