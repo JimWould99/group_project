@@ -202,13 +202,15 @@ function updateResearchPage($_id, $toUpdate) {
 
 function generateResearchCard(){// populates the search page with research cards
     foreach (getAllReasearchPages() as $document) {
-        researchCard($document);
+        if ($document["Verified"] == "true"){ //CHANGE BACK TO == TRUE FOR CORRECT FUNCTIONALITY
+            researchCard($document);
+		}
     }
 }
 
 function generateApproveCard(){// populates the search page with research cards
     foreach (getAllReasearchPages() as $document) {
-        if ($document["Verified"] == false){ //CHANGE BACK TO == TRUE FOR CORRECT FUNCTIONALITY
+        if ($document["Verified"] == "false"){
             echo '<div class="approve_bar">';
             researchCard($document);
             approveCard($document["_id"]);
