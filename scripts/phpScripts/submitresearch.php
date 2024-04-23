@@ -13,7 +13,7 @@
 		$_id = createResearchPage($username)->getInsertedId(); //makes a new page and gets its id
 	}
 	updateResearchPage($_id, $_POST); // fills in values submitted to this script into the new/existing research page
-	rejectResearchPage($_id);// sets the page to unverified so that it needs to be verified by a tto
+	setResearchPageVerification($_id,false);// sets the page to unverified so that it needs to be verified by a tto
 
 	#TO DO indicate in some way that it was successful.
 	header("Location: ../../pages/browseresearch.php");

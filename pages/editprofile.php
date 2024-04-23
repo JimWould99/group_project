@@ -91,7 +91,7 @@
         </div> 
       </div>
       <div id="editor"></div>
-      <textarea hidden name="Bio" id="markup"></textarea>
+      <?php echo '<textarea name="Bio" id="markup">'.$_SESSION['bio'].'</textarea>' ;?>
     </div>
 
     <div class="tiles-row">

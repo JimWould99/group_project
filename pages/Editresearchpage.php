@@ -35,6 +35,21 @@
 	</head>
 	<body>
 	<?php genHeader();?>
+		<div id="reject-message">
+		<?php
+			if ($newPage == FALSE ){// change to false
+				if($research["Verified"] == false){
+					if ($research["RejectMessage"] != ""){
+						echo 'Rejected. Reason:'.$research["RejectMessage"];
+					} else{
+						echo 'Not yet Approved/Rejected';
+					}
+				} else{
+					echo 'Approved!';
+				}
+			}
+		 ?>
+		</div>
 		<?php
 			if ($newPage == FALSE){
 				echo '<form action="../scripts/phpScripts/submitresearch.php?_id='.$_GET["_id"].'" method="POST">';
@@ -65,6 +80,8 @@
 				</div>
 				<div class="research_trio">
 					<div class="research">
+						<div>This is the blurb section!</div>
+						
 						<img id="image1" src="research_image1.jpg" alt="Research Image 1" /> <!-- DO THIS LATER, NO WAY TO UPLOAD IMAGES YET -->
 						<input type="text" id="image1-url" placeholder="THIS IS CURRENTLY A PLAEHOLDER THERE IS NOTHING HERE" />
 						<?php // this is the blurb

@@ -474,6 +474,9 @@ Search page
 }
 
 #research_card > #image {
+  width: 150px;
+  flex-shrink: 0;
+  min-width: 100%;
   /*background-image: url("../images/engo.jpg"); HAD TO CHANGE THIS TO GET IMAGES TO WORK ON SEARCH*/ 
   background-size: 140%;
   background-position-x: 60%;

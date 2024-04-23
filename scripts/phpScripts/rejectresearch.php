@@ -5,9 +5,10 @@
 	use MongoDB\BSON\ObjectId;
 	session_start();
 	$_id = getId();
-
-	echo $_GET["feedback"];// add this to the file
+	$rejectMessage = $_POST["feedback"];
+	setRejectMessage($_id, $rejectMessage);
+	setResearchPageVerification($_id,false);
 	rejectResearchPage($_id); // not strictly necessary but felt i should do this to be safe
-	// header("Location: ../../pages/approve.php"); # TO DO indicate in some way that it was successful.
+	header("Location: ../../pages/approve.php"); # TO DO indicate in some way that it was successful.
 	
 ?>

@@ -164,6 +164,7 @@ function createResearchPage($username) {
         'Blurb' => '',
         'Body' => '',
         'Images' => [],
+        'RejectMessage' => '',
         'Tags' => [],
         'Verified' => false,
         'CreatedTimestamp' => time(), // adds time since unix epoch as a creation timestamp
@@ -202,7 +203,7 @@ function updateResearchPage($_id, $toUpdate) {
 
 function generateResearchCard(){// populates the search page with research cards
     foreach (getAllReasearchPages() as $document) {
-        if ($document["Verified"] == "true"){ //CHANGE BACK TO == TRUE FOR CORRECT FUNCTIONALITY
+        if ($document["Verified"] == true){ //CHANGE BACK TO == TRUE FOR CORRECT FUNCTIONALITY
             researchCard($document);
 		}
     }
@@ -210,7 +211,7 @@ function generateResearchCard(){// populates the search page with research cards
 
 function generateApproveCard(){// populates the search page with research cards
     foreach (getAllReasearchPages() as $document) {
-        if ($document["Verified"] == "false"){
+        if ($document["Verified"] == false){
             echo '<div class="approve_bar">';
             researchCard($document);
             approveCard($document["_id"]);
@@ -219,23 +220,21 @@ function generateApproveCard(){// populates the search page with research cards
     }
 }
 
-function verifyResearchPage($_id){// verifies the research page after being approved by an TTO
+function setResearchPageVerification($_id, $status){// verifies the research page after being approved by an TTO
     $db = getDB();
     $db->ResearchPage->updateOne(
         ['_id'=>$_id],
-        ['$set'=>['Verified'=>'true']]
+        ['$set'=>['Verified'=> $status]]
     );
 }
 
-
-function rejectResearchPage($_id){// sets the research page to invalid, occurs after each edit
+function setRejectMessage($_id, $rejectMessage){
     $db = getDB();
     $db->ResearchPage->updateOne(
         ['_id'=>$_id],
-        ['$set'=>['Verified'=>'false']]
+        ['$set'=>['RejectMessage'=>$rejectMessage]]
     );
 }
-
 
 
 
@@ -261,6 +260,8 @@ function deleteResearchPage($_id) {
     $db = getDB();
     $document = $db->ResearchPage->deleteOne(['_id' => $_id]);
 }
+
+//
 function getAllResearchPages() {
     $db = getDB();
     $cursor = $db->ResearchPage->find(

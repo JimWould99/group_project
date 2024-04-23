@@ -5,8 +5,9 @@
 	use MongoDB\BSON\ObjectId;
 	session_start();
 	$_id = getId();
-
-	verifyResearchPage($_id);
+	$rejectMessage = "";
+	setRejectMessage($_id, $rejectMessage); //clears the rejection message
+	setResearchPageVerification($_id,true);
 	header("Location: ../../pages/approve.php"); # TO DO indicate in some way that it was successful.
 	
 ?>
