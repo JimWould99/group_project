@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         } else {
             //TODO: better error handling
-            print_r($error);
+            //print_r($error);
         }
 
     }

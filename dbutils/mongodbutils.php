@@ -30,6 +30,7 @@ function userExists($username) {
 function getUsername($email) {
     $db = getDB();
     $document = $db->UserData->findOne(['Email' => $email]);
+    if (is_null($document)) {return false;}
     return $document['Username'];
 }
 
@@ -46,6 +47,7 @@ function emailExists($email) {
 function getEmail($username) {
     $db = getDB();
     $document = $db->UserData->findOne(['Username' => $username]);
+    if (is_null($document)) {return false;}
     return $document['Email'];
 }
 //->UserData: Username, Email, Name, Password, AccountType, ProfilePage, ResearchPages, _id
@@ -85,6 +87,7 @@ function getAllUserData() {
 function getPassword($username) {
     $db = getDB();
     $document = $db->UserData->findOne(['Username' => $username]);
+    if (is_null($document)) {return false;}
     return $document['Password'];
 }
 
@@ -296,6 +299,7 @@ function verifyPassword($username, $password) {
     global $pepper;
     $passwordPeppered = hash_hmac("sha256", $password, $pepper);
     $storedPassword = getPassword($username);
+    if (!$storedPassword) {return False;}//return false if password doesn't exist
     //password verify is php function to test for match
     if (password_verify($passwordPeppered, $storedPassword)) {
         return True;
@@ -304,6 +308,50 @@ function verifyPassword($username, $password) {
 }
 
 //TODO: file management
+$ds = DIRECTORY_SEPARATOR;
+$repopath = "C:{$ds}xampp{$ds}htdocs{$ds}storage{$ds}";
+$storageRoot = '/storage';
+//e.g. str: \storage\testuser400\Ocelot.png'
+
+function storeProfilePicture($file, $profilePage) {
+    global $repopath;
+    global $ds;
+    global $storageRoot;
+    $username = $profilePage['Username'];
+    $finaldirpath = $repopath . $ds . $username . $ds;
+    //ensure dir exists, mkdir if not
+    if(!is_dir($finaldirpath)) {mkdir($finaldirpath);}
+    $basename = basename($file['name']);
+    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $filename = "pp.{$extension}";
+    $finalfilepath = $repopath . $username . $ds . $filename;
+    move_uploaded_file($file['tmp_name'], $finalfilepath); //moves the file from temp storage to disk
+    //convert serpators to be server friendly
+    $storedFilePath = "{$storageRoot}/{$username}/{$filename}";
+    updateProfilePage($profilePage['_id'], ['ProfilePicture' => $storedFilePath]);
+}
+
+function storeTileImage($file, $profilePage, $tileNum) {
+    global $repopath;
+    global $ds;
+    global $storageRoot;
+    $username = $profilePage['Username'];
+    $finaldirpath = $repopath . $ds . $username . $ds;
+    //ensure dir exists, mkdir if not
+    if(!is_dir($finaldirpath)) {mkdir($finaldirpath);}
+    $basename = basename($file['name']);
+    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $filename = "tile{$tileNum}.{$extension}";
+    $finalfilepath = $repopath . $username . $ds . $filename;
+    move_uploaded_file($file['tmp_name'], $finalfilepath); //moves the file from temp storage to disk
+    //convert serpators to be server friendly
+    $storedFilePath = "{$storageRoot}/{$username}/{$filename}";
+    $oldProfileFiles = $profilePage['Files'];
+    //convert the stored BSON array object into php array
+    $oldProfileFiles = iterator_to_array($oldProfileFiles);
+    $newProfileFiles = array_merge($oldProfileFiles, ["tile{$tileNum}" => $storedFilePath]);
+    updateProfilePage($profilePage['_id'], ['Files' => $newProfileFiles]);
+}
 
 
 //returns salted, peppered, and hashed password with 60 char length for given password

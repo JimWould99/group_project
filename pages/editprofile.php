@@ -2,12 +2,34 @@
 
 require_once('../templates/headertemplate.php');
 require_once('../templates/footertemplate.php');
-require_once('../templates/landingpagetemplate.php');
 require_once('../dbutils/mongodbutils.php');
 require_once('../utils/utils.php');
 //ensure we are in session
 session_start();
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_SESSION['profilePage'])) {
+      //upload new profile picture
+      if(isset($_FILES['uploadFile'])) {
+        storeProfilePicture($_FILES['uploadFile'], $_SESSION['profilePage']);
+      }//upload given tile image
+      if(isset($_FILES['uploadTile1'])) {
+        echo 'tile 1';
+        storeTileImage($_FILES['uploadTile1'], $_SESSION['profilePage'], 1);
+      }
+      if(isset($_FILES['uploadTile2'])) {
+        storeTileImage($_FILES['uploadTile2'], $_SESSION['profilePage'], 2);
+      }
+      if(isset($_FILES['uploadTile3'])) {
+        storeTileImage($_FILES['uploadTile3'], $_SESSION['profilePage'], 3);
+      }
+      if(isset($_FILES['uploadTile4'])) {
+        storeTileImage($_FILES['uploadTile4'], $_SESSION['profilePage'], 4);
+      }
+      //reload profile page from db into session
+      $_SESSION['profilePage'] = getProfilePage(($_SESSION['profilePage']['_id']));
+    }
+  
+}
 
 $_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -19,12 +41,22 @@ $_SESSION['profilePicture'] = $_SESSION['placeHolderProfilePicture'];
 $_SESSION['contactInfo'] = '';
 $_SESSION['name'] = '';
 
+for ($x = 1; $x <= 4; $x++) {
+  $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];
+}
+
 if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
-    $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
-    $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
-    $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
-    $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
+  $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
+  $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
+  $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
+  $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
+
+  for ($x = 1; $x <= 4; $x++) {
+    if (isset($_SESSION['profilePage']['Files']["tile{$x}"])) {
+      $_SESSION["tile{$x}"] = $_SESSION['profilePage']['Files']["tile{$x}"];
+    }
   }
+}
 
 
 ?>
@@ -49,7 +81,14 @@ if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
 
     <div id="main">
       <div class="tile">
-        <img src=<?php if ($_SESSION['profilePicture'] == '') {echo $_SESSION['placeHolderProfilePicture'];} else {echo $_SESSION['profilePicture'];}?> alt="Researcher Image" />
+        <img src=<?php echo $_SESSION['profilePicture']; ?> alt="Researcher Image" />
+        <div id="profile-picture-upload>">
+          <form action="" method="post" enctype="multipart/form-data">
+          Select file to upload:
+          <input type="file" name="uploadFile" id="uploadFile">
+          <input type="submit" value="uploadProfilePicture" name="submit">
+          </form>
+        </div> 
       </div>
       <div id="text-box"></div>
     </div>
@@ -58,18 +97,42 @@ if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
       <div class="tile">
         <!-- First Interactable Tile -->
         Tile 1
+        <img src=<?php echo $_SESSION['tile1']; ?> alt="Tile 1" />
+        <form action="" method="post" enctype="multipart/form-data">
+          Select file to upload:
+          <input type="file" name="uploadTile1" id="uploadTile1">
+          <input type="submit" value="uploadTile1" name="submit">
+          </form>
       </div>
       <div class="tile">
         <!-- Second Interactable Tile -->
         Tile 2
+        <img src=<?php echo $_SESSION['tile2']; ?> alt="Tile 2" />
+        <form action="" method="post" enctype="multipart/form-data">
+          Select file to upload:
+          <input type="file" name="uploadTile2" id="uploadTile2">
+          <input type="submit" value="uploadTile2" name="submit">
+          </form>
       </div>
       <div class="tile">
         <!-- Third Interactable Tile -->
         Tile 3
+        <img src=<?php echo $_SESSION['tile3']; ?> alt="Tile 3" />
+        <form action="" method="post" enctype="multipart/form-data">
+          Select file to upload:
+          <input type="file" name="uploadTile3" id="uploadTile3">
+          <input type="submit" value="uploadTile3" name="submit">
+          </form>
       </div>
       <div class="tile">
         <!-- Fourth Interactable Tile -->
         Tile 4
+        <img src=<?php echo $_SESSION['tile4']; ?> alt="Tile 4" />
+        <form action="" method="post" enctype="multipart/form-data">
+          Select file to upload:
+          <input type="file" name="uploadTile4" id="uploadTile4">
+          <input type="submit" value="uploadTile4" name="submit">
+          </form>
       </div>
     </div>
 

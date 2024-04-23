@@ -7,6 +7,7 @@ require_once('../utils/utils.php');
 //ensure we are in session
 session_start();
 //get 9 most recent edited research pages
+//TODO: make this pull 16 then make each trio display 4 cards
 $cursor = findRecentResearchPages(9);
 //print_r($cursor);
 $_SESSION['researchPages'] = [];

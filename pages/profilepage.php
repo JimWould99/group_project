@@ -1,7 +1,6 @@
 <?php
 require_once('../templates/headertemplate.php');
 require_once('../templates/footertemplate.php');
-require_once('../templates/landingpagetemplate.php');
 require_once('../dbutils/mongodbutils.php');
 require_once('../utils/utils.php');
 //ensure we are in session
@@ -9,7 +8,7 @@ session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['edit_profile'])) {
-        redirect('pages/editprofile.php');
+        redirect('editprofile.php');
     }
 
 }

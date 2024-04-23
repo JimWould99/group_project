@@ -4,7 +4,7 @@
     use MongoDB\Model\BSONArray;
     use MongoDB\BSON\ObjectId;
 
-    $cwd = '';
+
     //redirect to given url and stop current php
     //to go to homepage use redirect('');
 
@@ -17,7 +17,7 @@
     {
         //TODO: add base header for the website to append to
         //e.g.
-        header('Location: ' . $cwd . $url);
+        header('Location: ' . $url);
         exit();
     }
 
@@ -44,9 +44,6 @@
         }
     }
 
-
-    $_SESSION['ROOT'] = $cwd;
-
 function getROOT() {
     return 'http://localhost/real_group_project/';
 }
@@ -61,5 +58,6 @@ function genLink($URI) {
 function redirectProfilePage() {
     redirect('pages/profilepage.php');
 }
+
 
 ?>
