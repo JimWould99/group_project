@@ -5,6 +5,13 @@ require_once('../utils/utils.php');
 //ensure we are in session
 session_start();
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['edit_profile'])) {
+        redirect('pages/editprofile.php');
+    }
+
+}
+
 $_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
 minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -60,6 +67,11 @@ if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
       </p>
     </div>
 
+    <div id="button_to_edit_profile_page">
+      <form action="" method="post">
+        <button name="edit_profile" value="edit_profile">Edit Profile</button>
+      </form>
+    </div>
     <div id="footer_landing">
       <div class="sub_footer">
         <p>example_contact1</p>
