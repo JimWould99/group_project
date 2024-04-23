@@ -12,5 +12,4 @@ function researchCard($rpd) {
 
 }
 
-
 ?>

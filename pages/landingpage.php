@@ -7,8 +7,7 @@ require_once('../utils/utils.php');
 //ensure we are in session
 session_start();
 //get 9 most recent edited research pages
-//TODO: make this pull 16 then make each trio display 4 cards
-$cursor = findRecentResearchPages(9);
+$cursor = findRecentResearchPages(12);
 //print_r($cursor);
 $_SESSION['researchPages'] = [];
 
@@ -50,7 +49,7 @@ foreach ($cursor as $document) {
           <?php researchCard($_SESSION['researchPages'][0]); ?>
           <?php researchCard($_SESSION['researchPages'][1]); ?>
           <?php researchCard($_SESSION['researchPages'][2]); ?>
-          <?php researchCard($_SESSION['researchPages'][2]); ?>
+          <?php researchCard($_SESSION['researchPages'][3]); ?>
         </div>
         <h6>thing</h6>
       </div>
@@ -58,9 +57,10 @@ foreach ($cursor as $document) {
       <div class="trio" id="second">
         <h1>Artificial Intelligence</h1>
         <div id="search_results">
-          <?php researchCard($_SESSION['researchPages'][3]); ?>
           <?php researchCard($_SESSION['researchPages'][4]); ?>
           <?php researchCard($_SESSION['researchPages'][5]); ?>
+          <?php researchCard($_SESSION['researchPages'][6]); ?>
+          <?php researchCard($_SESSION['researchPages'][7]); ?>
         </div>
         <h6>thing</h6>
       </div>
@@ -68,9 +68,10 @@ foreach ($cursor as $document) {
       <div class="trio" id="third">
         <h1>Big Data</h1>
         <div id="search_results">
-          <?php researchCard($_SESSION['researchPages'][6]); ?>
-          <?php researchCard($_SESSION['researchPages'][7]); ?>
           <?php researchCard($_SESSION['researchPages'][8]); ?>
+          <?php researchCard($_SESSION['researchPages'][9]); ?>
+          <?php researchCard($_SESSION['researchPages'][10]); ?>
+          <?php researchCard($_SESSION['researchPages'][11]); ?>
         </div>
         <h6>thing</h6>
       </div>
