@@ -14,8 +14,9 @@
   foreach ($cursor as $document) {
     array_push($_SESSION['researchPages'], $document);
     
-}
+  }
 
+  $profileId = getProfileId($_SESSION["username"]);
 
 ?>
 
@@ -28,7 +29,7 @@
     <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body id="landing_page">
-  <?php genHeader("sneed");?>
+  <?php genHeader($profileId);?>
     <div id="main_landing">
       <div id="background">
         <div id="intro_text">

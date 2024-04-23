@@ -5,6 +5,7 @@
 	require_once('../utils/utils.php');
 	//ensure we are in session
 	session_start();
+	$profileId = getProfileId($_SESSION["username"]);
 	use MongoDB\BSON\ObjectId;
 
 	
@@ -18,7 +19,7 @@
 		<link rel="stylesheet" href="../styles/styles.css" />
 	</head>
 	<body id="search_page">
-		<?php genHeader();?>
+		<?php genHeader($profileId);?>
 			<div id="top_section">
 				<div id="select_search">
 						<label for="author_select">Author

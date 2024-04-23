@@ -7,7 +7,7 @@
   require_once('../utils/utils.php');
   //ensure we are in session
   session_start();
-
+  $profileId = getProfileId($_SESSION["username"]);
 
 ?>
 
@@ -21,7 +21,7 @@
   </head>
   <body>
 
-  <?php genHeader();?>
+  <?php genHeader($profileId);?>
 
     <div id="profiles-header">Profiles</div>
 

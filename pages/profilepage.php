@@ -6,6 +6,9 @@
   //ensure we are in session
   session_start();
 
+  $profileId = getProfileId($_SESSION["username"]);
+  $_id = getId();
+
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if (isset($_POST['edit_profile'])) {
           redirect('editprofile.php');
@@ -44,7 +47,7 @@
   </head>
   <body>
 
-  <?php genHeader();?>
+  <?php genHeader($profileId);?>
     <div id="profile-header">Profile Information</div>
 
     <div id="main">
@@ -73,21 +76,6 @@
       <form action="" method="post">
         <button name="edit_profile" value="edit_profile">Edit Profile</button>
       </form>
-    </div>
-    <div id="footer_landing">
-      <div class="sub_footer">
-        <p>example_contact1</p>
-        <p>example_contact2</p>
-        <p>example_contact3</p>
-        <p>example_contact3</p>
-      </div>
-      <p>Oxford Brookes University</p>
-      <div class="sub_footer">
-        <a href="#">Policies</a>
-        <a href="#">Security</a>
-        <a href="#">Website Acessibility</a>
-        <a href="#">Manage cookies</a>
-      </div>
     </div>
     <?php genFooter();?>
   </body>

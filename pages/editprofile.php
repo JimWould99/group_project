@@ -6,6 +6,8 @@
   require_once('../utils/utils.php');
   //ensure we are in session
   session_start();
+  $profileId = getProfileId($_SESSION["username"]);
+
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if (isset($_SESSION['profilePage'])) {
         //upload new profile picture
@@ -75,7 +77,7 @@
     />
   </head>
   <body>
-  <?php genHeader();?>
+  <?php genHeader($profileId);?>
 
     <div id="profile-header">Profile Information</div>
 

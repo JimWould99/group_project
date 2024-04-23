@@ -5,7 +5,7 @@
 	require_once('../utils/utils.php');
 	//ensure we are in session
 	session_start();
-
+	$profileId = getProfileId($_SESSION["username"]);
 ?>
 
 
@@ -19,7 +19,7 @@
 		<link rel="stylesheet" href="../styles/styles.css" />
 	</head>
 	<body id="search_page">
-		<?php genHeader();?>
+		<?php genHeader($profileId);?>
 		<div id="search_results">
 			<?php generateResearchCard() #runs the script that generates cards?>
 		</div>

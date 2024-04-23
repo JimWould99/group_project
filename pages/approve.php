@@ -5,6 +5,7 @@
 	require_once('../utils/utils.php');
 	//ensure we are in session
 	session_start();
+	$profileId = getProfileId($_SESSION["username"]);
 
 ?>
 <!doctype html>
@@ -17,7 +18,7 @@
 	</head>
 	<body id="approve_page">
 		<div id="height">
-		<?php genHeader();?>
+		<?php genHeader($profileId);?>
 			<!--
 			<div class="approve_bar">
 				<div id="research_card" onclick="location.href='#'">

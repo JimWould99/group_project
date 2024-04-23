@@ -5,6 +5,8 @@
 	require_once('../utils/utils.php');
 	//ensure we are in session
 	session_start();
+
+	$profileId = getProfileId($_SESSION["username"]);
 	use MongoDB\BSON\ObjectId;
 
 	$_id = getId();
@@ -29,7 +31,7 @@
 	</head>
 	<body>
 
-	<?php genHeader();?>
+	<?php genHeader($profileId);?>
 		<div id="main">
 			<div id="intro_text">
 				<?php

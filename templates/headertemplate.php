@@ -26,9 +26,7 @@
 				<a href=login.php>Account</a>
 			</div>";
 		}
-		
-		//function to get profile id based on username
-		echo $_SESSION['username'];
+
 	}
 	
 ?>

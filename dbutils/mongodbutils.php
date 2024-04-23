@@ -167,8 +167,8 @@ function getAllProfilePages() {
 
 function getProfileId($username) {
     $db = getDB();
-    $document = $db->ProfilePage->findOne(['Usernawme' => $username]);
-    return $document;
+    $document = $db->ProfilePage->findOne(['Username' => $username]);
+    return $document["_id"];
 }
 
 
