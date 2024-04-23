@@ -2,12 +2,33 @@
 
 require_once('../templates/headertemplate.php');
 require_once('../templates/footertemplate.php');
+require_once('../templates/landingpagetemplate.php');
 require_once('../dbutils/mongodbutils.php');
 require_once('../utils/utils.php');
 //ensure we are in session
 session_start();
 
+
+$_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat.';
+$_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
+$_SESSION['bio'] = $_SESSION['placeholderText'];
+$_SESSION['profilePicture'] = $_SESSION['placeHolderProfilePicture'];
+$_SESSION['contactInfo'] = '';
+$_SESSION['name'] = '';
+
+if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
+    $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
+    $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
+    $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
+    $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
+  }
+
+
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -28,8 +49,7 @@ session_start();
 
     <div id="main">
       <div class="tile">
-        <!-- Placeholder for researcher's image -->
-        <img src="https://via.placeholder.com/150" alt="Researcher Image" />
+        <img src=<?php if ($_SESSION['profilePicture'] == '') {echo $_SESSION['placeHolderProfilePicture'];} else {echo $_SESSION['profilePicture'];}?> alt="Researcher Image" />
       </div>
       <div id="text-box"></div>
     </div>
@@ -94,6 +114,7 @@ session_start();
           },
         ],
       });
+      profileInformationEditor.content.innerHTML = $_SESSION['bio'];
     </script>
   </body>
 </html>

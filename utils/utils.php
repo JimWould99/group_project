@@ -47,4 +47,19 @@
 
     $_SESSION['ROOT'] = $cwd;
 
+function getROOT() {
+    return 'http://localhost/real_group_project/';
+}
+//redirect to given url and stop current php
+//to go to homepage use redirect('');
+
+
+function genLink($URI) {
+    echo getROOT() . $URI;
+}
+
+function redirectProfilePage() {
+    redirect('pages/profilepage.php');
+}
+
 ?>

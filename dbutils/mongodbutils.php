@@ -82,6 +82,12 @@ function getAllUserData() {
     return $cursor;
 }
 
+function getPassword($username) {
+    $db = getDB();
+    $document = $db->UserData->findOne(['Username' => $username]);
+    return $document['Password'];
+}
+
 function updatePassword($username, $password) {
     $db = getDB();
     $passwordHashed = genPasswordHash($password); //make the secure password
@@ -101,13 +107,6 @@ function updateEmail($username, $email) {
     );
 }
 
-function getPassword($username) {
-    $db = getDB();
-
-    $document = $db->UserData->findOne(['Username' => $username]);
-    return $document['Password'];
-}
-
 //create fresh profile page for new user during registration
 //empty fields instantiated
 function createProfilePage($username) {
@@ -116,19 +115,20 @@ function createProfilePage($username) {
     $document = $db->ProfilePage->insertOne([
         'Username' => $userData['Username'],
         'Name' => $userData['Name'],
-        'AccountType' => $userData['AccountType'],
+        'AccountType' => $userData['AccountType'],//accountype will be either 'asm' for academic staff member, or ;ir; ofr industry representative
         'ProfilePicture' => '',
         'ContactInfo' => '',
         'Bio' => '',
         'Files' => [],
         'ResearchPages' => []
     ]);
+    $profilePageID = $document->getInsertedId();
     //add profile page to the user
     $updatedUserData = $db->UserData->updateOne(
         ['Username' => $username],
-        ['$set' => ['ProfilePage' => $document['_id']]]
+        ['$set' => ['ProfilePage' => $profilePageID]]
     );
-    return $document['_id'];
+    return $profilePageID;
 }
 
 //replace given fields with given values for this profile page
@@ -255,12 +255,31 @@ function researchPageExists($_id){
 function deleteResearchPage($_id) {
     $db = getDB();
     $document = $db->ResearchPage->deleteOne(['_id' => $_id]);
+function getAllResearchPages() {
+    $db = getDB();
+    $cursor = $db->ResearchPage->find(
+        [],
+        [
+            'sort' => ['Title' => 1],
+        ]);
+    return $cursor;
+}
+
+
+//return all research pages assigned to given user
+function getAllUsersResearchPages($username) {
+    $db = getDB();
+    $cursor = $db->ResearchPage->find(
+        ['Username' => $username],
+        []
+    );
+    return $cursor;
 }
 
 //return given number of most recently created research pages as a mongodb cursor object
 function findRecentResearchPages($num) {
     $db = getDB();
-    $cursor = $db->researchPage->find(
+    $cursor = $db->ResearchPage->find(
         [],
         [
             'limit' => $num,
@@ -275,7 +294,7 @@ function findRecentResearchPages($num) {
 function verifyPassword($username, $password) {
     global $pepper;
     $passwordPeppered = hash_hmac("sha256", $password, $pepper);
-    $storedPassword = getPasswordFromDB($username);
+    $storedPassword = getPassword($username);
     //password verify is php function to test for match
     if (password_verify($passwordPeppered, $storedPassword)) {
         return True;
@@ -296,5 +315,5 @@ function genPasswordHash($password) {
     //$passwordHashed is always 60 chars long
     return $passwordHashed;
 }
-?>
 
+?>
