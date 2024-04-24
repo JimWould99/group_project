@@ -51,11 +51,6 @@
 				</form>
 
 			</div>
-			<div class="research_trio">
-				<div class="research">
-					<img src="research_image1.jpg" alt="Research Image 1" />
-				</div>
-			</div>
 		</div>
 
 		<?php genFooter();?>

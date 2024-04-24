@@ -58,7 +58,7 @@
   <body>
 
   <?php genHeader($profileId);?>
-    <div id="profile-header">Profile Information</div>
+    <div id="profile-header"><?php echo $profile['Username'];?></div>
 
     <div id="main">
       <div class="tile">
