@@ -42,7 +42,9 @@
     <div id="main_landing">
       <div id="background">
         <div id="intro_text">
-          <p>Welcome example example_user to research_site</p>
+          <p>Welcome <?php if(isset($_SESSION["username"]))
+          {echo $_SESSION["username"];}
+          ?> to BrookesConnect</p>
           <p>
             Neque convallis a cras semper auctor neque. Tempus imperdiet nulla
             malesuada pellentesque elit eget. Eros in cursus turpis massa
