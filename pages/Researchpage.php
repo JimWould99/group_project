@@ -6,7 +6,11 @@
 	//ensure we are in session
 	session_start();
 
-	$profileId = getProfileId($_SESSION["username"]);
+	if (isset($_SESSION["username"])){
+		$profileId = getProfileId($_SESSION["username"]);
+	} else {
+		$profileId = "";
+	}
 	use MongoDB\BSON\ObjectId;
 
 	$_id = getId();

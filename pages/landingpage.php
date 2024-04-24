@@ -15,8 +15,12 @@
     array_push($_SESSION['researchPages'], $document);
     
   }
-
-  $profileId = getProfileId($_SESSION["username"]);
+  if (isset($_SESSION["username"])){
+    $profileId = getProfileId($_SESSION["username"]);
+  } else {
+    $profileId = "";
+  }
+  
 
 ?>
 

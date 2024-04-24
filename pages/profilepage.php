@@ -6,15 +6,25 @@
   //ensure we are in session
   session_start();
 
-  $profileId = getProfileId($_SESSION["username"]);
-  $_id = getId();
-
-  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      if (isset($_POST['edit_profile'])) {
-          redirect('editprofile.php');
-      }
-
+  if (isset($_SESSION["username"])){
+    $profileId = getProfileId($_SESSION["username"]);
+  } else {
+    $profileId = "";
   }
+
+  if (!getId()){
+    redirectHome();
+  } else{
+    $_id = getId();
+  }
+
+  $profile = getProfilePage($_id);
+
+  // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+  //     if (isset($_POST['edit_profile'])) {
+  //         redirect('editprofile.php');
+  //     }
+  // }
 
   $_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -26,12 +36,12 @@
   $_SESSION['contactInfo'] = '';
   $_SESSION['name'] = '';
 
-  if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
-      $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
-      $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
-      $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
-      $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
-    }
+  // if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
+  //     $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
+  //     $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
+  //     $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
+  //     $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
+  //   }
 
 
 ?>
@@ -53,11 +63,11 @@
     <div id="main">
       <div class="tile">
         <!-- Placeholder for researcher's image -->
-        <img src=<?php if ($_SESSION['profilePicture'] == '') {echo $_SESSION['placeHolderProfilePicture'];} else {echo $_SESSION['profilePicture'];}?> alt="Researcher Image" />
+        <img src=<?php if ($profile['ProfilePicture'] == '') {echo $_SESSION['placeHolderProfilePicture'];} else {echo $profile['ProfilePicture'];}?> alt="Researcher Image" />
       </div>
       <div id="text-box">
         <p>
-          <?php if ($_SESSION['bio'] == '') {echo $_SESSION['placeholderText'];} else {echo $_SESSION['bio'];} ?>
+          <?php if ($profile['Bio'] == '') {echo $_SESSION['placeholderText'];} else {echo $profile['Bio'];} ?>
         </p>
       </div>
     </div>
@@ -66,14 +76,12 @@
       <p><strong>Graduation:</strong> Ph.D. in [Field], [University Name]</p>
       <p><strong>Research Interests:</strong> [List of Research Interests]</p>
       <p><strong>Specializations:</strong> [List of Specializations]</p>
-      <p>
-        <strong>Contact Information:</strong> [Phone Number], [Email Address]
-      </p>
+      <p><strong>Contact Information:</strong> [Phone Number], [Email Address]</p>
     </div>
 
     
     <div id="button_to_edit_profile_page">
-      <form action="" method="post">
+      <form action="editprofile.php?_id=<?= $_id?>" method="post">
         <button name="edit_profile" value="edit_profile">Edit Profile</button>
       </form>
     </div>

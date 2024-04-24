@@ -7,7 +7,11 @@
   require_once('../utils/utils.php');
   //ensure we are in session
   session_start();
-  $profileId = getProfileId($_SESSION["username"]);
+  if (isset($_SESSION["username"])){
+    $profileId = getProfileId($_SESSION["username"]);
+  } else {
+    $profileId = "";
+  }
 
 ?>
 

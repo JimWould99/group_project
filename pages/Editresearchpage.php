@@ -5,7 +5,11 @@
 	require_once('../utils/utils.php');
 	//ensure we are in session
 	session_start();
-	$profileId = getProfileId($_SESSION["username"]);
+	if (isset($_SESSION["username"])){
+		$profileId = getProfileId($_SESSION["username"]);
+	} else {
+		$profileId = "";
+	}
 
 	use MongoDB\BSON\ObjectId;
 	$newPage = TRUE;
@@ -54,9 +58,9 @@
 		</div>
 		<?php
 			if ($newPage == FALSE){
-				echo '<form action="../scripts/phpScripts/submitresearch.php?_id='.$_GET["_id"].'" method="POST">';
+				echo '<form id="researchPage" action="../scripts/phpScripts/submitresearch.php?_id='.$_GET["_id"].'" method="POST">';
 			} else {
-				echo '<form action="../scripts/phpScripts/submitresearch.php" method="POST">';
+				echo '<form id="researchPage" action="../scripts/phpScripts/submitresearch.php" method="POST">';
 			}
 		 ?>
 			<div id="main">
@@ -78,7 +82,7 @@
 							}
 						?>
 					</div>
-					<button type="submit">Submit Research</button>
+					
 				</div>
 				<div class="research_trio">
 					<div class="research">
@@ -97,6 +101,7 @@
 				</div>
 			</div>
 		</form>
+		<button form="researchPage" type="submit">Submit Research</button>
 		<?php genFooter();?>
 
 		<script src="https://unpkg.com/pell"></script>
