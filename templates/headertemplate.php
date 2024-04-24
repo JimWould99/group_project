@@ -9,7 +9,7 @@
 					<a href='landingpage.php'>BrookesConnect</a>
 					<div id='info'>
 						<a href='search.php'>Search</a>
-						<a href='browseresearch.php'>Browse Research</a>
+						<a href='overview.php'>Research Overview</a>
 						<a href='browseprofiles.php'>Browse Profiles</a>
 						<a href='profilepage.php?_id=".$_id."'>My Profile</a>
 					</div>

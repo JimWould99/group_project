@@ -55,7 +55,8 @@ all pages- main bodies
 
 #landing_page,
 #search_page,
-#approve_page {
+#approve_page,
+#overview_page {
   background-color: rgb(209, 230, 251);
   margin: 0px;
   display: flex;
@@ -428,7 +429,8 @@ Search page
   box-shadow: 0px 0px 0px 4px #00bfff;
 }
 
-#search_results {
+#search_results,
+#overview {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 50px;
@@ -612,5 +614,72 @@ dialog > form {
 }
 
 #height {
+  min-height: 100vh;
+}
+
+
+/*
+Research Overview page
+*/
+
+#overview_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  gap: 50px;
+  margin: 50px 0px 50px 0px;
+  margin-left: 3.5%;
+  margin-right: 3.5%;
+}
+
+#overview_content > h1 {
+  margin: 0px;
+}
+
+#overview_buttons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+#overview_buttons > button {
+  height: 70px;
+  width: 250px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  border: 3px solid darkblue;
+}
+
+#overview_buttons > button:first-child {
+  background-color: #ffbf00;
+}
+
+#overview_buttons > button:nth-child(2) {
+  background-color: #006400;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0px 70px 0px;
+}
+
+#overview_buttons > button:nth-child(2) > * {
+  margin: 0px;
+}
+
+#overview_buttons > button:nth-child(3) {
+  background-color: #dda0dd;
+}
+
+#overview_buttons > button:nth-child(2) > span {
+  color: white;
+  font-size: 3rem;
+}
+
+#wrapper {
   min-height: 100vh;
 }

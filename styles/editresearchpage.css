@@ -161,7 +161,7 @@ textarea {
   height: 70%;
 }
 
-button {
+.submit-button {
   margin-left: 45%;
   margin-top: 10px;
   position: absolute;

@@ -223,11 +223,20 @@ function updateResearchPage($_id, $toUpdate) {
 
 function generateResearchCard(){// populates the search page with research cards
     foreach (getAllResearchPages() as $document) {
-        if ($document["Verified"] == true){ //CHANGE BACK TO == TRUE FOR CORRECT FUNCTIONALITY
+        if ($document["Verified"] == true){
             researchCard($document);
 		}
     }
 }
+
+function generateOverviewCard($username){// POPULATES THE OVERVIEW PAGE WITH YOUR RESEARCH
+    foreach (getAllResearchPages() as $document) {
+        if ($document["Username"] == $username){
+            overviewCard($document);
+        }
+    }
+}
+
 
 function generateApproveCard(){// populates the search page with research cards
     foreach (getAllResearchPages() as $document) {

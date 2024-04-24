@@ -108,7 +108,7 @@
 					</div>
 				</div>
 			</form>
-			<button form="researchPage" type="submit">Submit Research</button>
+			<button class="submit-button" form="researchPage" type="submit">Submit Research</button>
 		</div>
 		<?php genFooter();?>
 
