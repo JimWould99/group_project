@@ -15,13 +15,19 @@
     array_push($_SESSION['researchPages'], $document);
     
   }
+
   if (isset($_SESSION["username"])){
-    $profileId = getProfileId($_SESSION["username"]);
+    $accounttype = getUserData($_SESSION["username"])["AccountType"];
+    if($accounttype == "asm"){
+      $profileId = getProfileId($_SESSION["username"]);
+    } else{
+      $profileId = "";
+    }
   } else {
     $profileId = "";
+    $accounttype = "";
   }
   
-
 ?>
 
 <!doctype html>
@@ -33,7 +39,7 @@
     <link rel="stylesheet" href="../styles/styles.css" />
   </head>
   <body id="landing_page">
-  <?php genHeader($profileId);?>
+  <?php genHeader($profileId,$accounttype);?>
     <div id="main_landing">
       <div id="background">
         <div id="intro_text">

@@ -7,9 +7,15 @@
   session_start();
 
   if (isset($_SESSION["username"])){
-    $profileId = getProfileId($_SESSION["username"]);
+    $accounttype = getUserData($_SESSION["username"])["AccountType"];
+    if($accounttype == "asm"){
+      $profileId = getProfileId($_SESSION["username"]);
+    } else{
+      $profileId = "";
+    }
   } else {
     $profileId = "";
+    $accounttype = "";
   }
 
   if (!getId()){
@@ -57,7 +63,7 @@
   </head>
   <body>
 
-  <?php genHeader($profileId);?>
+  <?php genHeader($profileId,$accounttype);?>
     <div id="profile-header"><?php echo $profile['Username'];?></div>
 
     <div id="main">

@@ -5,8 +5,20 @@
 	require_once('../utils/utils.php');
 	//ensure we are in session
 	session_start();
-	$profileId = getProfileId($_SESSION["username"]);
+	if (isset($_SESSION["username"])){
+		$accounttype = getUserData($_SESSION["username"])["AccountType"];
+		if($accounttype == "asm"){
+		  $profileId = getProfileId($_SESSION["username"]);
+		} else{
+		  $profileId = "";
+		}
+	  } else {
+		$profileId = "";
+		$accounttype = "";
+	  }
 	use MongoDB\BSON\ObjectId;
+
+	
 
 	
 ?>
@@ -19,7 +31,7 @@
 		<link rel="stylesheet" href="../styles/styles.css" />
 	</head>
 	<body id="search_page">
-		<?php genHeader($profileId);?>
+		<?php genHeader($profileId,$accounttype);?>
 			<div id="top_section">
 				<div id="select_search">
 						<label for="author_select">Author

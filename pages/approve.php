@@ -5,11 +5,18 @@
 	require_once('../utils/utils.php');
 	//ensure we are in session
 	session_start();
+	
 	if (isset($_SESSION["username"])){
-		$profileId = getProfileId($_SESSION["username"]);
-	} else {
+		$accounttype = getUserData($_SESSION["username"])["AccountType"];
+		if($accounttype == "asm"){
+		  $profileId = getProfileId($_SESSION["username"]);
+		} else{
+		  $profileId = "";
+		}
+	  } else {
 		$profileId = "";
-	}
+		$accounttype = "";
+	  }
 
 ?>
 <!doctype html>
@@ -22,7 +29,7 @@
 	</head>
 	<body id="approve_page">
 		<div id="height">
-		<?php genHeader($profileId);?>
+		<?php genHeader($profileId,$accounttype);?>
 			<!--
 			<div class="approve_bar">
 				<div id="research_card" onclick="location.href='#'">

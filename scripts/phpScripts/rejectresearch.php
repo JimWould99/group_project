@@ -8,7 +8,6 @@
 	$rejectMessage = $_POST["feedback"];
 	setRejectMessage($_id, $rejectMessage);
 	setResearchPageVerification($_id,false);
-	rejectResearchPage($_id); // not strictly necessary but felt i should do this to be safe
 	header("Location: ../../pages/approve.php"); # TO DO indicate in some way that it was successful.
 	
 ?>

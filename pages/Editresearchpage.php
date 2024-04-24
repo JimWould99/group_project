@@ -6,10 +6,16 @@
 	//ensure we are in session
 	session_start();
 	if (isset($_SESSION["username"])){
-		$profileId = getProfileId($_SESSION["username"]);
-	} else {
+		$accounttype = getUserData($_SESSION["username"])["AccountType"];
+		if($accounttype == "asm"){
+		  $profileId = getProfileId($_SESSION["username"]);
+		} else{
+		  $profileId = "";
+		}
+	  } else {
 		$profileId = "";
-	}
+		$accounttype = "";
+	  }
 
 	use MongoDB\BSON\ObjectId;
 	$newPage = TRUE;
@@ -40,7 +46,7 @@
 		/>
 	</head>
 	<body>
-	<?php genHeader($profileId);?>
+	<?php genHeader($profileId,$accounttype);?>
 		<div id="reject-message">
 		<?php
 			if ($newPage == FALSE ){// change to false
