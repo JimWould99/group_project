@@ -1,5 +1,5 @@
 <?php
-	$path = $_SERVER['DOCUMENT_ROOT']."/ResearchConnect/";	
+	$path = $_SERVER['DOCUMENT_ROOT']."/real_group_project/";	
 
     include($path.'/templates/landingpagetemplate.php');
     include($path.'/templates/approvecardtemplate.php');
