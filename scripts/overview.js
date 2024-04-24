@@ -15,6 +15,18 @@ for (let i = 0; i < allResearch.length; i++) {
   });
 }
 
+function edit(){
+  let id = selected.attributes["onchange"].value;
+  if (selected){
+    window.location.href='Editresearchpage.php?_id='+id;
+  }
+}
+
+// when something is selected, and the edit research button is clicked, go the page stored on the 
 function deletion() {
-  selected.remove();
+  let id = selected.attributes["onchange"].value;
+  if (selected){
+    window.location.href='../scripts/phpScripts/deleteresearch.php?_id='+id;
+  }
+  // selected.remove();
 }

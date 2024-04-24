@@ -16,5 +16,5 @@
 	setResearchPageVerification($_id,false);// sets the page to unverified so that it needs to be verified by a tto
 
 	#TO DO indicate in some way that it was successful.
-	header("Location: ../../pages/browseresearch.php");
+	header("Location: ../../pages/overview.php");
 ?>

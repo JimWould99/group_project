@@ -48,14 +48,6 @@
 					echo "<p>".$research["Title"]."</p>";
 					echo "<p>".$research["Body"]."</p>";
 				?>
-				<form action="../scripts/phpScripts/deleteresearch.php" method="post">
-					<input hidden name="_id" value="<?= $_id?>" />
-					<button>Delete Research</button>
-				</form>
-					<?php echo'<form action="editresearchpage.php?_id='.$_id.'" method="post">';?>
-					<button>Edit Research page</button>
-				</form>
-
 			</div>
 		</div>
 
