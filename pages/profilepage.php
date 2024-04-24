@@ -83,12 +83,19 @@
       <p><strong>Contact Information:</strong> [Phone Number], [Email Address]</p>
     </div>
 
-    
-    <div id="button_to_edit_profile_page">
-      <form action="editprofile.php?_id=<?= $_id?>" method="post">
-        <button name="edit_profile" value="edit_profile">Edit Profile</button>
-      </form>
-    </div>
+    <?php
+      if(isset($_SESSION["username"]) && $accounttype == "asm"){
+        if ($profileId == $_id){
+          echo '
+          <div id="button_to_edit_profile_page">
+            <form action="editprofile.php?_id=<?= $_id?>" method="post">
+              <button name="edit_profile" value="edit_profile">Edit Profile</button>
+            </form>
+          </div>
+          ';
+        }
+      }
+    ?>
     <?php genFooter();?>
   </body>
 </html>
