@@ -1,5 +1,5 @@
 <?php
-
+	//generates the footer for the page
 	function genFooter() {
 		echo 
 		'<div id="footer_landing">

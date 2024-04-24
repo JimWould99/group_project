@@ -1,9 +1,8 @@
 <?php
-
+	// this function generates the header based on whether the user is logged in, and if so which account thype they have
 	function genHeader($_id = "", $accountType=""){
-
 		if (isset($_SESSION['username'])) {
-			if ($accountType == "asm"){
+			if ($accountType == "asm"){ // if you are an Academic staff member
 				echo 
 				"<div id='header'>
 					<a href='landingpage.php'>BrookesConnect</a>
@@ -16,7 +15,7 @@
 					<a href=logout.php>Log Out</a>
 				</div>";
 
-			} else if ($accountType == "tto"){
+			} else if ($accountType == "tto"){ // if you are a tech transfer officer
 				echo 
 				"<div id='header'>
 					<a href='landingpage.php'>BrookesConnect</a>
@@ -29,7 +28,7 @@
 					<a href=logout.php>Log Out</a>
 				</div>";
 
-			} else {// if you are an IR
+			} else {// if you are an Industrial representative
 				echo 
 				"<div id='header'>
 					<a href='landingpage.php'>BrookesConnect</a>

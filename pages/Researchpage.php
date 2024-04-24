@@ -1,33 +1,33 @@
 <?php
-	require_once('../templates/headertemplate.php');
-	require_once('../templates/footertemplate.php');
-	require_once('../dbutils/mongodbutils.php');
-	require_once('../utils/utils.php');
-	//ensure we are in session
-	session_start();
-
-	if (isset($_SESSION["username"])){
-		$accounttype = getUserData($_SESSION["username"])["AccountType"];
-		if($accounttype == "asm"){
-		  $profileId = getProfileId($_SESSION["username"]);
-		} else{
-		  $profileId = "";
+	require_once('../templates/headertemplate.php'); // requires the header template to be loaded
+	require_once('../templates/footertemplate.php'); // requires the footer template to be loaded
+	require_once('../dbutils/mongodbutils.php'); // requires that all functions that directly interact with the mongodb to be loaded
+	require_once('../utils/utils.php'); // requires the non db interacting functions to be loaded in
+	session_start(); //ensure we are in session
+	
+	if (isset($_SESSION["username"])){ // checks if the user is logged in
+		$accounttype = getUserData($_SESSION["username"])["AccountType"]; // fetches the user's account type
+		if($accounttype == "asm"){ // if logged in with an asm account
+			$profileId = getProfileId($_SESSION["username"]); //fetches and sets the profile id associated with the logged in asm account
+		} else{ // if not an asm sets profile id to blank string so that functions don't break but also do nothing
+			$profileId = "";
 		}
-	  } else {
+	} else { // if not logged in sets the profile id and account type to nothing to allow functions to work
 		$profileId = "";
 		$accounttype = "";
-	  }
-	use MongoDB\BSON\ObjectId;
-
-	$_id = getId();
-	if ($_id == FALSE){
-		redirectHome();
 	}
 	
-	if (researchPageExists($_id) == TRUE){ #checks that the research page exists
-		$research = getResearchPage($_id);
-	} else{
+
+	if (!getId()){ // if get id returns false, then you are on a faulty page, so it sends you to the landing page
 		redirectHome();
+	} else{ // if page works get the page id via GET method
+		$_id = getId();
+	}
+	
+	if (researchPageExists($_id) == TRUE){ // if the research page exits
+		$research = getResearchPage($_id); // gets research associated with the id
+	} else{
+		redirectHome(); // redirect to landing page if not
 	}
 ?>
 

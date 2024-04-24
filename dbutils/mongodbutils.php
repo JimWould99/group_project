@@ -44,6 +44,7 @@ function emailExists($email) {
     return true;
 }
 
+// Takes a user's username and returns an their email
 function getEmail($username) {
     $db = getDB();
     $document = $db->UserData->findOne(['Username' => $username]);
@@ -66,6 +67,7 @@ function createNewUser($username, $email, $accountType, $password) {
     ]);
 }
 
+// Takes in a username and returns an array containing all data associated with a user
 function getUserData($username) {
     $db = getDB();
     $document = $db->UserData->findOne(['Username' => $username]);
@@ -148,12 +150,14 @@ function updateProfilePage($_id, $toUpdate) {
     }
 }
 
+// takes a profile page id and returns an array containing all of the profile page data
 function getProfilePage($_id) {
     $db = getDB();
     $document = $db->ProfilePage->findOne(['_id' => $_id]);
     return $document;
 }
 
+// Gets all of the profile pages for use in generateProfiles()
 function getAllProfilePages() {
     $db = getDB();
     $cursor = $db->ProfilePage->find(
@@ -165,6 +169,7 @@ function getAllProfilePages() {
     return $cursor;
 }
 
+// takes in a username and returns the profile id of said user
 function getProfileId($username) {
     $db = getDB();
     $document = $db->ProfilePage->findOne(['Username' => $username]);
@@ -194,6 +199,7 @@ function createResearchPage($username) {
     return $document;
 }
 
+// populates the profile page with all profiles (only for asms as only they get profiles)
 function generateProfiles(){
     foreach (getAllProfilePages() as $document) {
         profileCard($document);
@@ -221,7 +227,8 @@ function updateResearchPage($_id, $toUpdate) {
     );
 }
 
-function generateResearchCard(){// populates the search page with research cards
+//  populates the search and browse research pages with research cards (only verified research)
+function generateResearchCard(){
     foreach (getAllResearchPages() as $document) {
         if ($document["Verified"] == true){
             researchCard($document);
@@ -229,7 +236,8 @@ function generateResearchCard(){// populates the search page with research cards
     }
 }
 
-function generateOverviewCard($username){// POPULATES THE OVERVIEW PAGE WITH YOUR RESEARCH
+// populates the overview page with research, variant of regular research cards but withouth onclick functionality
+function generateOverviewCard($username){// 
     foreach (getAllResearchPages() as $document) {
         if ($document["Username"] == $username){
             overviewCard($document);
@@ -237,8 +245,8 @@ function generateOverviewCard($username){// POPULATES THE OVERVIEW PAGE WITH YOU
     }
 }
 
-
-function generateApproveCard(){// populates the search page with research cards
+// as in the above functions generates approve cards for the approval page, (only non verified pages)
+function generateApproveCard(){
     foreach (getAllResearchPages() as $document) {
         if ($document["Verified"] == false){
             echo '<div class="approve_bar">';
@@ -249,7 +257,8 @@ function generateApproveCard(){// populates the search page with research cards
     }
 }
 
-function setResearchPageVerification($_id, $status){// verifies the research page after being approved by an TTO
+//  verifies the research page after being approved by an TTO
+function setResearchPageVerification($_id, $status){
     $db = getDB();
     $db->ResearchPage->updateOne(
         ['_id'=>$_id],
@@ -257,15 +266,14 @@ function setResearchPageVerification($_id, $status){// verifies the research pag
     );
 }
 
-function setRejectMessage($_id, $rejectMessage){// sets the reject message
+// sets the reject message when a tto rejects research
+function setRejectMessage($_id, $rejectMessage = ""){
     $db = getDB();
     $db->ResearchPage->updateOne(
         ['_id'=>$_id],
         ['$set'=>['RejectMessage'=>$rejectMessage]]
     );
 }
-
-
 
 //return research page document for given research page id
 function getResearchPage($_id) {
@@ -290,7 +298,7 @@ function deleteResearchPage($_id) {
     $document = $db->ResearchPage->deleteOne(['_id' => $_id]);
 }
 
-//
+// function use by 3 other functions, gets all of the research pages that currently exist in the db and returns them.
 function getAllResearchPages() {
     $db = getDB();
     $cursor = $db->ResearchPage->find(

@@ -1,6 +1,6 @@
 <?php
 
-//produce html for a research card with data from given research page document (rpd)
+//produce html for an approve card with data from given research page document (rpd)
     function approveCard($_id) {
         echo'
             <div id="button_box">
@@ -18,8 +18,5 @@
         </dialog>
     </div>';
     }
-
-
-//do this function first to generate research cards,
 
 ?>

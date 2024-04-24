@@ -1,6 +1,6 @@
 <?php
 
-//produce html for a research card with data from given research page document (rpd)
+//produce html for an overview card with data from given research page document (rpd)
     function overviewCard($rpd) {
         echo "<div id='research_card' onchange='".$rpd['_id']."'>";
         echo "<p id='title'>" . $rpd['Title'] . "</p>";
