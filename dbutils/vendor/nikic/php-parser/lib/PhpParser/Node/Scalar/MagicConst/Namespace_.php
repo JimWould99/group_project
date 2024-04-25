@@ -4,12 +4,12 @@ namespace PhpParser\Node\Scalar\MagicConst;
 
 use PhpParser\Node\Scalar\MagicConst;
 
-class Line extends MagicConst {
+class Namespace_ extends MagicConst {
     public function getName(): string {
-        return '__LINE__';
+        return '__NAMESPACE__';
     }
 
     public function getType(): string {
-        return 'Scalar_MagicConst_Line';
+        return 'Scalar_MagicConst_Namespace';
     }
 }
