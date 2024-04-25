@@ -46,19 +46,6 @@
       </div>
       <div id="overview">
 		<?php generateOverviewCard($_SESSION["username"]) #runs the script that generates cards?>
-
-        <!-- <div id="research_card" onclick="location.href='#'">
-          <p id="title">Example title one</p>
-          <div id="image"></div>
-          <p id="short_bio">
-            Short Bio: Neque convallis a cras semper auctor neque. Tempus
-            imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-            nulla malesuada pellentesque elit eget.
-          </p>
-          <p id="author">David Lightfoot</p>
-        </div> -->
-
-
       </div>
       
     </div>

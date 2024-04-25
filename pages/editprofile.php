@@ -54,25 +54,14 @@
     
   }
 
-  // $_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-  // eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-  // minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-  // aliquip ex ea commodo consequat.';
    $_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
-  // $_SESSION['bio'] = $_SESSION['placeholderText'];
-  // $_SESSION['profilePicture'] = $_SESSION['placeHolderProfilePicture'];
-  // $_SESSION['contactInfo'] = '';
-  // $_SESSION['name'] = '';
+
 
    for ($x = 1; $x <= 4; $x++) {
      $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];
    }
 
-  // if(isset($profilePage)) {//set up vars to use to fill page
-  //   $_SESSION['bio'] = $profilePage['Bio'];//grab stored bio
-  //   $_SESSION['profilePicture'] = $profilePage['ProfilePicture'];//grab profile stored picture
-  //   $_SESSION['contactInfo'] = $profilePage['ContactInfo'];//grab stored contact info
-  //   $_SESSION['name'] = $profilePage['Name'];//grab stored name
+
 
      for ($x = 1; $x <= 4; $x++) {
        if (isset($profilePage['Files']["tile{$x}"])) {
