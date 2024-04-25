@@ -190,6 +190,7 @@ function createResearchPage($username) {
         'Blurb' => '',
         'Body' => '',
         'Images' => [],
+        'Files' => [],
         'RejectMessage' => '',
         'Tags' => [],
         'Verified' => false,
@@ -340,7 +341,7 @@ function verifyPassword($username, $password) {
 //TODO: file management
 $ds = DIRECTORY_SEPARATOR;
 $repopath = "C:{$ds}xampp{$ds}htdocs{$ds}real_group_project{$ds}storage{$ds}";
-$storageRoot = 'real_group_project/storage';
+$storageRoot = '../storage';
 //e.g. str: \storage\testuser400\Ocelot.png'
 
 function storeProfilePicture($file, $profilePage) {
@@ -382,6 +383,7 @@ function storeTileImage($file, $profilePage, $tileNum) {
     $newProfileFiles = array_merge($oldProfileFiles, ["tile{$tileNum}" => $storedFilePath]);
     updateProfilePage($profilePage['_id'], ['Files' => $newProfileFiles]);
 }
+
 
 
 //returns salted, peppered, and hashed password with 60 char length for given password
