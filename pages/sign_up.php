@@ -115,6 +115,9 @@
                     <label for="ir">Industry Representative
                     <input type="radio" name="account_type" id="ir" value="ir">
                     <span class="checked"></span>
+                    <label for="ir">Tech transfer officer
+                    <input type="radio" name="account_type" id="tto" value="tto">
+                    <span class="checked"></span>
                 </div>
             </div>
             <button type="submit" name="login_button" id="login_button">Register</button>
