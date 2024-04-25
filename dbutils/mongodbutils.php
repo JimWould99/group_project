@@ -1,9 +1,7 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 require_once('db.php');
-//use Exception;
-use MongoDB\Client;
-use MongoDB\Driver\ServerApi;
+
 
 //128-char randomly generated string for the pepper
 $pepper = "z=mJZj0j4Bk;#(&m6Br3YvG;)y@[X1wqwPpt:{AW-W=/k-Y644.yM*B2hhU7(N(SXK+@5C1i=,}uZF({+fSVUM.cBH?ARZW/22-Jt-MHwAj}2fF!]v&(v}-[D(K13#t(";
@@ -11,6 +9,7 @@ $pepper = "z=mJZj0j4Bk;#(&m6Br3YvG;)y@[X1wqwPpt:{AW-W=/k-Y644.yM*B2hhU7(N(SXK+@5
 //->ProfilePage: Username, Name, AccountType, ProfilePicture, ContactInfo, Bio, Files, ResearchPages,  _id
 //->ResearchPage: Title, Blurb, Body, Images, Tags, Username, _id, 
 
+//return the connection from our singleton mongodb class
 function getDB() {
     $instance = MongoDatabase::getInstance();
     return $instance->getConnection();
@@ -51,8 +50,8 @@ function getEmail($username) {
     if (is_null($document)) {return false;}
     return $document['Email'];
 }
-//->UserData: Username, Email, Name, Password, AccountType, ProfilePage, ResearchPages, _id
-//TODO: add Name + AccountType functionality
+
+//add new user into the db
 function createNewUser($username, $email, $accountType, $password) {
     $db = getDB();
     $passwordHashed = genPasswordHash($password); //make the secure password
@@ -74,7 +73,7 @@ function getUserData($username) {
     return $document;
 }
 
-//'just for testing
+//just for testing
 function getAllUserData() {
     $db = getDB();
     $cursor = $db->UserData->find(
@@ -86,6 +85,7 @@ function getAllUserData() {
     return $cursor;
 }
 
+//return the encrypted password stored for the given user
 function getPassword($username) {
     $db = getDB();
     $document = $db->UserData->findOne(['Username' => $username]);
@@ -93,6 +93,7 @@ function getPassword($username) {
     return $document['Password'];
 }
 
+//daves new password for the given user
 function updatePassword($username, $password) {
     $db = getDB();
     $passwordHashed = genPasswordHash($password); //make the secure password
@@ -103,6 +104,7 @@ function updatePassword($username, $password) {
     );
 }
 
+//saves the new email for a given user
 function updateEmail($username, $email) {
     $db = getDB();
 
@@ -120,7 +122,7 @@ function createProfilePage($username) {
     $document = $db->ProfilePage->insertOne([
         'Username' => $userData['Username'],
         'Name' => $userData['Name'],
-        'AccountType' => $userData['AccountType'],//accountype will be either 'asm' for academic staff member, or ;ir; ofr industry representative
+        'AccountType' => $userData['AccountType'],//accountype will be either 'asm' for academic staff member, 'ir' for industry representative, or 'tto' for technical transfer officer
         'ProfilePicture' => 'https://via.placeholder.com/150',
         'ContactInfo' => '',
         'Bio' => '',
@@ -180,8 +182,7 @@ function getProfileId($username) {
 
 //->ResearchPage: Title, Blurb, Body, Images, Tags, Username, _id, 
 //create fresh mostly empty research page
-//return the generated if for the research page
-
+//return the generated id for the research page
 function createResearchPage($username) {
     $db = getDB();
     $document = $db->ResearchPage->insertOne([
@@ -227,7 +228,7 @@ function updateResearchPage($_id, $toUpdate) {
         ['$set' => ['LastEditedTimestamp' => time()]]
     );
 }
-
+//replaces the files array for a research page
 function updateResearchFiles() {
     $db = getDB();
     $newFiles = [];
@@ -347,12 +348,14 @@ function verifyPassword($username, $password) {
     return False;
 }
 
-//TODO: file management
+//file management
+//dealing with windows paths
 $ds = DIRECTORY_SEPARATOR;
 $repopath = "C:{$ds}xampp{$ds}htdocs{$ds}real_group_project{$ds}storage{$ds}";
 $storageRoot = '../storage';
 //e.g. str: \storage\testuser400\Ocelot.png'
 
+//sotre the given image as the given profile pages profile picture
 function storeProfilePicture($file, $profilePage) {
     global $repopath;
     global $ds;
@@ -366,11 +369,12 @@ function storeProfilePicture($file, $profilePage) {
     $filename = "pp.{$extension}";
     $finalfilepath = $repopath . $username . $ds . $filename;
     move_uploaded_file($file['tmp_name'], $finalfilepath); //moves the file from temp storage to disk
-    //convert serpators to be server friendly
+    //convert seperators to be server friendly
     $storedFilePath = "{$storageRoot}/{$username}/{$filename}";
     updateProfilePage($profilePage['_id'], ['ProfilePicture' => $storedFilePath]);
 }
 
+//store images associated with given research page
 function storeResearchImage($file, $researchpage, $tileNum) {
     global $repopath;
     global $ds;
@@ -394,6 +398,7 @@ function storeResearchImage($file, $researchpage, $tileNum) {
     updateResearchPage($researchpage['_id'], ['Images' => $newProfileFiles]);
 }
 
+//store files associated with given research page
 function storeResearchFile($file, $researchpage) {
     global $repopath;
     global $ds;
@@ -416,18 +421,18 @@ function storeResearchFile($file, $researchpage) {
 
 }
 
+//delete given file from given research page
 function deleteResearchFile($file, $researchpage) {
 
 
     $oldResearchFiles = $researchpage['Files'];
     //convert the stored BSON array object into php array
     $oldResearchFiles = iterator_to_array($oldResearchFiles);
-    unset($oldResearchFiles[$file]);//TODO: check whether file is the filename or literal file type
+    unset($oldResearchFiles[$file]);
     updateResearchPage($researchpage['_id'], ['Files' => $oldResearchFiles]);
-
 }
 
-
+//store an image for a given tile for a given profile page
 function storeTileImage($file, $profilePage, $tileNum) {
     global $repopath;
     global $ds;

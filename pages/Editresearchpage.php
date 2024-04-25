@@ -28,10 +28,10 @@
 			redirectHome(); // if trying to access a page that doesn't exist errors would occur so sends back to landing page
 		}
 	}
-
+	//if reached via post:
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		if (isset($research)) {
-		  //upload new profile picture
+		  //upload new file
 		  if(isset($_FILES['uploadFile'])) {
 			storeResearchFile($_FILES['uploadFile'], $profilePage);
 		  }
@@ -127,7 +127,7 @@
 								<input type="file" name="uploadFile" id="uploadFile">
         				</div> 
 						<?php
-						if(isset($research)) {
+						if(isset($research)) {//if research has already beened saved then show any uploaded files for download
 							$rows = $research['Files'];
 							$rows = iterator_to_array($rows);//convert bson object to PHP array
 							echo "<table>"; // start a table tag in the HTML

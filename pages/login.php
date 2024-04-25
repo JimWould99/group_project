@@ -5,19 +5,14 @@
     require_once('../dbutils/mongodbutils.php');
     require_once('../utils/utils.php');
 
-    //check if user is already logged in
-    //TODO: maybe change this as should have to log out before accessing this page again?...
-    if (isset($_SESSION['username'])) {
-        //redirect to user's homepage if they are already signed in
-        //echo "redirect to correct page post login";
-        //TODO
-        redirectLandingPage();
-        exit;  
-    }
+   //check if user is already logged in
+   if (isset($_SESSION['username'])) {
+    //redirect to landing page as this page shouldn't be accessible if user already logged in
+    redirectLandingPage();
+    exit;  
+}
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        //TODO: remove debugging echo
-        //print_r($_POST);
         if (isset($_POST['login_button'])) {
             //login attempt has been made, check db for matches
             $username_or_email = $_POST['username'];
@@ -32,7 +27,7 @@
                 $username = $username_or_email;
                 $email = getEmail($username);
             }
-
+            //check for collisions in db
             if (!userExists($username)) {
                 $error["username"] = "username not found";
             }
@@ -56,13 +51,10 @@
                 //regenerate session id to reduce fixation attacks
                 session_regenerate_id(true);
                 //redirect to desired page after login
-                //TODO meant to be home page i believe
-                //echo "redirect to correct page post registration";
                 redirectLandingPage();
                 exit;
             } else {
-                //TODO: better error handling
-                //print_r($error);
+
             }
         }
     }

@@ -25,7 +25,7 @@
 
   $profile = getProfilePage($_id); // gets the profile data associated with the profile id
 
-
+//[laceholder vars]
   $_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
   minim veniam, quis nostrud exercitation ullamco laboris nisi ut
@@ -37,11 +37,11 @@
   $_SESSION['name'] = '';
 
 
-
+//fill tiles with placeholder images
   for ($x = 1; $x <= 4; $x++) {
     $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];
   }
-
+//check if anything exists to replace placeholder images, replace if it does
   for ($x = 1; $x <= 4; $x++) {
     if (isset($profile['Files']["tile{$x}"])) {
       $_SESSION["tile{$x}"] = $profile['Files']["tile{$x}"];
@@ -67,7 +67,6 @@
       <div id="sub-wrapper">
         <div id="main">
           <div class="tile">
-            <!-- Placeholder for researcher's image -->
             <img src=<?php if ($profile['ProfilePicture'] == '')
             {echo $_SESSION['placeHolderProfilePicture'];
             } else {echo $profile['ProfilePicture'];}?> alt="Researcher Image" />

@@ -27,7 +27,7 @@
 
 
   $profile = getProfilePage($_id); // gets the profile data associated with the profile id
-//TODO:
+  //if arrived via post:
   if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if (isset($profilePage)) {
         //upload new profile picture
@@ -56,13 +56,13 @@
 
    $_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
 
-
+//fill tiles with placeholder images
    for ($x = 1; $x <= 4; $x++) {
      $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];
    }
 
 
-
+//check if anything exists to replace placeholder images, replace if it does
      for ($x = 1; $x <= 4; $x++) {
        if (isset($profilePage['Files']["tile{$x}"])) {
          $_SESSION["tile{$x}"] = $profilePage['Files']["tile{$x}"];
