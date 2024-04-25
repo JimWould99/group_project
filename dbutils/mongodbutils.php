@@ -371,15 +371,16 @@ function storeResearchImage($file, $researchpage, $tileNum) {
     if(!is_dir($finaldirpath)) {mkdir($finaldirpath);}
     $basename = basename($file['name']);
     $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-    $filename = "tile{$tileNum}.{$extension}";
+
+    $filename = "thumbnail{$tileNum}.{$extension}";
     $finalfilepath = $repopath . $username . $ds . $filename;
     move_uploaded_file($file['tmp_name'], $finalfilepath); //moves the file from temp storage to disk
     //convert serpators to be server friendly
     $storedFilePath = "{$storageRoot}/{$username}/{$filename}";
-    $oldProfileFiles = $researchpage['Files'];
+    $oldProfileFiles = $researchpage['Images'];
     //convert the stored BSON array object into php array
     $oldProfileFiles = iterator_to_array($oldProfileFiles);
-    $newProfileFiles = array_merge($oldProfileFiles, ["tile{$tileNum}" => $storedFilePath]);
+    $newProfileFiles = array_merge($oldProfileFiles, ["thumbnail{$tileNum}" => $storedFilePath]);
     updateResearchPage($researchpage['_id'], ['Images' => $newProfileFiles]);
 }
 
