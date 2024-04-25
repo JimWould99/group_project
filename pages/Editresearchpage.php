@@ -47,7 +47,9 @@
 	<body>
 	<?php genHeader($profileId,$accounttype);?>
 		<div id="wrap_edit_r">
-			<div id="reject-message">
+			<?php if($newPage == FALSE){
+				echo '<div id="reject-message">';
+			} ?>
 			<?php
 				if ($newPage == FALSE ){// this section sets the message to the ASM that tells them the current status of their research
 					if($research["Verified"] == false){
@@ -61,7 +63,10 @@
 					}
 				}
 			 ?>
-			</div>
+			 <?php if($newPage == FALSE){
+				echo '</div>';
+			} ?>
+			
 			<?php
 				if ($newPage == FALSE){ // crude method of loading in different html based on if a new page is being made or existing being edited
 					echo '<form id="researchPage" action="../scripts/phpScripts/submitresearch.php?_id='.$_GET["_id"].'" method="POST" enctype="multipart/form-data">';
