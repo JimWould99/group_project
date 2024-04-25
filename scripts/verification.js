@@ -19,6 +19,7 @@ const confirmation = document.querySelector("#confirm");
 
 const asm_button = document.querySelector("#asm");
 const ir_button = document.querySelector("#ir");
+const tto_button = document.querySelector("#tto");
 
 const username_section = document.querySelector("#first_sub");
 const email_section = document.querySelector("#second_sub");
@@ -47,7 +48,7 @@ form.addEventListener("submit", (e) => {
   let extra_list = [];
 
   // check a radio button has been selected
-  if (!asm_button.checked && !ir_button.checked) {
+  if (!asm_button.checked && !ir_button.checked && !tto_button.checked) {
     extra_list.push("Check user option");
     extra_section.setAttribute("id", "invalid");
   }

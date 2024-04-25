@@ -33,6 +33,8 @@
             if (emailExists($email)) {
                 $error['email'] = "email is already in use";
             }
+
+    
             
             //if no errors, continue
             if (empty($error)) {
@@ -55,9 +57,10 @@
                 redirectLandingPage();
                 exit;
             } else {
+                echo 'has not worked';
                 //TODO: better error handling
                 //print_r($error);
-            }
+            } 
 
         }
     }
@@ -104,6 +107,11 @@
             <div id="extra_section">
                 <span id="radio_match" >
                     Passwords must match
+                    <?php if (empty($error)){
+                        echo '
+                        Invalid username or password
+                        ';
+                    }?>
                 </span>
             </div>
             <div id="select">
