@@ -35,6 +35,7 @@
           storeProfilePicture($_FILES['uploadFile'], $profilePage);
         }//upload given tile image
         if(isset($_FILES['uploadTile1'])) {
+          echo 'tile 1';
           storeTileImage($_FILES['uploadTile1'], $profilePage, 1);
         }
         if(isset($_FILES['uploadTile2'])) {
@@ -47,8 +48,7 @@
           storeTileImage($_FILES['uploadTile4'], $profilePage, 4);
         }
         //reload profile page from db into session
-        $profile = getProfilePage(($profilePage['_id']));
-        $profilePage = $profile;
+        $profilePage = getProfilePage(($profilePage['_id']));
       }
     
   }
