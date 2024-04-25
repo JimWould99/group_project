@@ -8,6 +8,8 @@
 	if (!getId()){// if there was no id
 		$_id = createResearchPage($username)->getInsertedId(); //makes a new page and gets its id
 	}
+	
+	storeResearchImage($_FILES['Thumbnail'], getResearchPage($_id), 1);
 
 	updateResearchPage($_id, $_POST); // fills in values submitted to this script into the new/existing research page
 	setResearchPageVerification($_id,false);// sets the page to unverified so that it needs to be verified by a tto

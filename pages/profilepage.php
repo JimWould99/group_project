@@ -77,7 +77,9 @@
     <div id="main">
       <div class="tile">
         <!-- Placeholder for researcher's image -->
-        <img src=<?php if ($profile['ProfilePicture'] == '') {echo $_SESSION['placeHolderProfilePicture'];} else {echo $profile['ProfilePicture'];}?> alt="Researcher Image" />
+        <img src=<?php if ($profile['ProfilePicture'] == '') 
+        {echo $_SESSION['placeHolderProfilePicture'];
+        } else {echo $profile['ProfilePicture'];}?> alt="Researcher Image" />
       </div>
       <div id="text-box">
         <p>

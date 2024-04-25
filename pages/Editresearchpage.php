@@ -47,7 +47,9 @@
 	<body>
 	<?php genHeader($profileId,$accounttype);?>
 		<div id="wrap_edit_r">
-			<div id="reject-message">
+			<?php if($newPage == FALSE){
+				echo '<div id="reject-message">';
+			} ?>
 			<?php
 				if ($newPage == FALSE ){// this section sets the message to the ASM that tells them the current status of their research
 					if($research["Verified"] == false){
@@ -61,12 +63,15 @@
 					}
 				}
 			 ?>
-			</div>
+			 <?php if($newPage == FALSE){
+				echo '</div>';
+			} ?>
+			
 			<?php
 				if ($newPage == FALSE){ // crude method of loading in different html based on if a new page is being made or existing being edited
-					echo '<form id="researchPage" action="../scripts/phpScripts/submitresearch.php?_id='.$_GET["_id"].'" method="POST">';
+					echo '<form id="researchPage" action="../scripts/phpScripts/submitresearch.php?_id='.$_GET["_id"].'" method="POST" enctype="multipart/form-data">';
 				} else {
-					echo '<form id="researchPage" action="../scripts/phpScripts/submitresearch.php" method="POST">';
+					echo '<form id="researchPage" action="../scripts/phpScripts/submitresearch.php" method="POST" enctype="multipart/form-data">';
 				}
 			 ?>
 				<div id="main">
@@ -93,9 +98,10 @@
 					<div class="research_trio">
 						<div class="research">
 							<div>This is the blurb section!</div>
-			
-							<img id="image1" src="research_image1.jpg" alt="Research Image 1" /> <!-- DO THIS LATER, NO WAY TO UPLOAD IMAGES YET -->
-							<input type="text" id="image1-url" placeholder="THIS IS CURRENTLY A PLAEHOLDER THERE IS NOTHING HERE" />
+								Select thumbnail image to upload:
+								<input type="file" name="Thumbnail" id="Thumbnail">
+							<?php 							
+							if(isset($research['Images']["thumbnail1"])){echo '<img id="image1" src='.$research['Images']["thumbnail1"].' alt="Research Image" />';}?>
 							<?php // this is the blurb
 								if ($newPage == FALSE){// crude method of loading in different html based on if a new page is being made or existing being edited
 									echo '<textarea name="Blurb" rows="3" cols="40" placeholder="Please enter a blurb for your research, no more than 150 words as anything past that will not be displayed">'.$research["Blurb"].'</textarea>';

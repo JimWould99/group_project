@@ -32,7 +32,7 @@ body {
 }
 
 #wrap_edit_r {
-  min-height: 80vh;
+  min-height: 100vh;
 }
 
 #info {
@@ -63,7 +63,6 @@ body {
   box-shadow: 0px 0px 10px 0px black;
   font-family: Arial, sans-serif;
   width: 100%;
-  margin-top: 50px;
 }
 #footer_landing > * {
   background-color: #4935f7;
@@ -128,7 +127,7 @@ body {
 }
 
 .research {
-  background-color: #faf9f6;
+  background-color: #fffff0;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 5px 0px black;
@@ -163,7 +162,6 @@ textarea {
 
 .submit-button {
   margin-left: 45%;
-  margin-top: 10px;
   position: absolute;
   font-size: 1.25rem;
   width: 200px;
@@ -174,4 +172,20 @@ textarea {
   border: 3px solid black;
   background-color: #4fffb0;
   font-weight: 600;
+}
+
+#reject-message {
+  margin-left: 41%;
+  margin-top: 50px;
+  font-size: 1.4rem;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 300px;
+  display: flex;
+  padding: 5px 10px 5px 15px;
+  font-weight: 500;
+  background-color: orange;
+  border-radius: 25px;
+  font-weight: 700;
+  box-shadow: 0px 0px 5px 0px black;
+  border: 3px solid black;
 }

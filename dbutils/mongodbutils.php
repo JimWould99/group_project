@@ -362,6 +362,32 @@ function storeProfilePicture($file, $profilePage) {
     updateProfilePage($profilePage['_id'], ['ProfilePicture' => $storedFilePath]);
 }
 
+function storeResearchImage($file, $researchpage, $tileNum) {
+    global $repopath;
+    global $ds;
+    global $storageRoot;
+    $username = $researchpage['Username'];
+    $finaldirpath = $repopath . $ds . $username . $ds;
+    //ensure dir exists, mkdir if not
+    if(!is_dir($finaldirpath)) {mkdir($finaldirpath);}
+    $basename = basename($file['name']);
+    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+
+    $filename = "thumbnail{$tileNum}.{$extension}";
+    $finalfilepath = $repopath . $username . $ds . $filename;
+    move_uploaded_file($file['tmp_name'], $finalfilepath); //moves the file from temp storage to disk
+    //convert serpators to be server friendly
+    $storedFilePath = "{$storageRoot}/{$username}/{$filename}";
+    $oldProfileFiles = $researchpage['Images'];
+    //convert the stored BSON array object into php array
+    $oldProfileFiles = iterator_to_array($oldProfileFiles);
+    $newProfileFiles = array_merge($oldProfileFiles, ["thumbnail{$tileNum}" => $storedFilePath]);
+    updateResearchPage($researchpage['_id'], ['Images' => $newProfileFiles]);
+}
+
+
+
+
 function storeTileImage($file, $profilePage, $tileNum) {
     global $repopath;
     global $ds;
