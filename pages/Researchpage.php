@@ -42,7 +42,7 @@
 	<body>
 
 	<?php genHeader($profileId,$accounttype);?>
-		<div id="main">
+		
 			<div id="intro_text">
 				<?php
 					echo "<p>".$research["Title"]."</p>";
@@ -59,7 +59,8 @@
 					echo "<tr><td>" . "<a href=$filelocation download>" . htmlspecialchars($filename) . "</a>";
 				}		
 			?>
-
+			</div>
+		
 		<?php genFooter();?>
 	</body>
 </html>

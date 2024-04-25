@@ -58,11 +58,11 @@ body {
 }
 
 #intro_text {
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 10fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 50px 70px 70px 70px;
-  gap: 50px;
   justify-items: center;
   font-family: Arial, Helvetica, sans-serif;
 }
