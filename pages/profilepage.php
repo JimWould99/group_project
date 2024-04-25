@@ -72,69 +72,69 @@
   <body>
 
   <?php genHeader($profileId,$accounttype);?>
-    <div id="wrapper">
     <div id="profile-header"><?php echo $profile['Username'];?></div>
-      <div id="sub-wrapper">
-        <div id="main">
-          <div class="tile">
-            <!-- Placeholder for researcher's image -->
-            <img src=<?php if ($profile['ProfilePicture'] == '')
-            {echo $_SESSION['placeHolderProfilePicture'];
-            } else {echo $profile['ProfilePicture'];}?> alt="Researcher Image" />
-          </div>
+
+    <div id="main">
+      <div class="tile">
+        <!-- Placeholder for researcher's image -->
+        <img src=<?php if ($profile['ProfilePicture'] == '') 
+        {echo $_SESSION['placeHolderProfilePicture'];
+        } else {echo $profile['ProfilePicture'];}?> alt="Researcher Image" />
       </div>
-        <div id="text-box">
-          <p>
-            <?php if ($profile['Bio'] == '') {echo $_SESSION['placeholderText'];} else {echo $profile['Bio'];} ?>
-          </p>
-        </div>
+      <div id="text-box">
+        <p>
+          <?php if ($profile['Bio'] == '') {echo $_SESSION['placeholderText'];} else {echo $profile['Bio'];} ?>
+        </p>
       </div>
-      <div class="tiles-row">
-        <div class="tile">
-          <!-- First Interactable Tile -->
-      
-          <img src=<?php echo $_SESSION['tile1']; ?> alt="Tile 1" />
-      
-        </div>
-        <div class="tile">
-          <!-- Second Interactable Tile -->
-      
-          <img src=<?php echo $_SESSION['tile2']; ?> alt="Tile 2" />
-      
-        </div>
-        <div class="tile">
-          <!-- Third Interactable Tile -->
-      
-          <img src=<?php echo $_SESSION['tile3']; ?> alt="Tile 3" />
-      
-        </div>
-        <div class="tile">
-          <!-- Fourth Interactable Tile -->
-      
-          <img src=<?php echo $_SESSION['tile4']; ?> alt="Tile 4" />
-      
-        </div>
-      </div>
-      <div id="key">
-        <p><strong>Graduation:</strong> Ph.D. in [Field], [University Name]</p>
-        <p><strong>Research Interests:</strong> [List of Research Interests]</p>
-        <p><strong>Specializations:</strong> [List of Specializations]</p>
-        <p><strong>Contact Information:</strong> [Phone Number], [Email Address]</p>
-      </div>
-      <?php
-        if(isset($_SESSION["username"]) && $accounttype == "asm"){
-          if ($profileId == $_id){
-            echo "
-            <div id='button_to_edit_profile_page'>
-              <form action='editprofile.php?_id={$_id}' method='post'>
-                <button name='edit_profile' value='edit_profile'>Edit Profile</button>
-              </form>
-            </div>
-            ";
-          }
-        }
-      ?>
     </div>
+
+    <div class="tiles-row">
+      <div class="tile">
+        <!-- First Interactable Tile -->
+        
+        <img src=<?php echo $_SESSION['tile1']; ?> alt="Tile 1" />
+       
+      </div>
+      <div class="tile">
+        <!-- Second Interactable Tile -->
+        
+        <img src=<?php echo $_SESSION['tile2']; ?> alt="Tile 2" />
+        
+      </div>
+      <div class="tile">
+        <!-- Third Interactable Tile -->
+        
+        <img src=<?php echo $_SESSION['tile3']; ?> alt="Tile 3" />
+       
+      </div>
+      <div class="tile">
+        <!-- Fourth Interactable Tile -->
+        
+        <img src=<?php echo $_SESSION['tile4']; ?> alt="Tile 4" />
+        
+      </div>
+    </div>
+
+    <div id="key">
+      <p><strong>Graduation:</strong> Ph.D. in [Field], [University Name]</p>
+      <p><strong>Research Interests:</strong> [List of Research Interests]</p>
+      <p><strong>Specializations:</strong> [List of Specializations]</p>
+      <p><strong>Contact Information:</strong> [Phone Number], [Email Address]</p>
+    </div>
+
+    <?php
+      if(isset($_SESSION["username"]) && $accounttype == "asm"){
+        if ($profileId == $_id){
+          echo "
+          <div id='button_to_edit_profile_page'>
+            <form action='editprofile.php?_id={$_id}' method='post'>
+              <button name='edit_profile' value='edit_profile'>Edit Profile</button>
+            </form>
+          </div>
+          ";
+        }
+      }
+    ?>
     <?php genFooter();?>
   </body>
 </html>
