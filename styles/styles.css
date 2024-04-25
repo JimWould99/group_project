@@ -125,7 +125,7 @@ body of landing page
   background-image: url("../images/jj-ying-8bghKxNU1j0-unsplash.jpg");
   background-position-x: 57%;
   background-position-y: 0%;
-  background-size: 90%;
+  background-size: 150%;
 }
 
 .trio#second > h1 {
@@ -456,6 +456,12 @@ Search page
   text-align: center;
   box-shadow: 0px 0px 5px 0px black;
   cursor: pointer;
+  gap: 6px;
+}
+
+#research_card > img {
+  height: 100%;
+  overflow: hidden;
 }
 
 #research_card > * {
@@ -479,7 +485,7 @@ Search page
   width: 150px;
   flex-shrink: 0;
   min-width: 100%;
-  /*background-image: url("../images/engo.jpg"); HAD TO CHANGE THIS TO GET IMAGES TO WORK ON SEARCH*/ 
+  /*background-image: url("../images/engo.jpg"); HAD TO CHANGE THIS TO GET IMAGES TO WORK ON SEARCH*/
   background-size: 140%;
   background-position-x: 60%;
 }
@@ -616,7 +622,6 @@ dialog > form {
 #height {
   min-height: 100vh;
 }
-
 
 /*
 Research Overview page
