@@ -136,10 +136,6 @@ body {
   gap: 20px;
 }
 
-.research > input {
-  height: 80px;
-}
-
 .research img {
   max-width: 100%;
   height: auto;
@@ -166,7 +162,7 @@ textarea {
 
 .submit-button {
   margin-left: 45%;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   font-size: 1.25rem;
   width: 200px;
   height: 70px;
