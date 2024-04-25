@@ -1,8 +1,5 @@
 {
     "require": {
         "mongodb/mongodb": "^1.17"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "11"
     }
 }
