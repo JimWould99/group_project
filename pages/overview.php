@@ -12,21 +12,13 @@
 		if($accounttype == "asm"){ // if logged in with an asm account
 			$profileId = getProfileId($_SESSION["username"]); //fetches and sets the profile id associated with the logged in asm account
 		} else{ // if not an asm sets profile id to blank string so that functions don't break but also do nothing
-			$profileId = "";
-		}
-	} else { // if not logged in sets the profile id and account type to nothing to allow functions to work
-		$profileId = "";
-		$accounttype = "";
-	}
-
-	if (isset($_SESSION["username"])){ // if user is logged in
-		$accounttype = getUserData($_SESSION["username"])["AccountType"]; // find the user's account type
-		if ($accounttype != "asm"){ // if the user isn't an asm send them to landing page as they cannot own/edit research pages
 			redirectHome();
 		}
-	} else{ // if not logged in send to landing page
-		redirectHome();
+	} else { // if not logged in sets the profile id and account type to nothing to allow functions to work
+    redirectHome();
+
 	}
+
 	$profileId = getProfileId($_SESSION["username"]);// gets the user's profile id from their username
 	
 ?>

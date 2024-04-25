@@ -30,32 +30,6 @@
 	<body id="approve_page">
 		<div id="height">
 		<?php genHeader($profileId,$accounttype);?>
-		<!-- KEEPING THE BELOW CURRENTLY FOR JACK TO DO CSS CHANGES SO HE CAN SEE WHAT HE WROTE ORIGINALLY-->
-			<!--
-			<div class="approve_bar">
-				<div id="research_card" onclick="location.href='#'">
-					<p id="title">Example title one</p>
-					<div id="image"></div>
-					<p id="short_bio">
-						Short Bio: Neque convallis a cras semper auctor neque. Tempus
-						imperdiet nulla malesuada pellentesque elit eget. Tempus imperdiet
-						nulla malesuada pellentesque elit eget.
-					</p>
-					<p id="author">David Lightfoot</p>
-				</div>
-				<div id="button_box">
-					<button id="approve_button">Approve</button>
-					<button id="reject">Reject</button>
-				</div>
-				<dialog open>
-					<form action="">
-						<label for="feedback">Rejection feedback</label>
-						<input type="text" name="feedback" id="feedback" />
-						<button id="submit" type="submit">Submit</button>
-					</form>
-				</dialog>
-			</div>
-			-->
 			<?php generateApproveCard(); #runs the script that generates cards?>
 			
 		</div>
