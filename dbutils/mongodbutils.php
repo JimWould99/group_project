@@ -228,6 +228,15 @@ function updateResearchPage($_id, $toUpdate) {
     );
 }
 
+function updateResearchFiles() {
+    $db = getDB();
+    $newFiles = [];
+    $db->ResearchPage->updateMany(
+        [],
+        ['$set' => ['Files'=> $newFiles] ]
+    );
+}
+
 //  populates the search and browse research pages with research cards (only verified research)
 function generateResearchCard(){
     foreach (getAllResearchPages() as $document) {
@@ -376,7 +385,7 @@ function storeResearchImage($file, $researchpage, $tileNum) {
     $filename = "thumbnail{$tileNum}.{$extension}";
     $finalfilepath = $repopath . $username . $ds . $filename;
     move_uploaded_file($file['tmp_name'], $finalfilepath); //moves the file from temp storage to disk
-    //convert serpators to be server friendly
+    //convert seperators to be server friendly
     $storedFilePath = "{$storageRoot}/{$username}/{$filename}";
     $oldProfileFiles = $researchpage['Images'];
     //convert the stored BSON array object into php array
@@ -385,7 +394,38 @@ function storeResearchImage($file, $researchpage, $tileNum) {
     updateResearchPage($researchpage['_id'], ['Images' => $newProfileFiles]);
 }
 
+function storeResearchFile($file, $researchpage) {
+    global $repopath;
+    global $ds;
+    global $storageRoot;
+    $username = $researchpage['Username'];
+    $finaldirpath = $repopath . $ds . $username . $ds;
+    //ensure dir exists, mkdir if not
+    if(!is_dir($finaldirpath)) {mkdir($finaldirpath);}
+    $basename = basename($file['name']);
+    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+    $filename = $basename;
+    $finalfilepath = $repopath . $username . $ds . $filename;
+    move_uploaded_file($file['tmp_name'], $finalfilepath); //moves the file from temp storage to disk
+    $storedFilePath = "{$storageRoot}/{$username}/{$filename}";
+    $oldResearchFiles = $researchpage['Files'];
+    //convert the stored BSON array object into php array
+    $oldResearchFiles = iterator_to_array($oldResearchFiles);
+    $newResearchFiles = array_merge($oldResearchFiles, [$filename => $storedFilePath]);
+    updateResearchPage($researchpage['_id'], ['Files' => $newResearchFiles]);
 
+}
+
+function deleteResearchFile($file, $researchpage) {
+
+
+    $oldResearchFiles = $researchpage['Files'];
+    //convert the stored BSON array object into php array
+    $oldResearchFiles = iterator_to_array($oldResearchFiles);
+    unset($oldResearchFiles[$file]);//TODO: check whether file is the filename or literal file type
+    updateResearchPage($researchpage['_id'], ['Files' => $oldResearchFiles]);
+
+}
 
 
 function storeTileImage($file, $profilePage, $tileNum) {

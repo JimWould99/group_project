@@ -50,6 +50,15 @@
 				?>
 			</div>
 		</div>
+		<div id="files">
+			<?php
+				$rows = $research['Files'];
+				$rows = iterator_to_array($rows);//convert bson object to PHP array
+				echo "<table>"; // start a table tag in the HTML
+				foreach( $rows as $filename => $filelocation) {   //Creates a loop to loop through results
+					echo "<tr><td>" . "<a href=$filelocation download>" . htmlspecialchars($filename) . "</a>";
+				}		
+			?>
 
 		<?php genFooter();?>
 	</body>

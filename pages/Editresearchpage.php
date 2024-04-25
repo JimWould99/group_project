@@ -29,6 +29,18 @@
 		}
 	}
 
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+		if (isset($research)) {
+		  //upload new profile picture
+		  if(isset($_FILES['uploadFile'])) {
+			storeResearchFile($_FILES['uploadFile'], $profilePage);
+		  }
+		  //reload research page from db into session
+		  $research = getResearchPage(($research['_id']));
+		}
+	  
+	}
+
 ?>
 
 <!doctype html>
@@ -110,6 +122,22 @@
 								}
 							?>
 						</div>
+						<div id="file-upload>">
+								Select file image to upload:
+								<input type="file" name="uploadFile" id="uploadFile">
+        				</div> 
+						<?php
+							$rows = $research['Files'];
+							$rows = iterator_to_array($rows);//convert bson object to PHP array
+							echo "<table>"; // start a table tag in the HTML
+						foreach( $rows as $filename => $filelocation) {   //Creates a loop to loop through results
+							echo "<tr><td>" . "<a href=$filelocation download>" . htmlspecialchars($filename) . "</a>  <div id='button_box'>" .
+								"<a href='../scripts/phpScripts/deleteresearchfile.php?_id={$_id}&file={$filename}'>" .
+								"<button type='button' id='deleteResearchFile'>Delete</button>" .
+							"</a>
+						</div>" . /*deleteResearchFile($file, $researchpage)*/ "</td></tr>";  //$row['index'] the index here is a field name
+						}
+						echo "";			?>			
 					</div>
 				</div>
 			</form>

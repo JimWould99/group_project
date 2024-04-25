@@ -9,7 +9,15 @@
 		$_id = createResearchPage($username)->getInsertedId(); //makes a new page and gets its id
 	}
 	
-	storeResearchImage($_FILES['Thumbnail'], getResearchPage($_id), 1);
+	if(isset($_FILES['Thumbnail'])) {
+		storeResearchImage($_FILES['Thumbnail'], getResearchPage($_id), 1);
+	}
+
+	if(isset($_FILES['uploadFile'])) {
+		storeResearchFile($_FILES['uploadFile'], getResearchPage($_id));
+	}
+
+
 
 	updateResearchPage($_id, $_POST); // fills in values submitted to this script into the new/existing research page
 	setResearchPageVerification($_id,false);// sets the page to unverified so that it needs to be verified by a tto
