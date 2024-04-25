@@ -48,6 +48,16 @@
   //     $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
   //   }
 
+  for ($x = 1; $x <= 4; $x++) {
+    $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];
+  }
+
+  for ($x = 1; $x <= 4; $x++) {
+    if (isset($profilePage['Files']["tile{$x}"])) {
+      $_SESSION["tile{$x}"] = $profile['Files']["tile{$x}"];
+    }
+  }
+
 
 ?>
 
@@ -73,6 +83,33 @@
         <p>
           <?php if ($profile['Bio'] == '') {echo $_SESSION['placeholderText'];} else {echo $profile['Bio'];} ?>
         </p>
+      </div>
+    </div>
+
+    <div class="tiles-row">
+      <div class="tile">
+        <!-- First Interactable Tile -->
+        
+        <img src=<?php echo $_SESSION['tile1']; ?> alt="Tile 1" />
+       
+      </div>
+      <div class="tile">
+        <!-- Second Interactable Tile -->
+        
+        <img src=<?php echo $_SESSION['tile2']; ?> alt="Tile 2" />
+        
+      </div>
+      <div class="tile">
+        <!-- Third Interactable Tile -->
+        
+        <img src=<?php echo $_SESSION['tile3']; ?> alt="Tile 3" />
+       
+      </div>
+      <div class="tile">
+        <!-- Fourth Interactable Tile -->
+        
+        <img src=<?php echo $_SESSION['tile4']; ?> alt="Tile 4" />
+        
       </div>
     </div>
 

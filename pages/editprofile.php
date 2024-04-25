@@ -27,31 +27,31 @@
 
 
   $profile = getProfilePage($_id); // gets the profile data associated with the profile id
-
-  // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  //     if (isset($_SESSION['profilePage'])) {
-  //       //upload new profile picture
-  //       if(isset($_FILES['uploadFile'])) {
-  //         storeProfilePicture($_FILES['uploadFile'], $_SESSION['profilePage']);
-  //       }//upload given tile image
-  //       if(isset($_FILES['uploadTile1'])) {
-  //         echo 'tile 1';
-  //         storeTileImage($_FILES['uploadTile1'], $_SESSION['profilePage'], 1);
-  //       }
-  //       if(isset($_FILES['uploadTile2'])) {
-  //         storeTileImage($_FILES['uploadTile2'], $_SESSION['profilePage'], 2);
-  //       }
-  //       if(isset($_FILES['uploadTile3'])) {
-  //         storeTileImage($_FILES['uploadTile3'], $_SESSION['profilePage'], 3);
-  //       }
-  //       if(isset($_FILES['uploadTile4'])) {
-  //         storeTileImage($_FILES['uploadTile4'], $_SESSION['profilePage'], 4);
-  //       }
-  //       //reload profile page from db into session
-  //       $_SESSION['profilePage'] = getProfilePage(($_SESSION['profilePage']['_id']));
-  //     }
+//TODO:
+  if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+      if (isset($profilePage)) {
+        //upload new profile picture
+        if(isset($_FILES['uploadFile'])) {
+          storeProfilePicture($_FILES['uploadFile'], $profilePage);
+        }//upload given tile image
+        if(isset($_FILES['uploadTile1'])) {
+          echo 'tile 1';
+          storeTileImage($_FILES['uploadTile1'], $profilePage, 1);
+        }
+        if(isset($_FILES['uploadTile2'])) {
+          storeTileImage($_FILES['uploadTile2'], $profilePage, 2);
+        }
+        if(isset($_FILES['uploadTile3'])) {
+          storeTileImage($_FILES['uploadTile3'], $profilePage, 3);
+        }
+        if(isset($_FILES['uploadTile4'])) {
+          storeTileImage($_FILES['uploadTile4'], $profilePage, 4);
+        }
+        //reload profile page from db into session
+        $profilePage = getProfilePage(($profilePage['_id']));
+      }
     
-  // }
+  }
 
   // $_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
   // eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -67,11 +67,11 @@
      $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];
    }
 
-  // if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
-  //   $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
-  //   $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
-  //   $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
-  //   $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
+  // if(isset($profilePage)) {//set up vars to use to fill page
+  //   $_SESSION['bio'] = $profilePage['Bio'];//grab stored bio
+  //   $_SESSION['profilePicture'] = $profilePage['ProfilePicture'];//grab profile stored picture
+  //   $_SESSION['contactInfo'] = $profilePage['ContactInfo'];//grab stored contact info
+  //   $_SESSION['name'] = $profilePage['Name'];//grab stored name
 
      for ($x = 1; $x <= 4; $x++) {
        if (isset($profilePage['Files']["tile{$x}"])) {
@@ -108,7 +108,7 @@
           <form action="" method="post" enctype="multipart/form-data">
           Select file to upload:
           <input type="file" name="uploadFile" id="uploadFile">
-          <input type="submit" value="uploadProfilePicture" name="submit">
+          <input type="submit" value="Upload Profile Picture" name="submit">
           </form>
         </div> 
       </div>
