@@ -48,7 +48,8 @@
           storeTileImage($_FILES['uploadTile4'], $profilePage, 4);
         }
         //reload profile page from db into session
-        $profilePage = getProfilePage(($profilePage['_id']));
+        $profile = getProfilePage(($profilePage['_id']));
+        $profilePage = $profile;
       }
     
   }
