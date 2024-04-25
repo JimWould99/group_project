@@ -162,15 +162,6 @@
       </div>
     </div>
 
-    <div id="key">
-      <p><strong>Graduation:</strong> Ph.D. in [Field], [University Name]</p>
-      <p><strong>Research Interests:</strong> [List of Research Interests]</p>
-      <p><strong>Specializations:</strong> [List of Specializations]</p>
-      <p>
-        <strong>Contact Information:</strong> [Phone Number], [Email Address]
-      </p>
-    </div>
-
     <button form="submitBio" type="submit">Change profile Bio</button>
 
     <?php genFooter();?>
