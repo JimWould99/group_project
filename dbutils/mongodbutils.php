@@ -121,7 +121,7 @@ function createProfilePage($username) {
         'Username' => $userData['Username'],
         'Name' => $userData['Name'],
         'AccountType' => $userData['AccountType'],//accountype will be either 'asm' for academic staff member, or ;ir; ofr industry representative
-        'ProfilePicture' => '',
+        'ProfilePicture' => 'https://via.placeholder.com/150',
         'ContactInfo' => '',
         'Bio' => '',
         'Files' => [],

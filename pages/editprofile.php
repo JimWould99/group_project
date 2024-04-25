@@ -4,12 +4,13 @@
 	require_once('../dbutils/mongodbutils.php'); // requires that all functions that directly interact with the mongodb to be loaded
 	require_once('../utils/utils.php'); // requires the non db interacting functions to be loaded in
 	session_start(); //ensure we are in session
-	
+
 	if (isset($_SESSION["username"])){ // checks if the user is logged in
 		$accounttype = getUserData($_SESSION["username"])["AccountType"]; // fetches the user's account type
 		if($accounttype == "asm"){ // if logged in with an asm account
 			$profileId = getProfileId($_SESSION["username"]); //fetches and sets the profile id associated with the logged in asm account
-		} else{ // if not an asm sets profile id to blank string so that functions don't break but also do nothing
+      $profilePage = getProfilePage(($profileId));//set the profile page document to var
+    } else{ // if not an asm sets profile id to blank string so that functions don't break but also do nothing
 			$profileId = "";
 		}
 	} else { // if not logged in sets the profile id and account type to nothing to allow functions to work
@@ -17,11 +18,13 @@
 		$accounttype = "";
 	}
 
+
   if (!getId()){ // if get id returns false, then you are on a faulty page, so it sends you to the landing page
     redirectHome();
   } else{ // if page works get the page id via GET method
     $_id = getId();
   }
+
 
   $profile = getProfilePage($_id); // gets the profile data associated with the profile id
 
@@ -54,15 +57,15 @@
   // eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
   // minim veniam, quis nostrud exercitation ullamco laboris nisi ut
   // aliquip ex ea commodo consequat.';
-  // $_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
+   $_SESSION['placeHolderProfilePicture'] = 'https://via.placeholder.com/150';
   // $_SESSION['bio'] = $_SESSION['placeholderText'];
   // $_SESSION['profilePicture'] = $_SESSION['placeHolderProfilePicture'];
   // $_SESSION['contactInfo'] = '';
   // $_SESSION['name'] = '';
 
-  // for ($x = 1; $x <= 4; $x++) {
-  //   $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];
-  // }
+   for ($x = 1; $x <= 4; $x++) {
+     $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];
+   }
 
   // if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
   //   $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
@@ -70,11 +73,11 @@
   //   $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
   //   $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
 
-  //   for ($x = 1; $x <= 4; $x++) {
-  //     if (isset($_SESSION['profilePage']['Files']["tile{$x}"])) {
-  //       $_SESSION["tile{$x}"] = $_SESSION['profilePage']['Files']["tile{$x}"];
-  //     }
-  //   }
+     for ($x = 1; $x <= 4; $x++) {
+       if (isset($profilePage['Files']["tile{$x}"])) {
+         $_SESSION["tile{$x}"] = $profilePage['Files']["tile{$x}"];
+       }
+     }
   // }
 
 
