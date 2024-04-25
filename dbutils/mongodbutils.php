@@ -339,8 +339,8 @@ function verifyPassword($username, $password) {
 
 //TODO: file management
 $ds = DIRECTORY_SEPARATOR;
-$repopath = "C:{$ds}xampp{$ds}htdocs{$ds}storage{$ds}";
-$storageRoot = '/storage';
+$repopath = "C:{$ds}xampp{$ds}htdocs{$ds}real_group_project{$ds}storage{$ds}";
+$storageRoot = 'real_group_project/storage';
 //e.g. str: \storage\testuser400\Ocelot.png'
 
 function storeProfilePicture($file, $profilePage) {
