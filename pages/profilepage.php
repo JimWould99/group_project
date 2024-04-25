@@ -25,11 +25,6 @@
 
   $profile = getProfilePage($_id); // gets the profile data associated with the profile id
 
-  // if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  //     if (isset($_POST['edit_profile'])) {
-  //         redirect('editprofile.php');
-  //     }
-  // }
 
   $_SESSION['placeholderText'] = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -41,12 +36,7 @@
   $_SESSION['contactInfo'] = '';
   $_SESSION['name'] = '';
 
-  // if(isset($_SESSION['profilePage'])) {//set up vars to use to fill page
-  //     $_SESSION['bio'] = $_SESSION['profilePage']['Bio'];//grab stored bio
-  //     $_SESSION['profilePicture'] = $_SESSION['profilePage']['ProfilePicture'];//grab profile stored picture
-  //     $_SESSION['contactInfo'] = $_SESSION['profilePage']['ContactInfo'];//grab stored contact info
-  //     $_SESSION['name'] = $_SESSION['profilePage']['Name'];//grab stored name
-  //   }
+
 
   for ($x = 1; $x <= 4; $x++) {
     $_SESSION["tile{$x}"] = $_SESSION['placeHolderProfilePicture'];

@@ -10,5 +10,5 @@
 	}
 
 	#TO DO indicate in some way that it was successful.
-	// header("Location: ../../pages/overview.php");
+	header("Location: ../../pages/overview.php");
 ?>
