@@ -127,17 +127,19 @@
 								<input type="file" name="uploadFile" id="uploadFile">
         				</div> 
 						<?php
+						if(isset($research)) {
 							$rows = $research['Files'];
 							$rows = iterator_to_array($rows);//convert bson object to PHP array
 							echo "<table>"; // start a table tag in the HTML
-						foreach( $rows as $filename => $filelocation) {   //Creates a loop to loop through results
+							foreach( $rows as $filename => $filelocation) {   //Creates a loop to loop through results
 							echo "<tr><td>" . "<a href=$filelocation download>" . htmlspecialchars($filename) . "</a>  <div id='button_box'>" .
 								"<a href='../scripts/phpScripts/deleteresearchfile.php?_id={$_id}&file={$filename}'>" .
 								"<button type='button' id='deleteResearchFile'>Delete</button>" .
 							"</a>
-						</div>" . /*deleteResearchFile($file, $researchpage)*/ "</td></tr>";  //$row['index'] the index here is a field name
+							</div>" . /*deleteResearchFile($file, $researchpage)*/ "</td></tr>";  //$row['index'] the index here is a field name
+							}
 						}
-						echo "";			?>			
+						?>			
 					</div>
 				</div>
 			</form>
