@@ -35,7 +35,6 @@
           storeProfilePicture($_FILES['uploadFile'], $profilePage);
         }//upload given tile image
         if(isset($_FILES['uploadTile1'])) {
-          echo 'tile 1';
           storeTileImage($_FILES['uploadTile1'], $profilePage, 1);
         }
         if(isset($_FILES['uploadTile2'])) {
