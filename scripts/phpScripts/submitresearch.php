@@ -14,7 +14,7 @@
 	}
 
 	if(isset($_FILES['uploadFile'])) {
-		storeResearchFile($_FILES['uploadFile'], getResearchPage($_id));
+		// storeResearchFile($_FILES['uploadFile'], getResearchPage($_id));
 	}
 
 

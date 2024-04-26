@@ -130,14 +130,23 @@
 						if(isset($research)) {//if research has already beened saved then show any uploaded files for download
 							$rows = $research['Files'];
 							$rows = iterator_to_array($rows);//convert bson object to PHP array
-							echo "<table>"; // start a table tag in the HTML
+							echo 
+							"<table>"; // start a table tag in the HTML
 							foreach( $rows as $filename => $filelocation) {   //Creates a loop to loop through results
-							echo "<tr><td>" . "<a href=$filelocation download>" . htmlspecialchars($filename) . "</a>  <div id='button_box'>" .
-								"<a href='../scripts/phpScripts/deleteresearchfile.php?_id={$_id}&file={$filename}'>" .
-								"<button type='button' id='deleteResearchFile'>Delete</button>" .
-							"</a>
-							</div>" . /*deleteResearchFile($file, $researchpage)*/ "</td></tr>";  //$row['index'] the index here is a field name
-							}
+							echo
+								"<tr>
+									<td>
+										<a href=$filelocation download>" . htmlspecialchars($filename) . "</a>  
+										<div id='button_box'>
+											<a href='../scripts/phpScripts/deleteresearchfile.php?_id={$_id}&file={$filename}'>
+												<button type='button' id='deleteResearchFile'>Delete</button>
+											</a>
+										</div>" . /*deleteResearchFile($file, $researchpage)*/ 
+									"</td>
+								</tr>";  //$row['index'] the index here is a field name
+						}
+						echo 
+							"</table>";
 						}
 						?>			
 					</div>
@@ -145,6 +154,7 @@
 			</form>
 			<button class="submit-button" form="researchPage" type="submit">Submit Research</button>
 		</div>
+		
 		<?php genFooter();?>
 
 		<script src="https://unpkg.com/pell"></script>
