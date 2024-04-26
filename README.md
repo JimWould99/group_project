@@ -18,11 +18,11 @@ extension=php_mongodb.dll
 
 To test, open the xampp control panel, click on shell and run: php -v
 
-if there are no errors, this was succesful.
+If there are no errors, this was succesful.
 
 Finally; login to the https://account.mongodb.com/account/login site to access the atlas mongodb page and whitelist your IP address for access to the mongodb cloud server.
 
-
+--------------------------------------------------------------------------------------------------
 
 <!-- MIT LICENCE INCLUDED BELOW FOR THE PELL EDITOR, OBTAINED FROM https://github.com/jaredreich/pell -->
 The MIT License (MIT)
