@@ -13,11 +13,14 @@ Copy php_mongodb.dll from the extracted folder into {your-xampp-folder-location}
 Open php.ini inside {your-xampp-folder-location}\php\ folder. edit it to have the following lines added:
 
 ;add extension for mongodb
+
 extension=php_mongodb.dll
 
 To test, open the xampp control panel, click on shell and run: php -v
 
 if there are no errors, this was succesful.
+
+Finally; login to the https://account.mongodb.com/account/login site to access the atlas mongodb page and whitelist your IP address for access to the mongodb cloud server.
 
 
 
