@@ -34,14 +34,16 @@
   <body id="overview_page">
     <div id="wrapper">
     <?php genHeader($profileId,$accounttype);?>
-      <div id="overview_content">
-        <h1>My research</h1>
-        <div id="overview_buttons">
-          <button onclick="deletion()">Delete Research</button>
-          <button onclick="location.href = 'editresearchpage.php'">
-            Add Research
-            <span>+</span>
-          <button onclick="edit()">Edit Research</button>
+      <div id="overview_image">
+        <div id="overview_content">
+          <h1>My research</h1>
+          <div id="overview_buttons">
+            <button onclick="deletion()">Delete Research</button>
+            <button onclick="location.href = 'editresearchpage.php'">
+              Add Research
+              <span>+</span>
+            <button onclick="edit()">Edit Research</button>
+          </div>
         </div>
       </div>
       <div id="overview">

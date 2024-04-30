@@ -53,7 +53,9 @@ form.addEventListener("submit", (e) => {
     extra_section.setAttribute("id", "invalid");
   }
 
-  // check email has been filled or valid
+  // check email has been filled
+  // check whether it is valid through regex
+  // update span value
   if (email.value == "" || email.value == null) {
     email_span.textContent = "Fill in email";
     email_section.setAttribute("id", "invalid");

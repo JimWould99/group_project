@@ -91,18 +91,20 @@
 
     <div id="profile-header">Profile Information</div>
 
-    <div id="main">
-      <div class="tile">
-        <img src=<?php echo $profile['ProfilePicture']; ?> alt="Researcher Image" />
-        <div id="profile-picture-upload>">
-          <form action="" method="post" enctype="multipart/form-data">
-          Select file to upload:
-          <input type="file" name="uploadFile" id="uploadFile">
-          <input type="submit" value="Upload Profile Picture" name="submit">
-          </form>
-        </div> 
+    <div id="main" id="sub-wrapper">
+      <div id="sub-wrapper">
+        <div class="tile">
+          <img src=<?php echo $profile['ProfilePicture']; ?> alt="Researcher Image" />
+          <div id="profile-picture-upload>">
+            <form action="" method="post" enctype="multipart/form-data">
+            Select file to upload:
+            <input type="file" name="uploadFile" id="uploadFile">
+            <input type="submit" value="Upload Profile Picture" name="submit">
+            </form>
+          </div>
+        </div>
+        <div id="editor"></div>
       </div>
-      <div id="editor"></div>
       <form id="submitBio" action="../scripts/phpScripts/submitprofile.php?_id=<?= $_id?>" method="post">
       <?php echo '<textarea hidden name="Bio" id="markup">'.$profile['Bio'].'</textarea>' ;?>
       </form>
@@ -132,7 +134,7 @@
       <div class="tile">
         <!-- Third Interactable Tile -->
         Tile 3
-        <img src=<?php echo $_SESSION['tile3']; ?> alt="Tile 3" />
+        
         <form action="" method="post" enctype="multipart/form-data">
           Select file to upload:
           <input type="file" name="uploadTile3" id="uploadTile3">
@@ -142,7 +144,7 @@
       <div class="tile">
         <!-- Fourth Interactable Tile -->
         Tile 4
-        <img src=<?php echo $_SESSION['tile4']; ?> alt="Tile 4" />
+      
         <form action="" method="post" enctype="multipart/form-data">
           Select file to upload:
           <input type="file" name="uploadTile4" id="uploadTile4">

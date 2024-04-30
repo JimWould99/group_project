@@ -91,6 +91,20 @@ body of landing page
   box-shadow: 0px 0px 5px 0px black;
 }
 
+#overview_image {
+  background-image: url("../images/wind.jpg");
+  background-size: 100%;
+  background-position-y: 70%;
+  box-shadow: 0px 0px 5px 0px black;
+  padding: 1px 0px 15px 0px;
+  margin-bottom: 60px;
+}
+
+#overview_content > h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 50px;
+}
+
 .trio > h1 {
   display: flex;
   justify-content: center;
@@ -628,7 +642,10 @@ Research Overview page
 }
 
 #overview_content > h1 {
-  margin: 0px;
+  margin-right: 50px;
+  background-color: #00bfff;
+  border-radius: 25px;
+  padding: 10px 20px;
 }
 
 #overview_buttons {
