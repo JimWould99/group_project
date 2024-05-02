@@ -57,7 +57,8 @@
 				echo "<table>"; // start a table tag in the HTML
 				foreach( $rows as $filename => $filelocation) {   //Creates a loop to loop through results
 					echo "<tr><td>" . "<a href=$filelocation download>" . htmlspecialchars($filename) . "</a>";
-				}		
+				}	
+				echo "</table>";
 			?>
 			</div>
 		
