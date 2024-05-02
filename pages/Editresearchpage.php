@@ -113,7 +113,7 @@
 								Select thumbnail image to upload:
 								<input type="file" name="Thumbnail" id="Thumbnail">
 							<?php 							
-							if(isset($research['Images']["thumbnail1"])){echo '<img id="image1" src='.$research['Images']["thumbnail1"].' alt="Research Image" />';}?>
+							if(isset($research['Images']["thumbnail1"])){echo '<img id="image1" src='.$research['Images']["thumbnail".$_id].' alt="Research Image" />';}?>
 							<?php // this is the blurb
 								if ($newPage == FALSE){// crude method of loading in different html based on if a new page is being made or existing being edited
 									echo '<textarea name="Blurb" rows="3" cols="40" placeholder="Please enter a blurb for your research, no more than 150 words as anything past that will not be displayed">'.$research["Blurb"].'</textarea>';

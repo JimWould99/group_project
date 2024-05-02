@@ -10,7 +10,7 @@
 	}
 	
 	if(isset($_FILES['Thumbnail'])) {
-		storeResearchImage($_FILES['Thumbnail'], getResearchPage($_id), 1);
+		storeResearchImage($_FILES['Thumbnail'], getResearchPage($_id), $_id);
 	}
 
 	if(isset($_FILES['uploadFile'])) {
