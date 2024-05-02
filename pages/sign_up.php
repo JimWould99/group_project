@@ -37,7 +37,9 @@
                 //place new user in the db
                 createNewUser($username, $email, $accountType, $password);
                 //createprofile page and assign to this user
-                $_SESSION['profilePage'] = getProfilePage(createProfilePage($username));
+                if ($accountType == "asm"){
+                    $_SESSION['profilePage'] = getProfilePage(createProfilePage($username));
+                }
                 //assign session variables for post login
                 $_SESSION['username']  = $username;
                 $_SESSION['email'] = $email;
