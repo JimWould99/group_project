@@ -32,11 +32,12 @@
 
   <?php genHeader($profileId,$accounttype);?>
 
-    <div id="profiles-header">Profiles</div>
-
-    <div id="main">
-		<?php generateProfiles();	?>
-    </div>
+    <div id="wrapper">
+		<div id="profiles-header">Profiles</div>
+		<div id="main">
+				<?php generateProfiles();	?>
+		</div>
+	</div>
 
     <?php genFooter();?>
   </body>

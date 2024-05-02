@@ -91,6 +91,10 @@ body {
   border-radius: 50%;
 }
 
+#wrapper {
+  min-height: 100vh;
+}
+
 #footer_landing {
   margin-top: auto;
   background-color: #4935f7;
